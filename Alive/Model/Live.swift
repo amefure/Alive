@@ -15,8 +15,11 @@ class Live: Object, ObjectKeyIdentifiable {
     @Persisted var venue: String = ""          // 開催地(箱)
     @Persisted var price: Int = 0              // 料金
     @Persisted var memo: String = ""           // メモ
+    
+    // Live後に追加できる項目
     @Persisted var setList: String = ""        // セトリ
     @Persisted var memory: String = ""         // 感想
+    @Persisted var imagePath: String = ""      // 画像
     
 
     static var demoLive: Live {

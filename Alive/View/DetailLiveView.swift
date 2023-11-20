@@ -33,13 +33,38 @@ struct DetailLiveView: View {
     
     var body: some View {
         VStack {
+            
+            HeaderView(leadingIcon: "chevron.backward", trailingIcon: "pencil", leadingAction: { dismiss() }, trailingAction: {
+                isShowInput = true
+            }, isShowLogo: true)
+            .tint(Asset.Colors.themaYellowColor.swiftUIColor)
             VStack {
                 Text(live.artist)
+                    .font(.largeTitle)
+                
+                Text(live.venue)
+                    .font(.largeTitle)
+                
+                Text("\(live.price)円")
+                    .font(.largeTitle)
                
                 
+                Text(dateFormatManager.getShortString(date: live.date))
+                    .font(.largeTitle)
+                
+                Text(live.memo)
+                    .font(.largeTitle)
                
             }.padding(.bottom)
-        }
+            
+            Spacer()
+        }.navigationBarBackButtonHidden()
+            .navigationBarHidden(true)
+            .fontWeight(.bold)
+            .background(Asset.Colors.foundationColor.swiftUIColor)
+            .sheet(isPresented: $isShowInput, content: {
+                InputLiveView(live: live)
+            })
     }
 }
 

@@ -28,7 +28,7 @@ struct InputLiveView: View {
     @State private var artist: String = ""           // アーティスト
     @State private var date: Date = Date()           // 開催日
     @State private var venue: String = ""            // 開催地
-    @State private var price: String = ""             // 料金
+    @State private var price: String = ""            // チケット代
     @State private var memo: String = ""             // メモ
     
 
@@ -79,41 +79,73 @@ struct InputLiveView: View {
                     
                 }, isShowLogo: false)
                 .padding(.top, 30)
-                .tint(.white)
+                .tint(Asset.Colors.themaYellowColor.swiftUIColor)
                 
                 Spacer()
                 
-                TextField(L10n.liveArtist, text: $artist)
-                    .textFieldStyle(.roundedBorder)
-                
-                
-                TextField(L10n.liveVenue, text: $venue)
-                    .textFieldStyle(.roundedBorder)
-                
-                TextField(L10n.livePrice, text: $price)
-                    .textFieldStyle(.roundedBorder)
-                    .keyboardType(.numberPad)
-                
-                TextField(L10n.liveMemo, text: $memo)
-                    .textFieldStyle(.roundedBorder)
-                
-                DatePicker(selection: $date,
-                                      displayedComponents: DatePickerComponents.date,
-                                      label: { Text(L10n.liveDate) })
-                           .environment(\.locale, Locale(identifier: L10n.dateLocale))
-                           .environment(\.calendar, Calendar(identifier: .gregorian))
-                           .datePickerStyle(.graphical)
-                           .accentColor(Asset.Colors.themaOrangeColor.swiftUIColor)
-                
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        Text(L10n.liveArtist)
+                        TextField(L10n.liveArtist, text: $artist)
+                            .textFieldStyle(.roundedBorder)
+                    }.padding()
+                    
+                    VStack(alignment: .leading) {
+                        Text(L10n.liveVenue)
+                        TextField(L10n.liveVenue, text: $venue)
+                            .textFieldStyle(.roundedBorder)
+                    }.padding()
+                    
+                    VStack(alignment: .leading) {
+                        Text(L10n.livePrice)
+                        TextField(L10n.livePrice, text: $price)
+                            .textFieldStyle(.roundedBorder)
+                            .keyboardType(.numberPad)
+                    }.padding()
+                    
+                    
+                    VStack(alignment: .leading) {
+                        Text(L10n.liveMemo)
+                        TextField(L10n.liveMemo, text: $memo)
+                            .textFieldStyle(.roundedBorder)
+                    }.padding()
+                    
+                    VStack(alignment: .leading) {
+                        Text(L10n.liveDate)
+                        Divider()
+                        DatePicker(selection: $date,
+                                              displayedComponents: DatePickerComponents.date,
+                                              label: { Text(L10n.liveDate) })
+                                   .environment(\.locale, Locale(identifier: L10n.dateLocale))
+                                   .environment(\.calendar, Calendar(identifier: .gregorian))
+                                   .datePickerStyle(.graphical)
+                                   .accentColor(Asset.Colors.themaYellowColor.swiftUIColor)
+                        
+                    }.padding()
+    
+        
+                }
                 Spacer()
                 
             }
-        
-                    
           
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)
+            .fontWeight(.bold)
             .background(Asset.Colors.foundationColor.swiftUIColor)
+            .onAppear {
+                if let live = live {
+                    artist = live.artist
+                    date = live.date
+                    venue = live.venue
+                    price = String(live.price)
+                    memo = live.memo
+                }
+            }.alert(live == nil ? "登録しました。" : "更新しました。", isPresented: $successAlert) {
+                Button("OK") {
+                    dismiss()
+                }
+            }
             
     }
 }

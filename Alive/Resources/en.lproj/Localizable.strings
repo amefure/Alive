@@ -5,3 +5,6 @@
   Created by t&a on 2023/11/20.
   
 */
+// MARK: - Loacle
+"date_locale" = "en_US";
+"date_format" = "M/dd/yyyy";

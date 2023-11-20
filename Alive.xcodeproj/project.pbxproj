@@ -20,6 +20,13 @@
 		1242A2F12B0B6B900033BD09 /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F02B0B6B900033BD09 /* Live.swift */; };
 		1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F22B0B6CBA0033BD09 /* RealmRepository.swift */; };
 		1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F42B0B6D660033BD09 /* RealmRepositoryViewModel.swift */; };
+		1242A2F72B0B6E200033BD09 /* LiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F62B0B6E200033BD09 /* LiveListView.swift */; };
+		1242A2FA2B0B6E710033BD09 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F92B0B6E710033BD09 /* ImageFileManager.swift */; };
+		1242A2FC2B0B6E910033BD09 /* ExCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2FB2B0B6E910033BD09 /* ExCollection.swift */; };
+		1242A2FE2B0B6EA40033BD09 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2FD2B0B6EA40033BD09 /* DateFormatManager.swift */; };
+		1242A3002B0B6F060033BD09 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2FF2B0B6F060033BD09 /* UserDefaultsRepository.swift */; };
+		1242A3022B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3012B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift */; };
+		1242A3042B0B75B20033BD09 /* DetailLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3032B0B75B20033BD09 /* DetailLiveView.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +48,13 @@
 		1242A2F02B0B6B900033BD09 /* Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
 		1242A2F22B0B6CBA0033BD09 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		1242A2F42B0B6D660033BD09 /* RealmRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepositoryViewModel.swift; sourceTree = "<group>"; };
+		1242A2F62B0B6E200033BD09 /* LiveListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListView.swift; sourceTree = "<group>"; };
+		1242A2F92B0B6E710033BD09 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		1242A2FB2B0B6E910033BD09 /* ExCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollection.swift; sourceTree = "<group>"; };
+		1242A2FD2B0B6EA40033BD09 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
+		1242A2FF2B0B6F060033BD09 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
+		1242A3012B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepositoryViewModel.swift; sourceTree = "<group>"; };
+		1242A3032B0B75B20033BD09 /* DetailLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLiveView.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +96,7 @@
 				1242A2D82B0B69740033BD09 /* GoogleService-Info.plist */,
 				1242A2E02B0B6A790033BD09 /* Generated */,
 				1242A2DF2B0B6A740033BD09 /* Resources */,
+				1242A2F82B0B6E530033BD09 /* Extension&Utility */,
 				1242A2ED2B0B6B470033BD09 /* Model */,
 				1242A2DB2B0B69ED0033BD09 /* View */,
 				1242A2EE2B0B6B4C0033BD09 /* ViewModel */,
@@ -104,6 +119,8 @@
 			children = (
 				1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */,
 				1242A2CC2B0B66EC0033BD09 /* ContentView.swift */,
+				1242A2F62B0B6E200033BD09 /* LiveListView.swift */,
+				1242A3032B0B75B20033BD09 /* DetailLiveView.swift */,
 				1242A2DC2B0B69F30033BD09 /* Components */,
 			);
 			path = View;
@@ -148,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				1242A2F42B0B6D660033BD09 /* RealmRepositoryViewModel.swift */,
+				1242A3012B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,8 +174,19 @@
 			isa = PBXGroup;
 			children = (
 				1242A2F22B0B6CBA0033BD09 /* RealmRepository.swift */,
+				1242A2FF2B0B6F060033BD09 /* UserDefaultsRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		1242A2F82B0B6E530033BD09 /* Extension&Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1242A2F92B0B6E710033BD09 /* ImageFileManager.swift */,
+				1242A2FB2B0B6E910033BD09 /* ExCollection.swift */,
+				1242A2FD2B0B6EA40033BD09 /* DateFormatManager.swift */,
+			);
+			path = "Extension&Utility";
 			sourceTree = "<group>";
 		};
 		52C2971FC94C465977190C45 /* Pods */ = {
@@ -295,11 +324,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1242A3002B0B6F060033BD09 /* UserDefaultsRepository.swift in Sources */,
 				1242A2DE2B0B6A180033BD09 /* AdMobView.swift in Sources */,
 				1242A2CD2B0B66EC0033BD09 /* ContentView.swift in Sources */,
+				1242A3022B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift in Sources */,
 				1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */,
 				1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */,
+				1242A2FE2B0B6EA40033BD09 /* DateFormatManager.swift in Sources */,
+				1242A2F72B0B6E200033BD09 /* LiveListView.swift in Sources */,
+				1242A2FA2B0B6E710033BD09 /* ImageFileManager.swift in Sources */,
+				1242A2FC2B0B6E910033BD09 /* ExCollection.swift in Sources */,
 				1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */,
+				1242A3042B0B75B20033BD09 /* DetailLiveView.swift in Sources */,
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
 				1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */,
 				1242A2F12B0B6B900033BD09 /* Live.swift in Sources */,

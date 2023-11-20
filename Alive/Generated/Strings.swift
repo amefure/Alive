@@ -10,6 +10,13 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// yyyy年M月dd日
+  internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月dd日")
+  /// Localizable.strings
+  ///   Alive
+  /// 
+  ///   Created by t&a on 2023/11/20.
+  internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

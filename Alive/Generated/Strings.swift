@@ -12,11 +12,21 @@ import Foundation
 internal enum L10n {
   /// yyyy年M月dd日
   internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月dd日")
+  /// ja_JP
+  internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
   /// Localizable.strings
   ///   Alive
   /// 
   ///   Created by t&a on 2023/11/20.
-  internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
+  internal static let liveArtist = L10n.tr("Localizable", "live_artist", fallback: "アーティスト")
+  /// 開催日
+  internal static let liveDate = L10n.tr("Localizable", "live_date", fallback: "開催日")
+  /// MEMO
+  internal static let liveMemo = L10n.tr("Localizable", "live_memo", fallback: "MEMO")
+  /// チケット代
+  internal static let livePrice = L10n.tr("Localizable", "live_price", fallback: "チケット代")
+  /// ライブハウス
+  internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "ライブハウス")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

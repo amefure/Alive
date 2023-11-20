@@ -5,6 +5,13 @@
   Created by t&a on 2023/11/20.
   
 */
+// MARK: - Live
+"live_artist" = "Artist";
+"live_date" = "Event Date";
+"live_venue" = "Live House";
+"live_price" = "Ticket Fee";
+"live_memo" = "MEMO";
+
 // MARK: - Loacle
 "date_locale" = "en_US";
 "date_format" = "M/dd/yyyy";

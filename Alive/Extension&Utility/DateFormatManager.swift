@@ -21,5 +21,15 @@ class DateFormatManager {
     public func getString(date: Date) -> String {
         return df.string(from: date)
     }
+    
+    public func getShortString(date: Date) -> String {
+        df.dateFormat = "MM/dd"
+        return df.string(from: date)
+    }
+    
+    public func getDayOfWeekString(date: Date) -> String {
+        df.dateFormat = "EE"
+        return df.string(from: date)
+    }
 
 }

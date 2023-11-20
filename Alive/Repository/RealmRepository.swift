@@ -11,9 +11,8 @@ import RealmSwift
 class RealmRepository {
     
     init() {
-        let config = Realm.Configuration(schemaVersion: 1)
-
-        Realm.Configuration.defaultConfiguration = config
+//        let config = Realm.Configuration(schemaVersion: 1)
+//        Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
     }
 
@@ -30,6 +29,7 @@ class RealmRepository {
             live.price = price
             live.memo = memo
             realm.add(live)
+            print("成功")
         }
     }
     

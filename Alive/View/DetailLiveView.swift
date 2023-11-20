@@ -34,7 +34,7 @@ struct DetailLiveView: View {
     var body: some View {
         VStack {
             VStack {
-                
+                Text(live.artist)
                
                 
                

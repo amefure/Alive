@@ -17,6 +17,7 @@ class RealmRepositoryViewModel: ObservableObject {
     public func readAllLive() {
         lives.removeAll()
         let result = repository.readAllLive()
+        lives = Array(result)
     }
     
     public func createLive(artist: String, date: Date, venue: String, price: Int, memo: String) {

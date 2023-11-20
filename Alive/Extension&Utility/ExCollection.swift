@@ -13,3 +13,14 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension String {
+
+    public func toNum() -> Int {
+        if let num = Int(self) {
+            return num
+        } else {
+            return 0
+        }
+    }
+}

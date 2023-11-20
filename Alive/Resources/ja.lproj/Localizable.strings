@@ -5,6 +5,15 @@
   Created by t&a on 2023/11/20.
   
 */
+
+// MARK: - Live
+"live_artist" = "アーティスト";
+"live_date" = "開催日";
+"live_venue" = "ライブハウス";
+"live_price" = "チケット代";
+"live_memo" = "MEMO";
+
+
 // MARK: - Loacle
 "date_locale" = "ja_JP";
 "date_format" = "yyyy年M月dd日";

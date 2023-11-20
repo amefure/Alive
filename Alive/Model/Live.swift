@@ -15,6 +15,8 @@ class Live: Object, ObjectKeyIdentifiable {
     @Persisted var venue: String = ""          // 開催地(箱)
     @Persisted var price: Int = 0              // 料金
     @Persisted var memo: String = ""           // メモ
+    @Persisted var setList: String = ""        // セトリ
+    @Persisted var memory: String = ""         // 感想
     
 
     static var demoLive: Live {
@@ -24,7 +26,6 @@ class Live: Object, ObjectKeyIdentifiable {
         live.venue = "Tokyo Studio"
         live.price = 2500
         live.memo = "これはメモです"
-
         return live
     }
 }

@@ -17,6 +17,9 @@
 		1242A2E82B0B6AC10033BD09 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1242A2E72B0B6AC10033BD09 /* Colors.xcassets */; };
 		1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2E92B0B6AE60033BD09 /* Assets.swift */; };
 		1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2EA2B0B6AE60033BD09 /* Strings.swift */; };
+		1242A2F12B0B6B900033BD09 /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F02B0B6B900033BD09 /* Live.swift */; };
+		1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F22B0B6CBA0033BD09 /* RealmRepository.swift */; };
+		1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2F42B0B6D660033BD09 /* RealmRepositoryViewModel.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		1242A2E72B0B6AC10033BD09 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1242A2E92B0B6AE60033BD09 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		1242A2EA2B0B6AE60033BD09 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		1242A2F02B0B6B900033BD09 /* Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
+		1242A2F22B0B6CBA0033BD09 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		1242A2F42B0B6D660033BD09 /* RealmRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepositoryViewModel.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,8 +82,11 @@
 				1242A2D82B0B69740033BD09 /* GoogleService-Info.plist */,
 				1242A2E02B0B6A790033BD09 /* Generated */,
 				1242A2DF2B0B6A740033BD09 /* Resources */,
+				1242A2ED2B0B6B470033BD09 /* Model */,
 				1242A2DB2B0B69ED0033BD09 /* View */,
+				1242A2EE2B0B6B4C0033BD09 /* ViewModel */,
 				1242A2D02B0B66EE0033BD09 /* Preview Content */,
+				1242A2EF2B0B6B6F0033BD09 /* Repository */,
 			);
 			path = Alive;
 			sourceTree = "<group>";
@@ -125,6 +134,30 @@
 				1242A2EA2B0B6AE60033BD09 /* Strings.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		1242A2ED2B0B6B470033BD09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1242A2F02B0B6B900033BD09 /* Live.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1242A2EE2B0B6B4C0033BD09 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1242A2F42B0B6D660033BD09 /* RealmRepositoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1242A2EF2B0B6B6F0033BD09 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1242A2F22B0B6CBA0033BD09 /* RealmRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		52C2971FC94C465977190C45 /* Pods */ = {
@@ -266,7 +299,10 @@
 				1242A2CD2B0B66EC0033BD09 /* ContentView.swift in Sources */,
 				1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */,
 				1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */,
+				1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */,
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
+				1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */,
+				1242A2F12B0B6B900033BD09 /* Live.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

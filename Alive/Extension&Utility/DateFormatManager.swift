@@ -9,8 +9,7 @@ import UIKit
 
 class DateFormatManager {
 
-    public let df = DateFormatter()
-    public let today = Date()
+    private let df = DateFormatter()
 
     init() {
         df.dateFormat = L10n.dateFormat
@@ -19,6 +18,12 @@ class DateFormatManager {
     }
     
     public func getString(date: Date) -> String {
+        df.dateFormat = L10n.dateFormat
+        return df.string(from: date)
+    }
+    
+    public func getTimeString(date: Date) -> String {
+        df.dateFormat = "HH:mm"
         return df.string(from: date)
     }
     
@@ -30,6 +35,12 @@ class DateFormatManager {
     public func getDayOfWeekString(date: Date) -> String {
         df.dateFormat = "EE"
         return df.string(from: date)
+    }
+    
+    public func getDate(hour: Int, minute: Int) -> Date {
+        let time = "\(hour):\(minute)"
+        df.dateFormat = "HH:mm"
+        return df.date(from: time) ?? Date()
     }
 
 }

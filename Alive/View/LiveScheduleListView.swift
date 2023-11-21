@@ -57,14 +57,14 @@ struct LiveScheduleListView: View {
                     }
                 }.listStyle(.grouped)
                 .scrollContentBackground(.hidden)
-                    .background(Asset.Colors.foundationColor.swiftUIColor)
+                .background(.foundation)
             }
             
             
             FooterView()
             
             
-        }.background(Asset.Colors.foundationColor.swiftUIColor)
+        }.background(.foundation)
             .onAppear {
                 repository.readAllLive()
             }

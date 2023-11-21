@@ -20,29 +20,39 @@ class RealmRepository {
     private let realm: Realm
     
     // MARK: - Live
-    public func createLive(artist: String, date: Date, venue: String, price: Int, type: LiveType, memo: String) {
+    public func createLive(newLive: Live) {
         try! realm.write {
             let live = Live()
-            live.artist = artist
-            live.date = date
-            live.venue = venue
-            live.price = price
-            live.type = type
-            live.memo = memo
+            live.artist = newLive.artist
+            live.name = newLive.name
+            live.date = newLive.date
+            live.openingTime = newLive.openingTime
+            live.performanceTime = newLive.performanceTime
+            live.closingTime = newLive.closingTime
+            live.venue = newLive.venue
+            live.price = newLive.price
+            live.type = newLive.type
+            live.memo = newLive.memo
+            live.imagePath = newLive.imagePath
             realm.add(live)
         }
     }
     
-    public func updateLive(id: ObjectId, artist: String, date: Date, venue: String, price: Int, type: LiveType, memo: String) {
+    public func updateLive(id: ObjectId, newLive: Live) {
         try! realm.write {
             let lives = realm.objects(Live.self)
             if let live = lives.where({ $0.id == id }).first {
-                live.artist = artist
-                live.date = date
-                live.venue = venue
-                live.price = price
-                live.type = type
-                live.memo = memo
+                live.artist = newLive.artist
+                live.name = newLive.name
+                live.date = newLive.date
+                live.openingTime = newLive.openingTime
+                live.performanceTime = newLive.performanceTime
+                live.closingTime = newLive.closingTime
+                live.venue = newLive.venue
+                live.price = newLive.price
+                live.type = newLive.type
+                live.memo = newLive.memo
+                live.imagePath = newLive.imagePath
             }
         }
     }

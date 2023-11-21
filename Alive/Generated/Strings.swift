@@ -23,14 +23,22 @@ internal enum L10n {
   /// 
   ///   Created by t&a on 2023/11/20.
   internal static let liveArtist = L10n.tr("Localizable", "live_artist", fallback: "アーティスト")
+  /// 終演
+  internal static let liveClosingTime = L10n.tr("Localizable", "live_closingTime", fallback: "終演")
   /// 開催日
   internal static let liveDate = L10n.tr("Localizable", "live_date", fallback: "開催日")
   /// MEMO
   internal static let liveMemo = L10n.tr("Localizable", "live_memo", fallback: "MEMO")
+  /// ライブ名
+  internal static let liveName = L10n.tr("Localizable", "live_name", fallback: "ライブ名")
+  /// 開場
+  internal static let liveOpeningTime = L10n.tr("Localizable", "live_openingTime", fallback: "開場")
+  /// 開演
+  internal static let livePerformanceTime = L10n.tr("Localizable", "live_performanceTime", fallback: "開演")
   /// チケット代
   internal static let livePrice = L10n.tr("Localizable", "live_price", fallback: "チケット代")
-  /// 形式
-  internal static let liveType = L10n.tr("Localizable", "live_type", fallback: "形式")
+  /// ライブ形式
+  internal static let liveType = L10n.tr("Localizable", "live_type", fallback: "ライブ形式")
   /// 対バン
   internal static let liveTypeBattleBands = L10n.tr("Localizable", "live_type_battleBands", fallback: "対バン")
   /// フェス
@@ -39,8 +47,8 @@ internal enum L10n {
   internal static let liveTypeOneman = L10n.tr("Localizable", "live_type_oneman", fallback: "ワンマン")
   /// 未設定
   internal static let liveTypeUnknown = L10n.tr("Localizable", "live_type_unknown", fallback: "未設定")
-  /// ライブハウス
-  internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "ライブハウス")
+  /// 開催地
+  internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "開催地")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

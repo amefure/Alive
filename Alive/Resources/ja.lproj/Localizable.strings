@@ -8,8 +8,12 @@
 
 // MARK: - Live
 "live_artist" = "アーティスト";
+"live_name" = "ライブ名";
 "live_date" = "開催日";
-"live_venue" = "ライブハウス";
+"live_openingTime" = "開場";
+"live_performanceTime" = "開演";
+"live_closingTime" = "終演";
+"live_venue" = "開催地";
 "live_price" = "チケット代";
 "live_type" = "ライブ形式";
 "live_memo" = "MEMO";

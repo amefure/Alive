@@ -34,6 +34,7 @@
 		1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A30F2B0BA96D0033BD09 /* LiveType.swift */; };
 		1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3112B0C62FC0033BD09 /* TimeTable.swift */; };
 		1242A3152B0C6A9C0033BD09 /* ImagePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */; };
+		1242A3172B0CBD970033BD09 /* LiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3162B0CBD970033BD09 /* LiveImageView.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		1242A30F2B0BA96D0033BD09 /* LiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveType.swift; sourceTree = "<group>"; };
 		1242A3112B0C62FC0033BD09 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
 		1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDialog.swift; sourceTree = "<group>"; };
+		1242A3162B0CBD970033BD09 /* LiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveImageView.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +150,7 @@
 				1242A2DD2B0B6A180033BD09 /* AdMobView.swift */,
 				1242A3072B0B7E130033BD09 /* HeaderView.swift */,
 				1242A30B2B0B8EAD0033BD09 /* FooterView.swift */,
+				1242A3162B0CBD970033BD09 /* LiveImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */,
 				1242A3042B0B75B20033BD09 /* DetailLiveView.swift in Sources */,
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
+				1242A3172B0CBD970033BD09 /* LiveImageView.swift in Sources */,
 				1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */,
 				1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */,
 				1242A3152B0C6A9C0033BD09 /* ImagePickerDialog.swift in Sources */,

@@ -7,7 +7,11 @@
 */
 // MARK: - Live
 "live_artist" = "Artist";
+"live_name" = "Live Name";
 "live_date" = "Event Date";
+"live_openingTime" = "OpeningTime";
+"live_performanceTime" = "PerformanceTime";
+"live_closingTime" = "ClosingTime";
 "live_venue" = "Live House";
 "live_price" = "Ticket Fee";
 "live_type" = "Live Type";

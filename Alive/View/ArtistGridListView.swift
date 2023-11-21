@@ -50,14 +50,14 @@ struct ArtistGridListView: View {
                         
                     }
                 }.scrollContentBackground(.hidden)
-                    .background(Asset.Colors.foundationColor.swiftUIColor)
+                    .background(.foundation)
             }
             
             
             FooterView()
             
             
-        }.background(Asset.Colors.foundationColor.swiftUIColor)
+        }.background(.foundation)
             .onAppear {
                 repository.readAllLive()
             }

@@ -37,27 +37,105 @@ struct DetailLiveView: View {
             HeaderView(leadingIcon: "chevron.backward", trailingIcon: "pencil", leadingAction: { dismiss() }, trailingAction: {
                 isShowInput = true
             }, isShowLogo: true)
-            .tint(Asset.Colors.themaYellowColor.swiftUIColor)
-            VStack {
-                Text(live.artist)
-                    .font(.largeTitle)
+            .tint(.themaYellow)
+            ScrollView {
                 
-                Text(live.venue)
-                    .font(.largeTitle)
+                LiveImageView(image: imageFileManager.loadImage(name: live.imagePath))
                 
-                Text("\(live.price)円")
-                    .font(.largeTitle)
+                Text("「" + live.name + "」")
+                        .font(.largeTitle)
                 
-                Text(live.type.value)
-                    .font(.largeTitle)
-               
+                Rectangle()
+                    .frame(width: DeviceSizeManager.deviceWidth, height: 2)
+                    .background(.themaOrange)
+            
+                HStack {
+                    Image(systemName: "music.mic")
+                    Text(live.artist)
+                        .font(.largeTitle)
+                }
                 
-                Text(dateFormatManager.getShortString(date: live.date))
-                    .font(.largeTitle)
+                
+                Text("Live情報")
+                VStack(alignment: .leading) {
+                    
+                    HStack {
+                        Image(systemName: "mappin.and.ellipse")
+                            .padding(.leading, 10)
+                            .frame(width: 30)
+                        Text(L10n.liveVenue + "：")
+                        Text(live.venue)
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Image(systemName: "banknote")
+                            .padding(.leading, 10)
+                            .frame(width: 30)
+                        Text(L10n.livePrice + "：")
+                        Text("\(live.price)円")
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Image(systemName: "calendar")
+                            .padding(.leading, 10)
+                            .frame(width: 30)
+                        Text(L10n.liveDate + "：")
+                        Text(dateFormatManager.getString(date: live.date))
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        if let openingTime = live.openingTime {
+                            HStack {
+                                Text(L10n.liveOpeningTime + "：")
+                                Text(dateFormatManager.getTimeString(date: openingTime))
+                            }
+                            
+                            Spacer()
+                        }
+                        
+                        
+                        
+                        if let performanceTime = live.performanceTime {
+                            HStack {
+                                Text(L10n.livePerformanceTime + "：")
+                                Text(dateFormatManager.getTimeString(date: performanceTime))
+                            }
+                            
+                            Spacer()
+                        }
+                        
+                        if let closingTime = live.closingTime {
+                            HStack {
+                                Text(L10n.liveClosingTime + "：")
+                                Text(dateFormatManager.getTimeString(date: closingTime))
+                            }
+                            
+                            Spacer()
+                        }
+                    }.padding(.leading, 10)
+                    
+                }
+                .frame(width: DeviceSizeManager.deviceWidth - 20)
+                .padding(.vertical)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.white, lineWidth: 1)
+                )
+                
+                
+                
+                if live.type != .unknown {
+                 Text(live.type.value)
+                     .padding()
+                     .background(live.type.color)
+                     .clipShape(RoundedRectangle(cornerRadius: 5))
+                }
                 
                 Text(live.memo)
                     .font(.largeTitle)
-                
                 
                 Button {
                    isDeleteDialog = true
@@ -65,12 +143,12 @@ struct DetailLiveView: View {
                    Text(L10n.deleteButtonTitle)
                        .padding(.vertical, 7)
                        .frame(width: 100)
-                       .foregroundStyle(Asset.Colors.themaYellowColor.swiftUIColor)
+                       .foregroundStyle(.themaYellow)
                        .overlay{
                            RoundedRectangle(cornerRadius: 8)
                                .stroke(style: StrokeStyle(lineWidth: 1))
                                .frame(width: 100)
-                               .foregroundStyle(Asset.Colors.themaYellowColor.swiftUIColor)
+                               .foregroundStyle(.themaYellow)
                        }.padding(.top , 20)
                }
                
@@ -79,8 +157,8 @@ struct DetailLiveView: View {
             Spacer()
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)
-            .fontWeight(.bold)
-            .background(Asset.Colors.foundationColor.swiftUIColor)
+//            .fontWeight(.bold)
+            .background(.foundation)
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: live)
             })

@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftUI
 
 enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable {
     var id:String{self.value}
@@ -26,6 +27,19 @@ enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable {
             return L10n.liveTypeFestival
         case .unknown:
             return L10n.liveTypeUnknown
+        }
+    }
+    
+    public var color: Color {
+        switch self {
+        case .oneman:
+            return .themaBlue
+        case .battleBands:
+            return .themaRed
+        case .festival:
+            return .themaYellow
+        case .unknown:
+            return .foundation
         }
     }
 }

@@ -33,6 +33,7 @@
 		1242A30E2B0B912C0033BD09 /* ArtistGridListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */; };
 		1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A30F2B0BA96D0033BD09 /* LiveType.swift */; };
 		1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3112B0C62FC0033BD09 /* TimeTable.swift */; };
+		1242A3152B0C6A9C0033BD09 /* ImagePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistGridListView.swift; sourceTree = "<group>"; };
 		1242A30F2B0BA96D0033BD09 /* LiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveType.swift; sourceTree = "<group>"; };
 		1242A3112B0C62FC0033BD09 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
+		1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDialog.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */,
+				1242A3132B0C6A900033BD09 /* Dialog */,
 				1242A2F62B0B6E200033BD09 /* LiveScheduleListView.swift */,
 				1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */,
 				1242A3032B0B75B20033BD09 /* DetailLiveView.swift */,
@@ -205,6 +208,14 @@
 				1242A2FD2B0B6EA40033BD09 /* DateFormatManager.swift */,
 			);
 			path = "Extension&Utility";
+			sourceTree = "<group>";
+		};
+		1242A3132B0C6A900033BD09 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */,
+			);
+			path = Dialog;
 			sourceTree = "<group>";
 		};
 		52C2971FC94C465977190C45 /* Pods */ = {
@@ -359,6 +370,7 @@
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
 				1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */,
 				1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */,
+				1242A3152B0C6A9C0033BD09 /* ImagePickerDialog.swift in Sources */,
 				1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */,
 				1242A2F12B0B6B900033BD09 /* Live.swift in Sources */,
 				1242A3062B0B7CE40033BD09 /* DeviceSizeManager.swift in Sources */,

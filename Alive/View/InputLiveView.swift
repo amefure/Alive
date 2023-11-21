@@ -33,6 +33,8 @@ struct InputLiveView: View {
     @State private var memo: String = ""             // メモ
     
 
+    @State private var image: UIImage?                  // 画像表示用
+    @State private var isShowImagePicker: Bool = false  // 画像ピッカー表示
     
     @State private var successAlert: Bool = false       // 登録成功アラート
     @State private var validationAlert: Bool = false    // バリデーションアラート
@@ -87,6 +89,31 @@ struct InputLiveView: View {
                 Spacer()
                 
                 ScrollView(showsIndicators: false) {
+                    
+                    ZStack {
+                        if let image = image {
+                            Image(uiImage: image)
+                                    .resizable()
+                                    .aspectRatio(CGSize(width: 3, height: 2), contentMode: .fill)
+                                    .frame(width: DeviceSizeManager.deviceWidth, height: 200)
+                                    .clipped()
+                        } else {
+                            Asset.Images.appLogoElectric.swiftUIImage
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                        }
+                        
+                        Button {
+                            isShowImagePicker = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .frame(width: DeviceSizeManager.deviceWidth, height: 200)
+                                .foregroundStyle(.white)
+                                .background(Asset.Colors.opacityGray.swiftUIColor)
+                        }
+                    }.padding(.top, 20)
+
+                    
                     VStack(alignment: .leading) {
                         Text(L10n.liveArtist)
                         TextField(L10n.liveArtist, text: $artist)
@@ -111,15 +138,26 @@ struct InputLiveView: View {
                         Text(L10n.liveType)
                         Divider()
                         HStack {
+                            Spacer()
                             ForEach(LiveType.allCases, id: \.self) { item in
+                               
                                 if item != .unknown {
                                     Button {
                                         liveType = item
                                     } label: {
                                         Text(item.value)
-                                    }.foregroundStyle(Asset.Colors.themaYellowColor.swiftUIColor)
+                                    }.foregroundStyle(liveType == item ? .foundation : .white)
+                                        .padding()
+                                        .frame(width: 100)
+                                        .background(liveType == item ? .themaYellow : .opacityGray)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .stroke(.white, lineWidth: 1)
+                                        )
                                 }
                             }
+                            Spacer()
                         }
                     }.padding()
    
@@ -164,6 +202,9 @@ struct InputLiveView: View {
                 Button("OK") {
                     dismiss()
                 }
+            }
+            .sheet(isPresented: $isShowImagePicker) {
+                ImagePickerDialog(image: $image)
             }
             
     }

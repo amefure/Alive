@@ -20,20 +20,20 @@ class RealmRepository {
     private let realm: Realm
     
     // MARK: - Live
-    public func createLive(artist: String, date: Date, venue: String, price: Int, memo: String) {
+    public func createLive(artist: String, date: Date, venue: String, price: Int, type: LiveType, memo: String) {
         try! realm.write {
             let live = Live()
             live.artist = artist
             live.date = date
             live.venue = venue
             live.price = price
+            live.type = type
             live.memo = memo
             realm.add(live)
-            print("成功")
         }
     }
     
-    public func updateLive(id: ObjectId, artist: String, date: Date, venue: String, price: Int, memo: String) {
+    public func updateLive(id: ObjectId, artist: String, date: Date, venue: String, price: Int, type: LiveType, memo: String) {
         try! realm.write {
             let lives = realm.objects(Live.self)
             if let live = lives.where({ $0.id == id }).first {
@@ -41,6 +41,7 @@ class RealmRepository {
                 live.date = date
                 live.venue = venue
                 live.price = price
+                live.type = type
                 live.memo = memo
             }
         }

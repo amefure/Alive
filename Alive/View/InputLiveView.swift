@@ -29,6 +29,7 @@ struct InputLiveView: View {
     @State private var date: Date = Date()           // 開催日
     @State private var venue: String = ""            // 開催地
     @State private var price: String = ""            // チケット代
+    @State private var liveType: LiveType = .unknown // メモ
     @State private var memo: String = ""             // メモ
     
 
@@ -63,6 +64,7 @@ struct InputLiveView: View {
                             date: date,
                             venue: venue,
                             price: price.toNum(),
+                            type: liveType,
                             memo: memo)
                         
                     } else {
@@ -72,6 +74,7 @@ struct InputLiveView: View {
                             date: date,
                             venue: venue,
                             price: price.toNum(),
+                            type: liveType,
                             memo: memo)
                     }
                     
@@ -104,6 +107,22 @@ struct InputLiveView: View {
                     }.padding()
                     
                     
+                    VStack(alignment: .leading) {
+                        Text(L10n.liveType)
+                        Divider()
+                        HStack {
+                            ForEach(LiveType.allCases, id: \.self) { item in
+                                if item != .unknown {
+                                    Button {
+                                        liveType = item
+                                    } label: {
+                                        Text(item.value)
+                                    }.foregroundStyle(Asset.Colors.themaYellowColor.swiftUIColor)
+                                }
+                            }
+                        }
+                    }.padding()
+   
                     VStack(alignment: .leading) {
                         Text(L10n.liveMemo)
                         TextField(L10n.liveMemo, text: $memo)

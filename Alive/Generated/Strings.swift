@@ -14,6 +14,10 @@ internal enum L10n {
   internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月dd日")
   /// ja_JP
   internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
+  /// このLiveを削除しますか？
+  internal static let deleteButtonAlertTitle = L10n.tr("Localizable", "delete_button_alert_title", fallback: "このLiveを削除しますか？")
+  /// 削除
+  internal static let deleteButtonTitle = L10n.tr("Localizable", "delete_button_title", fallback: "削除")
   /// Localizable.strings
   ///   Alive
   /// 
@@ -25,6 +29,8 @@ internal enum L10n {
   internal static let liveMemo = L10n.tr("Localizable", "live_memo", fallback: "MEMO")
   /// チケット代
   internal static let livePrice = L10n.tr("Localizable", "live_price", fallback: "チケット代")
+  /// 形式
+  internal static let liveType = L10n.tr("Localizable", "live_type", fallback: "形式")
   /// 対バン
   internal static let liveTypeBattleBands = L10n.tr("Localizable", "live_type_battleBands", fallback: "対バン")
   /// フェス

@@ -20,13 +20,13 @@ class RealmRepositoryViewModel: ObservableObject {
         lives = Array(result)
     }
     
-    public func createLive(artist: String, date: Date, venue: String, price: Int, memo: String) {
-        repository.createLive(artist: artist, date: date, venue: venue, price: price, memo: memo)
+    public func createLive(artist: String, date: Date, venue: String, price: Int, type: LiveType,  memo: String) {
+        repository.createLive(artist: artist, date: date, venue: venue, price: price, type: type, memo: memo)
         self.readAllLive()
     }
     
-    public func updateLive(id: ObjectId, artist: String, date: Date, venue: String, price: Int, memo: String) {
-        repository.updateLive(id: id, artist: artist, date: date, venue: venue, price: price, memo: memo)
+    public func updateLive(id: ObjectId, artist: String, date: Date, venue: String, price: Int, type: LiveType, memo: String) {
+        repository.updateLive(id: id, artist: artist, date: date, venue: venue, price: price, type: type, memo: memo)
         self.readAllLive()
     }
     

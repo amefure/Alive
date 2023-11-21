@@ -11,6 +11,7 @@
 "live_date" = "開催日";
 "live_venue" = "ライブハウス";
 "live_price" = "チケット代";
+"live_type" = "形式";
 "live_memo" = "MEMO";
 
 // MARK: - LiveType
@@ -23,3 +24,7 @@
 // MARK: - Loacle
 "date_locale" = "ja_JP";
 "date_format" = "yyyy年M月dd日";
+
+// MARK: - Detail Item
+"delete_button_title" = "削除";
+"delete_button_alert_title" = "このLiveを削除しますか？";

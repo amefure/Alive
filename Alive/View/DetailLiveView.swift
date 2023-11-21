@@ -47,6 +47,9 @@ struct DetailLiveView: View {
                 
                 Text("\(live.price)円")
                     .font(.largeTitle)
+                
+                Text(live.type.value)
+                    .font(.largeTitle)
                
                 
                 Text(dateFormatManager.getShortString(date: live.date))
@@ -54,6 +57,22 @@ struct DetailLiveView: View {
                 
                 Text(live.memo)
                     .font(.largeTitle)
+                
+                
+                Button {
+                   isDeleteDialog = true
+               } label: {
+                   Text(L10n.deleteButtonTitle)
+                       .padding(.vertical, 7)
+                       .frame(width: 100)
+                       .foregroundStyle(Asset.Colors.themaYellowColor.swiftUIColor)
+                       .overlay{
+                           RoundedRectangle(cornerRadius: 8)
+                               .stroke(style: StrokeStyle(lineWidth: 1))
+                               .frame(width: 100)
+                               .foregroundStyle(Asset.Colors.themaYellowColor.swiftUIColor)
+                       }.padding(.top , 20)
+               }
                
             }.padding(.bottom)
             
@@ -65,6 +84,14 @@ struct DetailLiveView: View {
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: live)
             })
+            .alert(L10n.deleteButtonAlertTitle, isPresented: $isDeleteDialog) {
+                Button(role: .destructive) {
+                    repository.deleteLive(id: live.id)
+                    dismiss()
+                } label: {
+                    Text(L10n.deleteButtonTitle)
+                }
+            }
     }
 }
 

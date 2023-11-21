@@ -31,6 +31,8 @@
 		1242A30A2B0B8C5F0033BD09 /* InputLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3092B0B8C5F0033BD09 /* InputLiveView.swift */; };
 		1242A30C2B0B8EAD0033BD09 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A30B2B0B8EAD0033BD09 /* FooterView.swift */; };
 		1242A30E2B0B912C0033BD09 /* ArtistGridListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */; };
+		1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A30F2B0BA96D0033BD09 /* LiveType.swift */; };
+		1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3112B0C62FC0033BD09 /* TimeTable.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		1242A3092B0B8C5F0033BD09 /* InputLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLiveView.swift; sourceTree = "<group>"; };
 		1242A30B2B0B8EAD0033BD09 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistGridListView.swift; sourceTree = "<group>"; };
+		1242A30F2B0BA96D0033BD09 /* LiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveType.swift; sourceTree = "<group>"; };
+		1242A3112B0C62FC0033BD09 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				1242A2F02B0B6B900033BD09 /* Live.swift */,
+				1242A30F2B0BA96D0033BD09 /* LiveType.swift */,
+				1242A3112B0C62FC0033BD09 /* TimeTable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,6 +357,8 @@
 				1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */,
 				1242A3042B0B75B20033BD09 /* DetailLiveView.swift in Sources */,
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
+				1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */,
+				1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */,
 				1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */,
 				1242A2F12B0B6B900033BD09 /* Live.swift in Sources */,
 				1242A3062B0B7CE40033BD09 /* DeviceSizeManager.swift in Sources */,
@@ -518,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.Alive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -553,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.Alive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

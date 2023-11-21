@@ -25,6 +25,14 @@ internal enum L10n {
   internal static let liveMemo = L10n.tr("Localizable", "live_memo", fallback: "MEMO")
   /// チケット代
   internal static let livePrice = L10n.tr("Localizable", "live_price", fallback: "チケット代")
+  /// 対バン
+  internal static let liveTypeBattleBands = L10n.tr("Localizable", "live_type_battleBands", fallback: "対バン")
+  /// フェス
+  internal static let liveTypeFestival = L10n.tr("Localizable", "live_type_festival", fallback: "フェス")
+  /// ワンマン
+  internal static let liveTypeOneman = L10n.tr("Localizable", "live_type_oneman", fallback: "ワンマン")
+  /// 未設定
+  internal static let liveTypeUnknown = L10n.tr("Localizable", "live_type_unknown", fallback: "未設定")
   /// ライブハウス
   internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "ライブハウス")
 }

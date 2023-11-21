@@ -13,6 +13,12 @@
 "live_price" = "チケット代";
 "live_memo" = "MEMO";
 
+// MARK: - LiveType
+"live_type_oneman" = "ワンマン";
+"live_type_battleBands" = "対バン";
+"live_type_festival" = "フェス";
+"live_type_unknown" = "未設定";
+
 
 // MARK: - Loacle
 "date_locale" = "ja_JP";

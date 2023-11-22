@@ -42,41 +42,67 @@ struct DetailLiveView: View {
                 
                 LiveImageView(image: imageFileManager.loadImage(name: live.imagePath))
                 
-                Text("「" + live.name + "」")
+                Text("「 " + live.name + " 」")
                         .font(.largeTitle)
+                        .fontWeight(.bold)
                 
                 Rectangle()
                     .frame(width: DeviceSizeManager.deviceWidth, height: 2)
                     .background(.themaOrange)
+                    .padding(.bottom, 8)
+                    
             
                 HStack {
+                    
+                    if live.type != .unknown {
+                        Text(live.type.value)
+                               .padding(5)
+                               .background(live.type.color)
+                               .clipShape(RoundedRectangle(cornerRadius: 5))
+                               .padding(.leading, 20)
+                    }
+                    
+                    Spacer()
                     Image(systemName: "music.mic")
                     Text(live.artist)
-                        .font(.largeTitle)
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .padding(.trailing, 20)
                 }
                 
                 
-                Text("Live情報")
-                VStack(alignment: .leading) {
+                HStack {
+                    Image(systemName: "bolt.fill")
+                        .padding(.leading, 10)
+                    Text("Live情報")
+                    Spacer()
+                } .padding(.top, 10)
+               
+                VStack(alignment: .leading, spacing: 10) {
                     
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                            .padding(.leading, 10)
-                            .frame(width: 30)
-                        Text(L10n.liveVenue + "：")
-                        Text(live.venue)
-                        Spacer()
+                    if live.venue != "" {
+                        HStack {
+                            Image(systemName: "mappin.and.ellipse")
+                                .padding(.leading, 10)
+                                .frame(width: 30)
+                            Text(L10n.liveVenue + "：")
+                            Text(live.venue)
+                            Spacer()
+                        }
                     }
                     
-                    HStack {
-                        Image(systemName: "banknote")
-                            .padding(.leading, 10)
-                            .frame(width: 30)
-                        Text(L10n.livePrice + "：")
-                        Text("\(live.price)円")
-                        Spacer()
+                    if live.price != -1 {
+                        HStack {
+                            Image(systemName: "banknote")
+                                .padding(.leading, 10)
+                                .frame(width: 30)
+                            Text(L10n.livePrice + "：")
+                            Text("\(live.price)円")
+                            Spacer()
+                        }
+                        
                     }
-                    
+                   
                     HStack {
                         Image(systemName: "calendar")
                             .padding(.leading, 10)
@@ -86,36 +112,36 @@ struct DetailLiveView: View {
                         Spacer()
                     }
                     
-                    HStack {
-                        if let openingTime = live.openingTime {
-                            HStack {
-                                Text(L10n.liveOpeningTime + "：")
-                                Text(dateFormatManager.getTimeString(date: openingTime))
+                    if live.openingTime != nil || live.performanceTime != nil || live.closingTime != nil {
+                        HStack {
+                            if let openingTime = live.openingTime {
+                                HStack {
+                                    Text(L10n.liveOpeningTime + "：")
+                                    Text(dateFormatManager.getTimeString(date: openingTime))
+                                }
+                                
+                                Spacer()
                             }
                             
-                            Spacer()
-                        }
-                        
-                        
-                        
-                        if let performanceTime = live.performanceTime {
-                            HStack {
-                                Text(L10n.livePerformanceTime + "：")
-                                Text(dateFormatManager.getTimeString(date: performanceTime))
+                            if let performanceTime = live.performanceTime {
+                                HStack {
+                                    Text(L10n.livePerformanceTime + "：")
+                                    Text(dateFormatManager.getTimeString(date: performanceTime))
+                                }
+                                
+                                Spacer()
                             }
                             
-                            Spacer()
-                        }
-                        
-                        if let closingTime = live.closingTime {
-                            HStack {
-                                Text(L10n.liveClosingTime + "：")
-                                Text(dateFormatManager.getTimeString(date: closingTime))
+                            if let closingTime = live.closingTime {
+                                HStack {
+                                    Text(L10n.liveClosingTime + "：")
+                                    Text(dateFormatManager.getTimeString(date: closingTime))
+                                }
+                                
+                                Spacer()
                             }
-                            
-                            Spacer()
-                        }
-                    }.padding(.leading, 10)
+                        }.padding(.leading, 10)
+                    }
                     
                 }
                 .frame(width: DeviceSizeManager.deviceWidth - 20)
@@ -123,16 +149,10 @@ struct DetailLiveView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.white, lineWidth: 1)
+                        .shadow(color: .gray, radius: 2, x: 1, y: 1)
                 )
                 
                 
-                
-                if live.type != .unknown {
-                 Text(live.type.value)
-                     .padding()
-                     .background(live.type.color)
-                     .clipShape(RoundedRectangle(cornerRadius: 5))
-                }
                 
                 Text(live.memo)
                     .font(.largeTitle)
@@ -157,7 +177,6 @@ struct DetailLiveView: View {
             Spacer()
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)
-//            .fontWeight(.bold)
             .background(.foundation)
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: live)

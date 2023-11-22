@@ -17,7 +17,7 @@ class Live: Object, ObjectKeyIdentifiable {
     @Persisted var performanceTime: Date? = nil  // 開演
     @Persisted var closingTime: Date? = nil      // 終演
     @Persisted var venue: String = ""            // 開催地(箱)
-    @Persisted var price: Int = 0                // 料金
+    @Persisted var price: Int = -1               // 料金
     @Persisted var type: LiveType = .unknown     // ライブ種類
     @Persisted var memo: String = ""             // メモ
     

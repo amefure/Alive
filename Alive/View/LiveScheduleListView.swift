@@ -72,8 +72,6 @@ struct LiveScheduleListView: View {
     }
 }
 
-
-
 #Preview {
     LiveScheduleListView()
 }

@@ -20,7 +20,7 @@ extension String {
         if let num = Int(self) {
             return num
         } else {
-            return 0
+            return -1
         }
     }
 }

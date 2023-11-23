@@ -28,8 +28,12 @@ struct DetailLiveView: View {
     // MARK: - View
     @State private var isShowInput = false
     @State private var isDeleteDialog = false
+    @State private var isDeleteTimeTableDialog = false
     
+    @State private var isModal = false
     @Environment(\.dismiss) var dismiss
+    
+    @State private var deleteTimeTable: TimeTable? = nil
     
     var body: some View {
         VStack {
@@ -45,13 +49,6 @@ struct DetailLiveView: View {
                 
                 CardLiveView(live: live)
                 
-                //
-                //                        HStack {
-                //                            Image(systemName: "bolt.fill")
-                //                                .padding(.leading, 10)
-                //                            Text("Live情報")
-                //                            Spacer()
-                //                        } .padding(.top , 10)
                 
                 HStack {
                     
@@ -153,27 +150,7 @@ struct DetailLiveView: View {
                 }.padding()
                     .fontWeight(.bold)
                 
-                HStack {
-                    
-                    Spacer()
-                    
-                    Rectangle()
-                        .frame(width: 80, height: 1)
-                        .foregroundStyle(.themaYellow)
-                    
-                    
-                    Text(L10n.liveMemo)
-                        .foregroundStyle(.themaYellow)
-                        .font(.system(size: 12))
-                        .padding(.horizontal, 20)
-                    
-                    
-                    Rectangle()
-                        .frame(width: 80, height: 1)
-                        .foregroundStyle(.themaYellow)
-                    
-                    Spacer()
-                }.padding(.vertical)
+                SideBarTitleView(title: L10n.liveMemo)
                 
                 
                 HStack {
@@ -187,22 +164,34 @@ struct DetailLiveView: View {
                 
                 
                 if live.type == .festival {
-                    VStack {
-                        HStack {
-                            Image(systemName: "music.note.list")
-                                .padding(.leading, 10)
-                            Text(L10n.liveTimeTable)
-                            Spacer()
-                        } .padding(.top , 10)
+                    VStack(spacing: 0) {
                         
-                        Text(live.memo)
-                            .frame(width: DeviceSizeManager.deviceWidth - 20)
-                            .padding(.vertical)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(.white, lineWidth: 1)
-                            )
-                    }
+                        SideBarTitleView(title: L10n.liveTimeTable)
+                        
+                        ForEach(live.timeTable.sorted(byKeyPath: "time", ascending: true)) { row in
+                            HStack {
+                                Text(dateFormatManager.getTimeString(date: row.time))
+                                Text(row.artist)
+                                Text(row.memo)
+                                Spacer()
+                            }
+                            .padding()
+                                .background(row.color.color)
+                                .onLongPressGesture() {
+                                    deleteTimeTable = row
+                                    isDeleteTimeTableDialog = true
+                                }
+                        }
+                        
+                        Button {
+                            isModal = true
+                        } label: {
+                            Text("ADD TIMETABLE")
+                        }
+                    }.sheet(isPresented: $isModal) {
+                        InputTimeTableView(live: live)
+                        .presentationDetents([. medium])
+                      }
                 } else {
                     
                     SwitchInputEditorView(live: live)
@@ -240,7 +229,43 @@ struct DetailLiveView: View {
                 } label: {
                     Text(L10n.deleteButtonTitle)
                 }
+            }.alert("\(deleteTimeTable?.artist ?? "")を削除しますか？", isPresented: $isDeleteTimeTableDialog) {
+                Button(role: .destructive) {
+                    if let deleteTimeTable = deleteTimeTable {
+                        repository.deleteTimeTable(id: live.id, timeTable: deleteTimeTable)
+                        self.deleteTimeTable = nil
+                    }
+                } label: {
+                    Text(L10n.deleteButtonTitle)
+                }
             }
+    }
+}
+
+struct SideBarTitleView: View {
+    public let title: String
+    var body: some View {
+        HStack {
+            
+            Spacer()
+            
+            Rectangle()
+                .frame(width: 80, height: 1)
+                .foregroundStyle(.themaYellow)
+            
+            
+            Text(title)
+                .foregroundStyle(.themaYellow)
+                .font(.system(size: 12))
+                .padding(.horizontal, 20)
+            
+            
+            Rectangle()
+                .frame(width: 80, height: 1)
+                .foregroundStyle(.themaYellow)
+            
+            Spacer()
+        }.padding(.vertical)
     }
 }
 

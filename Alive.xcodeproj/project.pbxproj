@@ -35,6 +35,7 @@
 		1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3112B0C62FC0033BD09 /* TimeTable.swift */; };
 		1242A3152B0C6A9C0033BD09 /* ImagePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */; };
 		1242A3172B0CBD970033BD09 /* LiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A3162B0CBD970033BD09 /* LiveImageView.swift */; };
+		128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		1242A3112B0C62FC0033BD09 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
 		1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDialog.swift; sourceTree = "<group>"; };
 		1242A3162B0CBD970033BD09 /* LiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveImageView.swift; sourceTree = "<group>"; };
+		128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTimeTableView.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */,
 				1242A3032B0B75B20033BD09 /* DetailLiveView.swift */,
 				1242A3092B0B8C5F0033BD09 /* InputLiveView.swift */,
+				128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */,
 				1242A2DC2B0B69F30033BD09 /* Components */,
 			);
 			path = View;
@@ -361,6 +364,7 @@
 				1242A3022B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift in Sources */,
 				1242A30C2B0B8EAD0033BD09 /* FooterView.swift in Sources */,
 				1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */,
+				128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */,
 				1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */,
 				1242A30A2B0B8C5F0033BD09 /* InputLiveView.swift in Sources */,
 				1242A2FE2B0B6EA40033BD09 /* DateFormatManager.swift in Sources */,

@@ -30,6 +30,17 @@ class RealmRepositoryViewModel: ObservableObject {
         self.readAllLive()
     }
     
+    public func addTimeTable(id: ObjectId, newTimeTable: TimeTable) {
+        repository.addTimeTable(id: id, newTimeTable: newTimeTable)
+        self.readAllLive()
+    }
+    
+    
+    public func deleteTimeTable(id: ObjectId, timeTable: TimeTable) {
+        repository.deleteTimeTable(id: id, timeTable: timeTable)
+        self.readAllLive()
+    }
+    
     public func deleteLive(id: ObjectId) {
         repository.deleteLive(id: id)
         self.readAllLive()

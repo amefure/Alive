@@ -58,6 +58,15 @@ class RealmRepository {
         }
     }
     
+    public func addTimeTable(id: ObjectId, newTimeTable: TimeTable) {
+        try! realm.write {
+            let lives = realm.objects(Live.self)
+            if let live = lives.where({ $0.id == id }).first {
+                live.timeTable.append(newTimeTable)
+            }
+        }
+    }
+    
     
     private func readSingleLive(id: ObjectId) -> Live? {
         if let Live = realm.objects(Live.self).where({ $0.id == id }).first {
@@ -78,6 +87,18 @@ class RealmRepository {
         try! self.realm.write{
             if let result = readSingleLive(id: id) {
                 self.realm.delete(result)
+            }
+        }
+    }
+    
+    public func deleteTimeTable(id: ObjectId, timeTable: TimeTable) {
+        try! self.realm.write{
+            if let result = readSingleLive(id: id) {
+                if let time = result.timeTable.filter({ $0.id == timeTable.id }).first {
+                    if let index = result.timeTable.firstIndex(of: time) {
+                        result.timeTable.remove(at: index)
+                    }
+                }
             }
         }
     }

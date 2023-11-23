@@ -38,8 +38,7 @@ struct HeaderView: View {
                 Asset.Images.appLogoElectric.swiftUIImage
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 50)
-                
+                    .frame(width: 30)
             }
             
             Spacer()

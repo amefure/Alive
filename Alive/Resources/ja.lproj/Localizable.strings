@@ -17,6 +17,8 @@
 "live_price" = "チケット代";
 "live_type" = "ライブ形式";
 "live_memo" = "MEMO";
+"live_setlist" = "セトリ";
+"live_timeTable" = "TimeTable";
 
 // MARK: - LiveType
 "live_type_oneman" = "ワンマン";

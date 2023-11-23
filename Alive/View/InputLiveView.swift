@@ -43,7 +43,6 @@ struct InputLiveView: View {
     
     @State private var successAlert: Bool = false       // 登録成功アラート
     @State private var validationAlert: Bool = false    // バリデーションアラート
-    @State private var validationUrlAlert: Bool = false // バリデーションURLアラート
     
     @Environment(\.dismiss) var dismiss
     
@@ -163,6 +162,7 @@ struct InputLiveView: View {
                 CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
                 
                 CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
+                    .keyboardType(.numberPad)
                 
                 VStack {
                     Text(L10n.liveType)
@@ -250,6 +250,10 @@ struct InputLiveView: View {
             }.alert(live == nil ? "登録しました。" : "更新しました。", isPresented: $successAlert) {
                 Button("OK") {
                     dismiss()
+                }
+            }
+            .alert("アーティスト名は必須入力です。", isPresented: $validationAlert) {
+                Button("OK") {
                 }
             }
             .sheet(isPresented: $isShowImagePicker) {

@@ -53,6 +53,7 @@ class RealmRepository {
                 live.type = newLive.type
                 live.memo = newLive.memo
                 live.imagePath = newLive.imagePath
+                live.setList = newLive.setList
             }
         }
     }

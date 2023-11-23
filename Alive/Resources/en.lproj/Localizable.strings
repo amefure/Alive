@@ -16,6 +16,8 @@
 "live_price" = "Ticket Fee";
 "live_type" = "Live Type";
 "live_memo" = "MEMO";
+"live_setlist" = "SetList";
+"live_timeTable" = "TimeTable";
 
 // MARK: - LiveType
 "live_type_oneman" = "One-man Show";

@@ -67,7 +67,7 @@ struct LiveScheduleListView: View {
         }.background(.foundation)
             .onAppear {
                 repository.readAllLive()
-            }
+            }.tint(.themaYellow)
         
     }
 }

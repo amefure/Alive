@@ -37,6 +37,10 @@ internal enum L10n {
   internal static let livePerformanceTime = L10n.tr("Localizable", "live_performanceTime", fallback: "開演")
   /// チケット代
   internal static let livePrice = L10n.tr("Localizable", "live_price", fallback: "チケット代")
+  /// セトリ
+  internal static let liveSetlist = L10n.tr("Localizable", "live_setlist", fallback: "セトリ")
+  /// TimeTable
+  internal static let liveTimeTable = L10n.tr("Localizable", "live_timeTable", fallback: "TimeTable")
   /// ライブ形式
   internal static let liveType = L10n.tr("Localizable", "live_type", fallback: "ライブ形式")
   /// 対バン

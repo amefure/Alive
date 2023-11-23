@@ -48,7 +48,7 @@ struct DetailLiveView: View {
                 
                 Rectangle()
                     .frame(width: DeviceSizeManager.deviceWidth, height: 2)
-                    .background(.themaOrange)
+                    .background(.themaYellow)
                     .padding(.bottom, 8)
                     
             
@@ -76,7 +76,7 @@ struct DetailLiveView: View {
                         .padding(.leading, 10)
                     Text("Live情報")
                     Spacer()
-                } .padding(.top, 10)
+                } .padding(.top , 10)
                
                 VStack(alignment: .leading, spacing: 10) {
                     

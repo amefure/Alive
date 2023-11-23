@@ -12,6 +12,7 @@ struct InputLiveView: View {
     
     // MARK: - Utility
     private let imageFileManager = ImageFileManager()
+    private let dateFormatManager = DateFormatManager()
     
     // MARK: - ViewModel
     private let userDefaultsRepository = UserDefaultsRepositoryViewModel.sheard
@@ -38,6 +39,7 @@ struct InputLiveView: View {
     
     @State private var image: UIImage?                  // 画像表示用
     @State private var isShowImagePicker: Bool = false  // 画像ピッカー表示
+    @State private var isShowCalendar: Bool = false     // 画像ピッカー表示
     
     @State private var successAlert: Bool = false       // 登録成功アラート
     @State private var validationAlert: Bool = false    // バリデーションアラート
@@ -148,44 +150,24 @@ struct InputLiveView: View {
                         isShowImagePicker = true
                     } label: {
                         Image(systemName: "plus")
-                            .frame(width: DeviceSizeManager.deviceWidth, height: 200)
+                            .frame(width: DeviceSizeManager.deviceWidth, height: 180)
                             .foregroundStyle(.white)
                             .background(.opacityGray)
                     }
                 }.padding(.top, 20)
                 
+                CustomInputView(text: $artist, imgName: "music.mic", placeholder: L10n.liveArtist)
                 
-                VStack(alignment: .leading) {
-                    Text(L10n.liveArtist)
-                    TextField(L10n.liveArtist, text: $artist)
-                        .textFieldStyle(.roundedBorder)
-                }.padding()
+                CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
                 
-                VStack(alignment: .leading) {
-                    Text(L10n.liveName)
-                    TextField(L10n.liveName, text: $name)
-                        .textFieldStyle(.roundedBorder)
-                }.padding()
+                CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
                 
-                VStack(alignment: .leading) {
-                    Text(L10n.liveVenue)
-                    TextField(L10n.liveVenue, text: $venue)
-                        .textFieldStyle(.roundedBorder)
-                }.padding()
+                CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
                 
-                VStack(alignment: .leading) {
-                    Text(L10n.livePrice)
-                    TextField(L10n.livePrice, text: $price)
-                        .textFieldStyle(.roundedBorder)
-                        .keyboardType(.numberPad)
-                }.padding()
-                
-                
-                VStack(alignment: .leading) {
+                VStack {
                     Text(L10n.liveType)
                     Divider()
-                    HStack {
-                        Spacer()
+                    HStack(spacing: 20) {
                         ForEach(LiveType.allCases, id: \.self) { item in
                             
                             if item != .unknown {
@@ -196,7 +178,7 @@ struct InputLiveView: View {
                                 }.foregroundStyle(liveType == item ? .foundation : .white)
                                     .padding()
                                     .frame(width: 100)
-                                    .background(liveType == item ? .themaYellow : .opacityGray)
+                                    .background(liveType == item ? item.color : .opacityGray)
                                     .clipShape(RoundedRectangle(cornerRadius: 5))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 5)
@@ -204,35 +186,56 @@ struct InputLiveView: View {
                                     )
                             }
                         }
-                        Spacer()
                     }
-                }.padding()
+                }
                 
-                VStack(alignment: .leading) {
-                    Text(L10n.liveMemo)
-                    TextField(L10n.liveMemo, text: $memo)
-                        .textFieldStyle(.roundedBorder)
-                }.padding()
                 
-                VStack(alignment: .leading) {
-                    Text(L10n.liveDate)
-                    Divider()
-                    DatePicker(selection: $date,
-                               displayedComponents: DatePickerComponents.date,
-                               label: { Text(L10n.liveDate) })
-                    .environment(\.locale, Locale(identifier: L10n.dateLocale))
-                    .environment(\.calendar, Calendar(identifier: .gregorian))
-                    .datePickerStyle(.graphical)
-                    .accentColor(.themaYellow)
+                HStack {
+                    Image(systemName: "calendar")
+                        .foregroundStyle(.black)
+                        .frame(width: 23)
                     
+                    Button {
+                        isShowCalendar.toggle()
+                    } label: {
+                        Text(L10n.liveDate)
+                        Text(dateFormatManager.getString(date: date))
+                        Image(systemName: isShowCalendar ? "checkmark" : "chevron.up.chevron.down")
+                    }.foregroundStyle(.opacityGray)
+                    
+                    
+                    Spacer()
                 }.padding()
+                    .background(.regularMaterial)
+                    .environment(\.colorScheme, .light)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding()
                 
+                if isShowCalendar {
+                    VStack(alignment: .leading) {
+                        Text(L10n.liveDate)
+                        Divider()
+                        DatePicker(selection: $date,
+                                   displayedComponents: DatePickerComponents.date,
+                                   label: { Text(L10n.liveDate) })
+                        .environment(\.locale, Locale(identifier: L10n.dateLocale))
+                        .environment(\.calendar, Calendar(identifier: .gregorian))
+                        .datePickerStyle(.graphical)
+                        .accentColor(.themaYellow)
+                        
+                    }.padding()
+                        .onChange(of: date) { _ in
+                            
+                        }
+                }
                 
                 TimePicker(selectedTime: $openingTime, title:L10n.liveOpeningTime)
                 
                 TimePicker(selectedTime: $performanceTime, title:L10n.livePerformanceTime)
                 
                 TimePicker(selectedTime: $closingTime, title:L10n.liveClosingTime)
+                
+                CustomInputEditorView(text: $memo,  imgName: "note", placeholder: L10n.liveMemo)
                 
             }
             Spacer()
@@ -256,6 +259,62 @@ struct InputLiveView: View {
     }
 }
 
+struct CustomInputView: View {
+    
+    @Binding var text: String
+    public var imgName: String
+    public var placeholder: String
+    
+    
+    var body: some View {
+        HStack {
+            Image(systemName: imgName)
+                .foregroundStyle(.black)
+                .frame(width: 23)
+            TextField(placeholder, text: $text)
+        }.padding()
+            .background(.regularMaterial)
+            .environment(\.colorScheme, .light)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding()
+    }
+}
+
+
+// MARK: - Editor入力要素
+struct CustomInputEditorView: View {
+    
+    // MARK: - Receive
+    @Binding var text: String
+    public var imgName: String
+    public var placeholder: String
+    
+    var body: some View {
+        VStack {
+            HStack{
+                Image(systemName: imgName)
+                    .frame(width: 23)
+                
+                Text(placeholder)
+                    .font(.system(size: 13))
+                    .fontWeight(.bold)
+                    .padding(.leading, 5)
+                Spacer()
+            }
+            
+            TextEditor(text: $text)
+                .frame(height: 100)
+                .padding()
+                .scrollContentBackground(.hidden)
+                .background(Color(red: 1, green: 1, blue: 1, opacity:0.7))
+                .environment(\.colorScheme, .light)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            
+        }.padding(.horizontal)
+    }
+}
+
+
 struct TimePicker: View {
     
     @Binding var selectedTime: Date?
@@ -272,9 +331,8 @@ struct TimePicker: View {
         
         HStack {
             
-            Spacer()
-            
-            Text(title)
+            Text(title + "時間")
+                .padding(.leading, 30)
             
             Spacer()
             
@@ -314,9 +372,7 @@ struct TimePicker: View {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(.white, lineWidth: 1)
                     )
-            }
-            
-            Spacer()
+            }.padding(.trailing)
             
         }.foregroundStyle(.white)
             .onChange(of: hour) { _ in
@@ -335,6 +391,7 @@ struct TimePicker: View {
     }
 }
 
+
 #Preview {
-    InputLiveView(live: Live.demoLive)
+    InputLiveView(live: nil)//Live.demoLive)
 }

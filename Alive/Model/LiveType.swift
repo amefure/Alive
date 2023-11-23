@@ -33,11 +33,11 @@ enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable {
     public var color: Color {
         switch self {
         case .oneman:
-            return .themaBlue
-        case .battleBands:
             return .themaRed
-        case .festival:
+        case .battleBands:
             return .themaYellow
+        case .festival:
+            return .themaBlue
         case .unknown:
             return .foundation
         }

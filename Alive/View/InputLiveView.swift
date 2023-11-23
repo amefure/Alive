@@ -55,6 +55,7 @@ struct InputLiveView: View {
             performanceTime = live.performanceTime
             closingTime = live.closingTime
             venue = live.venue
+            liveType = live.type
             price = String(live.price)
             memo = live.memo
         }
@@ -67,7 +68,7 @@ struct InputLiveView: View {
             HeaderView(leadingIcon: "chevron.backward", trailingIcon: "checkmark", leadingAction: { dismiss() }, trailingAction: {
                 
                 /// 必須入力事項チェック
-                guard !artist.isEmpty else {
+                guard !artist.isEmpty && !name.isEmpty else {
                     validationAlert = true
                     return
                 }
@@ -252,7 +253,7 @@ struct InputLiveView: View {
                     dismiss()
                 }
             }
-            .alert("アーティスト名は必須入力です。", isPresented: $validationAlert) {
+            .alert("アーティスト名と\nライブ名は必須入力です。", isPresented: $validationAlert) {
                 Button("OK") {
                 }
             }
@@ -277,7 +278,7 @@ struct CustomInputView: View {
                 .frame(width: 23)
             TextField(placeholder, text: $text)
         }.padding()
-            .background(.regularMaterial)
+            .background(.thinMaterial)
             .environment(\.colorScheme, .light)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .padding()

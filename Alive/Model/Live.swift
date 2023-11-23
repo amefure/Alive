@@ -7,6 +7,10 @@
 
 import RealmSwift
 
+class Live2 {
+    var date = Date()
+}
+
 class Live: Object, ObjectKeyIdentifiable {
     
     @Persisted(primaryKey: true) var id: ObjectId

@@ -22,10 +22,13 @@ struct LiveScheduleListView: View {
     @State private var isShowSetting = false         // 設定画面表示
     
     
+    
     var body: some View {
         ZStack {
             VStack {
                 HeaderView()
+                
+                LiveHistoryBlockView(array: repository.generateAvailability)
                 
                 HStack {
                     Button {
@@ -39,7 +42,7 @@ struct LiveScheduleListView: View {
                     } label: {
                         Text("Artist")
                     }
-
+                    
                 }
                 List {
                     ForEach(repository.lives) { live in
@@ -56,8 +59,8 @@ struct LiveScheduleListView: View {
                         }
                     }
                 }.listStyle(.grouped)
-                .scrollContentBackground(.hidden)
-                .background(.foundation)
+                    .scrollContentBackground(.hidden)
+                    .background(.foundation)
             }
             
             
@@ -69,6 +72,45 @@ struct LiveScheduleListView: View {
                 repository.readAllLive()
             }.tint(.themaYellow)
         
+    }
+}
+
+struct LiveHistoryBlockView: View {
+    
+    public var array: [Bool]
+    private let grids = Array(repeating: GridItem(.fixed(DeviceSizeManager.deviceWidth / 14)), count: 3)
+    private let size = DeviceSizeManager.deviceWidth / 14
+    private let dateFormatManager = DateFormatManager()
+    
+    var body: some View {
+        VStack {
+         
+            HStack {
+                Text(dateFormatManager.getShortString(date: Calendar.current.date(byAdding: .day, value: -30, to: Date())!))
+                    .font(.caption)
+                Spacer()
+                Text(dateFormatManager.getShortString(date: Date()))
+                    .font(.caption)
+            }
+            LazyHGrid(rows: grids) {
+                ForEach((0...29), id: \.self) { num in
+                    if array[safe: num] ?? false {
+                        Text("")
+                            .frame(width:size,height: size)
+                            .background(.themaYellow)
+                            .clipShape(RoundedRectangle(cornerRadius: 3))
+                    } else {
+                        Text("")
+                            .frame(width:size,height: size)
+                            .background(.opacityGray)
+                            .clipShape(RoundedRectangle(cornerRadius: 3))
+                    }
+                }
+            }
+        }.padding()
+            .background(.black)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding()
     }
 }
 

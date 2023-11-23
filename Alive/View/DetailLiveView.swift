@@ -38,155 +38,152 @@ struct DetailLiveView: View {
                 isShowInput = true
             }, isShowLogo: live.imagePath != "")
             .tint(.themaYellow)
+            
             ScrollView {
                 
                 LiveImageView(image: imageFileManager.loadImage(name: live.imagePath))
                 
-                Text("「 " + live.name + " 」")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                CardLiveView(live: live)
                 
-                Rectangle()
-                    .frame(width: DeviceSizeManager.deviceWidth, height: 2)
-                    .background(.themaYellow)
-                    .padding(.bottom, 8)
-                
+                //
+                //                        HStack {
+                //                            Image(systemName: "bolt.fill")
+                //                                .padding(.leading, 10)
+                //                            Text("Live情報")
+                //                            Spacer()
+                //                        } .padding(.top , 10)
                 
                 HStack {
                     
-                    if live.type != .unknown {
+                    Spacer()
+                    
+                    VStack {
+                        Text(L10n.liveType)
+                            .foregroundStyle(.themaYellow)
+                            .font(.system(size: 12))
                         Text(live.type.value)
-                            .padding(5)
-                            .background(live.type.color)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .padding(.leading, 20)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 20))
+                        
                     }
                     
                     Spacer()
-                    Image(systemName: "music.mic")
-                    Text(live.artist)
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .padding(.trailing, 20)
-                }
-                
-                
-                //                ScrollView(.horizontal, showsIndicators: false) {}
-                
-                HStack {
+                    
+                    VStack {
+                        Text(L10n.livePrice)
+                            .foregroundStyle(.themaYellow)
+                            .font(.system(size: 12))
+                        Text(live.price == -1 ? "ー 円" : "\(live.price)円")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 20))
+                    }
+                    
+                    Spacer()
                     
                     
                     VStack {
-                        
-                        
-                        HStack {
-                            Image(systemName: "bolt.fill")
-                                .padding(.leading, 10)
-                            Text("Live情報")
-                            Spacer()
-                        } .padding(.top , 10)
-                        
-                        VStack(alignment: .leading, spacing: 10) {
-                            
-                            
-                            if live.venue != "" {
-                                HStack {
-                                    Image(systemName: "mappin.and.ellipse")
-                                        .padding(.leading, 10)
-                                        .frame(width: 30)
-                                    Text(L10n.liveVenue + "：")
-                                    Text(live.venue)
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                }
-                            }
-                            
-                            if live.price != -1 {
-                                HStack {
-                                    Image(systemName: "banknote")
-                                        .padding(.leading, 10)
-                                        .frame(width: 30)
-                                    Text(L10n.livePrice + "：")
-                                    Text("\(live.price)円")
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                }
-                                
-                            }
-                            
-                            HStack {
-                                Image(systemName: "calendar")
-                                    .padding(.leading, 10)
-                                    .frame(width: 30)
-                                Text(L10n.liveDate + "：")
-                                Text(dateFormatManager.getString(date: live.date))
-                                    .fontWeight(.bold)
-                                Spacer()
-                            }
-                            
-                            if live.openingTime != nil || live.performanceTime != nil || live.closingTime != nil {
-                                HStack {
-                                    if let openingTime = live.openingTime {
-                                        HStack {
-                                            Text(L10n.liveOpeningTime + "：")
-                                            Text(dateFormatManager.getTimeString(date: openingTime))
-                                                .fontWeight(.bold)
-                                        }
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    if let performanceTime = live.performanceTime {
-                                        HStack {
-                                            Text(L10n.livePerformanceTime + "：")
-                                            Text(dateFormatManager.getTimeString(date: performanceTime))
-                                                .fontWeight(.bold)
-                                        }
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    if let closingTime = live.closingTime {
-                                        HStack {
-                                            Text(L10n.liveClosingTime + "：")
-                                            Text(dateFormatManager.getTimeString(date: closingTime))
-                                                .fontWeight(.bold)
-                                        }
-                                        
-                                        Spacer()
-                                    }
-                                }.padding(.leading, 10)
-                            }
-                            
-                        }
-                        .frame(width: DeviceSizeManager.deviceWidth - 20)
-                        .padding(.vertical)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(.white, lineWidth: 1)
-                            
-                        )
-                        
+                        Text(L10n.liveDate)
+                            .foregroundStyle(.themaYellow)
+                            .font(.system(size: 12))
+                        Text(dateFormatManager.getYearString(date: live.date))
+                            .foregroundStyle(.white)
+                            .font(.system(size: 20))
                     }
-                }
-                
-                
-                VStack {
-                    HStack {
-                        Image(systemName: "note")
-                            .padding(.leading, 10)
-                        Text(L10n.liveMemo)
-                        Spacer()
-                    } .padding(.top , 10)
                     
+                    Spacer()
+                    
+                }.padding()
+                
+                HStack {
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Text(L10n.liveOpeningTime)
+                            .foregroundStyle(.themaYellow)
+                            .font(.system(size: 12))
+                        if let openingTime = live.openingTime {
+                            Text(dateFormatManager.getTimeString(date: openingTime))
+                                .foregroundStyle(.white)
+                                .font(.system(size: 20))
+                        } else {
+                            Text("0:00")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 20))
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Text(L10n.livePerformanceTime)
+                            .foregroundStyle(.themaYellow)
+                            .font(.system(size: 12))
+                        if let performanceTime = live.performanceTime {
+                            Text(dateFormatManager.getTimeString(date: performanceTime))
+                                .foregroundStyle(.white)
+                                .font(.system(size: 20))
+                        } else {
+                            Text("0:00")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 20))
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Text(L10n.liveClosingTime)
+                            .foregroundStyle(.themaYellow)
+                            .font(.system(size: 12))
+                        if let closingTime = live.closingTime {
+                            Text(dateFormatManager.getTimeString(date: closingTime))
+                                .foregroundStyle(.white)
+                                .font(.system(size: 20))
+                        } else {
+                            Text("0:00")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 20))
+                        }
+                    }
+                    
+                    
+                    Spacer()
+                    
+                }.padding()
+                    .fontWeight(.bold)
+                
+                HStack {
+                    
+                    Spacer()
+                    
+                    Rectangle()
+                        .frame(width: 80, height: 1)
+                        .foregroundStyle(.themaYellow)
+                    
+                    
+                    Text(L10n.liveMemo)
+                        .foregroundStyle(.themaYellow)
+                        .font(.system(size: 12))
+                        .padding(.horizontal, 20)
+                    
+                    
+                    Rectangle()
+                        .frame(width: 80, height: 1)
+                        .foregroundStyle(.themaYellow)
+                    
+                    Spacer()
+                }.padding(.vertical)
+                
+                
+                HStack {
                     Text(live.memo)
-                        .frame(width: DeviceSizeManager.deviceWidth - 20)
-                        .padding(.vertical)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(.white, lineWidth: 1)
-                        )
-                }
+                    Spacer()
+                }.frame(width: DeviceSizeManager.deviceWidth - 80)
+                    .padding()
+                    .background(.regularMaterial)
+                    .environment(\.colorScheme, .light)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 
                 
                 if live.type == .festival {
@@ -207,6 +204,7 @@ struct DetailLiveView: View {
                             )
                     }
                 } else {
+                    
                     SwitchInputEditorView(live: live)
                 }
                 
@@ -230,6 +228,7 @@ struct DetailLiveView: View {
             Spacer()
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)
+            .fontWeight(.bold)
             .background(.foundation)
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: live)
@@ -254,15 +253,37 @@ struct SwitchInputEditorView: View {
     @State var text: String = ""
     
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
+    
+    @FocusState var isActive:Bool
+    
     var body: some View {
         VStack {
+            
             HStack {
-                Image(systemName: "music.note.list")
-                    .padding(.leading, 10)
-                Text(L10n.liveSetlist)
+                
+                Spacer()
+                    .padding(.leading, 20)
+                    .frame(width: 80)
+                
                 Spacer()
                 
-
+                Rectangle()
+                    .frame(width: 80, height: 1)
+                    .foregroundStyle(.themaYellow)
+                
+                
+                Text(L10n.liveSetlist)
+                    .foregroundStyle(.themaYellow)
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 20)
+                
+                
+                Rectangle()
+                    .frame(width: 80, height: 1)
+                    .foregroundStyle(.themaYellow)
+                
+                Spacer()
+                
                 Button {
                     if isEdit {
                         let newLive = Live()
@@ -278,45 +299,43 @@ struct SwitchInputEditorView: View {
                         newLive.memo = live.memo
                         newLive.setList = text
                         newLive.imagePath = live.imagePath
-                        print(newLive.setList)
                         repository.updateLive(id: live.id, newLive: newLive)
+                    } else {
+                        isActive = true
                     }
                     isEdit.toggle()
                 } label: {
-                    Image(systemName: "plus")
-                        .padding(.trailing, 10)
+                    Text(isEdit ? "保存" : "編集")
+                        .padding(.trailing, 20)
+                        .frame(width: 80)
+                        .foregroundStyle(.themaYellow)
                 }
-
-            } .padding(.top , 10)
+                
+            }.padding(.vertical)
+            
             
             if isEdit {
                 TextEditor(text: $text)
+                    .frame(width: DeviceSizeManager.deviceWidth - 80)
+                    .frame(minHeight: 150)
                     .padding()
-                    .frame(width: DeviceSizeManager.deviceWidth - 20, height: 150)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(.white, lineWidth: 1)
-                    ).scrollContentBackground(.hidden)
-                    .background(.foundation)
-            } else {
-                ScrollView {
-                
-                    HStack {
-                        Text(live.setList)
+                    .background(.regularMaterial)
+                    .environment(\.colorScheme, .light)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .focused($isActive)
                     
+            } else {
+                HStack {
+                    Text(live.setList)
                     Spacer()
-                    }
-                }.padding()
-                    .frame(width: DeviceSizeManager.deviceWidth - 20, height: 150)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(.white, lineWidth: 1)
-                    )
+                }.frame(width: DeviceSizeManager.deviceWidth - 80)
+                    .padding()
+                    .background(.regularMaterial)
+                    .environment(\.colorScheme, .light)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }.onAppear {
-            print( live.setList)
             text = live.setList
-            print( text)
         }
     }
 }

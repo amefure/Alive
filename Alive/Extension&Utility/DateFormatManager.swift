@@ -22,6 +22,11 @@ class DateFormatManager {
         return df.string(from: date)
     }
     
+    public func getYearString(date: Date) -> String {
+        df.dateFormat = "YYYY"
+        return df.string(from: date)
+    }
+    
     public func getTimeString(date: Date) -> String {
         df.dateFormat = "HH:mm"
         return df.string(from: date)

@@ -100,6 +100,7 @@ struct InputLiveView: View {
                     newLive.type = liveType
                     newLive.memo = memo
                     newLive.imagePath = imgName
+                    newLive.setList = live.setList
                     /// 更新処理
                     repository.updateLive(id: live.id, newLive: newLive)
                     
@@ -278,7 +279,7 @@ struct CustomInputView: View {
                 .frame(width: 23)
             TextField(placeholder, text: $text)
         }.padding()
-            .background(.thinMaterial)
+            .background(.regularMaterial)
             .environment(\.colorScheme, .light)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .padding()

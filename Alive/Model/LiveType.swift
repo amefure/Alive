@@ -39,7 +39,7 @@ enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable {
         case .festival:
             return .themaBlue
         case .unknown:
-            return .foundation
+            return .themaPurple
         }
     }
 }

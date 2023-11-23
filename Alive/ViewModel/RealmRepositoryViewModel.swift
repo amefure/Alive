@@ -17,7 +17,7 @@ class RealmRepositoryViewModel: ObservableObject {
     public func readAllLive() {
         lives.removeAll()
         let result = repository.readAllLive()
-        lives = Array(result)
+        lives = Array(result).sorted(by: { $0.date > $1.date })
     }
     
     public func createLive(newLive: Live) {

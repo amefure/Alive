@@ -18,7 +18,7 @@ struct LiveScheduleListView: View {
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
     // MARK: - View
-    @State private var search:String = ""            // 検索テキスト
+    @State private var search: String = ""            // 検索テキスト
     @State private var isShowInput = false           // Input画面表示
     @State private var isShowSetting = false         // 設定画面表示
     
@@ -27,12 +27,12 @@ struct LiveScheduleListView: View {
     }
     
     var body: some View {
-        ZStack {
+
             VStack {
-                HeaderView()
-                
+
                 Text("NEXT LIVE")
                     .fontWeight(.bold)
+                    .padding(.vertical, 10)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
@@ -53,10 +53,13 @@ struct LiveScheduleListView: View {
                 
                 Text("LIVE HISTORY")
                     .fontWeight(.bold)
+                    .padding(.vertical, 10)
+                
                 LiveHistoryBlockView(array: repository.generateAvailability)
                 
                 Text("LIVE LIST")
                     .fontWeight(.bold)
+                    .padding(.top, 20)
                 
                 List {
                     ForEach(repository.lives) { live in
@@ -74,11 +77,10 @@ struct LiveScheduleListView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 55))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 55)
-                                            .stroke(.white, lineWidth: 2)
-                                    ).padding(2)
+                                            .stroke(.white, lineWidth: 3)
+                                    ).padding(3)
                                    
-                                
-//                                Text(dateFormatManager.getDayOfWeekString(date: live.date))
+                                   
                                
                                 VStack(spacing: 0) {
                                     HStack {
@@ -95,7 +97,7 @@ struct LiveScheduleListView: View {
                                 }
                                 Spacer()
                             }
-                        }//.padding(.vertical, 3)
+                        }
                         .listRowBackground(Asset.Colors.themaYellow.swiftUIColor)
                         .foregroundStyle(.foundation)
                         .foregroundStyle(.foundation)
@@ -104,18 +106,12 @@ struct LiveScheduleListView: View {
                     }
                 }.scrollContentBackground(.hidden)
                     .background(.foundation)
-                    .padding(.bottom, 40)
-            }
-            
-            
-            FooterView()
-            
+                    .padding(.bottom, 20)
             
         }.background(.foundation)
             .onAppear {
                 repository.readAllLive()
             }.tint(.themaYellow)
-        
     }
 }
 

@@ -24,7 +24,7 @@ struct AliveApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                LiveScheduleListView()
+                MainView()
             }
         }
     }

@@ -88,12 +88,11 @@ struct CardLiveView:View {
                 
                 
             }.background(live.type.color)
-                .frame(width: DeviceSizeManager.deviceWidth - 40)
+                .frame(width: DeviceSizeManager.deviceWidth - 45)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .fontWeight(.bold)
-            
-        } else {
-            
+                .padding(6)
+                .shadow(color: .black ,radius: 2, x: 4, y: 4)
         }
     }
 }

@@ -38,6 +38,7 @@
 		128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */; };
 		128C3E6B2B10480700CB9A3D /* CardLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E6A2B10480700CB9A3D /* CardLiveView.swift */; };
 		128C3E6D2B104ABD00CB9A3D /* MonthAndDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E6C2B104ABD00CB9A3D /* MonthAndDayView.swift */; };
+		128C3E6F2B10BC6B00CB9A3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E6E2B10BC6B00CB9A3D /* MainView.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTimeTableView.swift; sourceTree = "<group>"; };
 		128C3E6A2B10480700CB9A3D /* CardLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLiveView.swift; sourceTree = "<group>"; };
 		128C3E6C2B104ABD00CB9A3D /* MonthAndDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAndDayView.swift; sourceTree = "<group>"; };
+		128C3E6E2B10BC6B00CB9A3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,12 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */,
+				128C3E6E2B10BC6B00CB9A3D /* MainView.swift */,
+				128C3E722B10BF2A00CB9A3D /* ListView */,
+				128C3E712B10BF2000CB9A3D /* DetailView */,
+				128C3E702B10BF1300CB9A3D /* InputView */,
 				1242A3132B0C6A900033BD09 /* Dialog */,
-				1242A2F62B0B6E200033BD09 /* LiveScheduleListView.swift */,
-				1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */,
-				1242A3032B0B75B20033BD09 /* DetailLiveView.swift */,
-				1242A3092B0B8C5F0033BD09 /* InputLiveView.swift */,
-				128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */,
 				1242A2DC2B0B69F30033BD09 /* Components */,
 			);
 			path = View;
@@ -228,6 +229,32 @@
 				1242A3142B0C6A9C0033BD09 /* ImagePickerDialog.swift */,
 			);
 			path = Dialog;
+			sourceTree = "<group>";
+		};
+		128C3E702B10BF1300CB9A3D /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				1242A3092B0B8C5F0033BD09 /* InputLiveView.swift */,
+				128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */,
+			);
+			path = InputView;
+			sourceTree = "<group>";
+		};
+		128C3E712B10BF2000CB9A3D /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				1242A3032B0B75B20033BD09 /* DetailLiveView.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		128C3E722B10BF2A00CB9A3D /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				1242A2F62B0B6E200033BD09 /* LiveScheduleListView.swift */,
+				1242A30D2B0B912C0033BD09 /* ArtistGridListView.swift */,
+			);
+			path = ListView;
 			sourceTree = "<group>";
 		};
 		52C2971FC94C465977190C45 /* Pods */ = {
@@ -384,6 +411,7 @@
 				128C3E6D2B104ABD00CB9A3D /* MonthAndDayView.swift in Sources */,
 				1242A3172B0CBD970033BD09 /* LiveImageView.swift in Sources */,
 				1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */,
+				128C3E6F2B10BC6B00CB9A3D /* MainView.swift in Sources */,
 				1242A3122B0C62FC0033BD09 /* TimeTable.swift in Sources */,
 				1242A3152B0C6A9C0033BD09 /* ImagePickerDialog.swift in Sources */,
 				1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */,

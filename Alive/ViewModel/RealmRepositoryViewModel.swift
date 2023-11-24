@@ -7,6 +7,7 @@
 import UIKit
 import RealmSwift
 
+
 class RealmRepositoryViewModel: ObservableObject {
     
     static let shared = RealmRepositoryViewModel()
@@ -18,6 +19,7 @@ class RealmRepositoryViewModel: ObservableObject {
         lives.removeAll()
         let result = repository.readAllLive()
         lives = Array(result).sorted(by: { $0.date > $1.date })
+        tts()
     }
     
     public func createLive(newLive: Live) {
@@ -60,5 +62,22 @@ class RealmRepositoryViewModel: ObservableObject {
             }
         }
         return availabilityArray.reversed()
+    }
+    
+    
+    public func tts() -> [String: Int] {
+        
+
+        var nameCounts = [String: Int]()
+
+        for card in lives {
+            if let count = nameCounts[card.artist] {
+                nameCounts[card.artist] = count + 1
+            } else {
+                nameCounts[card.artist] = 1
+            }
+        }
+
+        return nameCounts
     }
 }

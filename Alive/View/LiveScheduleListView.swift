@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import RealmSwift
 
 struct LiveScheduleListView: View {
     
@@ -21,6 +22,9 @@ struct LiveScheduleListView: View {
     @State private var isShowInput = false           // Input画面表示
     @State private var isShowSetting = false         // 設定画面表示
     
+    private var filteringLives: [Live]{
+        repository.lives.filter { $0.date >= Calendar.current.startOfDay(for: Date()) }.reversed()
+    }
     
     var body: some View {
         ZStack {
@@ -32,15 +36,18 @@ struct LiveScheduleListView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(repository.lives.filter { $0.date >= Calendar.current.startOfDay(for: Date()) }.reversed().suffix(5)) { live in
-                            
-                            NavigationLink {
-                                DetailLiveView(live: live)
-                            } label: {
-                                CardLiveView(live: live)
+                        if filteringLives.count != 0 {
+                            ForEach(filteringLives) { live in
+                                NavigationLink {
+                                    DetailLiveView(live: live)
+                                } label: {
+                                    CardLiveView(live: live)
+                                }
                             }
+                        } else {
+                            CardLiveView(live: Live.blankLive)
                         }
-                        Text("....")
+                        
                     }.padding(.horizontal, 20)
                 }
                 
@@ -57,16 +64,45 @@ struct LiveScheduleListView: View {
                             DetailLiveView(live: live)
                         } label: {
                             HStack {
-                                Text(dateFormatManager.getShortString(date: live.date))
-                                Text(dateFormatManager.getDayOfWeekString(date: live.date))
-                                Text(live.artist)
-                                Text(live.venue)
+                                
+                                VStack(spacing: 0) {
+                                    Spacer()
+                                    MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: 40)
+                                    Spacer()
+                                }.frame(width: 55, height: 55)
+                                .background(live.type.color)
+                                    .clipShape(RoundedRectangle(cornerRadius: 55))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 55)
+                                            .stroke(.white, lineWidth: 2)
+                                    ).padding(2)
+                                   
+                                
+//                                Text(dateFormatManager.getDayOfWeekString(date: live.date))
+                               
+                                VStack(spacing: 0) {
+                                    HStack {
+                                        Image(systemName: "music.mic")
+                                        Text(live.artist)
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Image(systemName: "mappin.and.ellipse")
+                                        Text(live.venue)
+                                        Spacer()
+                                    }
+                                }
+                                Spacer()
                             }
-                            
-                        }
+                        }//.padding(.vertical, 3)
+                        .listRowBackground(Asset.Colors.themaYellow.swiftUIColor)
+                        .foregroundStyle(.foundation)
+                        .foregroundStyle(.foundation)
+                            .fontWeight(.bold)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
-                }.listStyle(.grouped)
-                    .scrollContentBackground(.hidden)
+                }.scrollContentBackground(.hidden)
                     .background(.foundation)
                     .padding(.bottom, 40)
             }
@@ -83,123 +119,14 @@ struct LiveScheduleListView: View {
     }
 }
 
-struct CardLiveView:View {
-    public var live: Live?
-    private let imageFileManager = ImageFileManager()
-    private let dateFormatManager = DateFormatManager()
-    var body: some View {
-        if let live = live {
-            
-            VStack(spacing:0) {
-                
-                HStack {
-                    
-                    if let image = imageFileManager.loadImage(name: live.imagePath) {
-                        
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .background(.foundation)
-                            .clipShape(RoundedRectangle(cornerRadius: 50))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(.white, lineWidth: 3)
-                                
-                            ).padding(.leading, 20)
-                        
-                    } else {
-                        Asset.Images.appLogoElectric.swiftUIImage
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .background(.foundation)
-                            .clipShape(RoundedRectangle(cornerRadius: 50))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(.white, lineWidth: 3)
-                                
-                            ).padding(.leading, 20)
-                        
-                    }
-                    
-                    
-                    Text(live.name)
-                        .frame(height: 100)
-                        .font(.system(size: 20))
-                        .padding(.leading, 20)
-                    
-                    
-                    Spacer()
-                    
-                }.foregroundStyle(.white)
-                
-                ZigzagBottomLine()
-                    .fill(Color.white)
-                    .frame(width: DeviceSizeManager.deviceWidth - 55, height: 1)
-                VStack {
-                    HStack {
-                        
-                        VStack {
-                            HStack {
-                                Image(systemName: "music.mic")
-                                    .padding(.leading, 20)
-                                Text(live.artist)
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Image(systemName: "mappin.and.ellipse")
-                                    .padding(.leading, 20)
-                                Text(live.venue)
-                                Spacer()
-                            }
-                        }
-                        
-                        
-                        Text(dateFormatManager.getShortString(date: live.date))
-                            .font(.largeTitle)
-                            .padding(.trailing, 20)
-                    }
-                }.frame(height: 100)
-                    .background(Color.white)
-                    .foregroundStyle(.foundation)
-                
-                
-            }.background(live.type.color)
-                .frame(width: DeviceSizeManager.deviceWidth - 40)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .fontWeight(.bold)
-            
-        } else {
-            
-        }
-    }
-}
-
-
-struct ZigzagBottomLine: Shape {
-    var zigzagSpacing: CGFloat = 25.0
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: CGPoint(x: 0, y: rect.height))
-        
-        for x in stride(from: 0, to: rect.width, by: zigzagSpacing) {
-            path.addLine(to: CGPoint(x: x + zigzagSpacing / 2, y: rect.height - zigzagSpacing * 0.3))
-            path.addLine(to: CGPoint(x: x + zigzagSpacing, y: rect.height))
-        }
-        
-        return path
-    }
-}
-
 
 struct LiveHistoryBlockView: View {
     
-    public var array: [Bool]
+    public var array: [ObjectId?]
     private let grids = Array(repeating: GridItem(.fixed(DeviceSizeManager.deviceWidth / 14)), count: 3)
     private let size = DeviceSizeManager.deviceWidth / 14
     private let dateFormatManager = DateFormatManager()
+    @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
     var body: some View {
         VStack {
@@ -213,16 +140,25 @@ struct LiveHistoryBlockView: View {
             }
             LazyHGrid(rows: grids) {
                 ForEach((0...29), id: \.self) { num in
-                    if array[safe: num] ?? false {
-                        Text("")
-                            .frame(width:size,height: size)
-                            .background(.themaYellow)
-                            .clipShape(RoundedRectangle(cornerRadius: 3))
-                    } else {
-                        Text("")
-                            .frame(width:size,height: size)
-                            .background(.opacityGray)
-                            .clipShape(RoundedRectangle(cornerRadius: 3))
+                    if let value = array[safe: num] {
+                        if value != nil {
+                            NavigationLink {
+                                if let live = repository.lives.first(where: { $0.id == value }) {
+                                    DetailLiveView(live: live)
+                                }
+                            } label: {
+                                Text("")
+                                    .frame(width:size,height: size)
+                                    .background(.themaYellow)
+                                    .clipShape(RoundedRectangle(cornerRadius: 3))
+                            }
+
+                        }else {
+                            Text("")
+                                .frame(width:size,height: size)
+                                .background(.opacityGray)
+                                .clipShape(RoundedRectangle(cornerRadius: 3))
+                        }
                     }
                 }
             }

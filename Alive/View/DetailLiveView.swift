@@ -27,6 +27,7 @@ struct DetailLiveView: View {
     
     // MARK: - View
     @State private var isShowInput = false
+    @State private var isShowDescDialog = false
     @State private var isDeleteDialog = false
     @State private var isDeleteTimeTableDialog = false
     
@@ -166,7 +167,14 @@ struct DetailLiveView: View {
                 if live.type == .festival {
                     VStack(spacing: 0) {
                         
-                        SideBarTitleView(title: L10n.liveTimeTable)
+                        SideBarTitleView(title: L10n.liveTimeTable, trailingAction: {
+                            isShowDescDialog = true
+                        }, imgName: "questionmark.circle")
+                            .alert("TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。", isPresented: $isShowDescDialog) {
+                                Button("OK") {
+                                    
+                                }
+                            }
                         
                         ForEach(live.timeTable.sorted(byKeyPath: "time", ascending: true)) { row in
                             HStack {
@@ -186,7 +194,14 @@ struct DetailLiveView: View {
                         Button {
                             isModal = true
                         } label: {
-                            Text("ADD TIMETABLE")
+                            Image(systemName: "plus")
+                                .foregroundStyle(.themaYellow)
+                                .padding()
+                                .frame(width: DeviceSizeManager.deviceWidth)
+                                .overlay(
+                                    Rectangle()
+                                        .stroke(.white, lineWidth: 1)
+                                )
                         }
                     }.sheet(isPresented: $isModal) {
                         InputTimeTableView(live: live)
@@ -203,12 +218,12 @@ struct DetailLiveView: View {
                     Text(L10n.deleteButtonTitle)
                         .padding(.vertical, 7)
                         .frame(width: 100)
-                        .foregroundStyle(.themaYellow)
+                        .foregroundStyle(.themaRed)
                         .overlay{
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(style: StrokeStyle(lineWidth: 1))
                                 .frame(width: 100)
-                                .foregroundStyle(.themaYellow)
+                                .foregroundStyle(.themaRed)
                         }.padding(.top , 20)
                 }
                 
@@ -244,13 +259,23 @@ struct DetailLiveView: View {
 
 struct SideBarTitleView: View {
     public let title: String
+    
+    public var trailingAction: () -> Void = {}
+    public var imgName: String = ""
+    
     var body: some View {
         HStack {
+            
+            if imgName != "" {
+                Spacer()
+                    .padding(.leading, 20)
+                    .frame(width: 30)
+            }
             
             Spacer()
             
             Rectangle()
-                .frame(width: 80, height: 1)
+                .frame(width: 70, height: 1)
                 .foregroundStyle(.themaYellow)
             
             
@@ -261,10 +286,21 @@ struct SideBarTitleView: View {
             
             
             Rectangle()
-                .frame(width: 80, height: 1)
+                .frame(width: 70, height: 1)
                 .foregroundStyle(.themaYellow)
             
             Spacer()
+            
+            if imgName != "" {
+                Button {
+                    trailingAction()
+                } label: {
+                    Image(systemName: imgName)
+                        .padding(.trailing, 20)
+                        .frame(width: 30)
+                        .foregroundStyle(.themaYellow)
+                }
+            }
         }.padding(.vertical)
     }
 }
@@ -284,59 +320,27 @@ struct SwitchInputEditorView: View {
     var body: some View {
         VStack {
             
-            HStack {
-                
-                Spacer()
-                    .padding(.leading, 20)
-                    .frame(width: 80)
-                
-                Spacer()
-                
-                Rectangle()
-                    .frame(width: 80, height: 1)
-                    .foregroundStyle(.themaYellow)
-                
-                
-                Text(L10n.liveSetlist)
-                    .foregroundStyle(.themaYellow)
-                    .font(.system(size: 12))
-                    .padding(.horizontal, 20)
-                
-                
-                Rectangle()
-                    .frame(width: 80, height: 1)
-                    .foregroundStyle(.themaYellow)
-                
-                Spacer()
-                
-                Button {
-                    if isEdit {
-                        let newLive = Live()
-                        newLive.artist = live.artist
-                        newLive.name = live.name
-                        newLive.date = live.date
-                        newLive.openingTime = live.openingTime
-                        newLive.performanceTime = live.performanceTime
-                        newLive.closingTime = live.closingTime
-                        newLive.venue = live.venue
-                        newLive.price = live.price
-                        newLive.type = live.type
-                        newLive.memo = live.memo
-                        newLive.setList = text
-                        newLive.imagePath = live.imagePath
-                        repository.updateLive(id: live.id, newLive: newLive)
-                    } else {
-                        isActive = true
-                    }
-                    isEdit.toggle()
-                } label: {
-                    Text(isEdit ? "保存" : "編集")
-                        .padding(.trailing, 20)
-                        .frame(width: 80)
-                        .foregroundStyle(.themaYellow)
+            SideBarTitleView(title: L10n.liveSetlist, trailingAction: {
+                if isEdit {
+                    let newLive = Live()
+                    newLive.artist = live.artist
+                    newLive.name = live.name
+                    newLive.date = live.date
+                    newLive.openingTime = live.openingTime
+                    newLive.performanceTime = live.performanceTime
+                    newLive.closingTime = live.closingTime
+                    newLive.venue = live.venue
+                    newLive.price = live.price
+                    newLive.type = live.type
+                    newLive.memo = live.memo
+                    newLive.setList = text
+                    newLive.imagePath = live.imagePath
+                    repository.updateLive(id: live.id, newLive: newLive)
+                } else {
+                    isActive = true
                 }
-                
-            }.padding(.vertical)
+                isEdit.toggle()
+            }, imgName: isEdit ? "checkmark.square" : "square.and.pencil")
             
             
             if isEdit {
@@ -364,6 +368,8 @@ struct SwitchInputEditorView: View {
         }
     }
 }
+
+
 
 
 #Preview {

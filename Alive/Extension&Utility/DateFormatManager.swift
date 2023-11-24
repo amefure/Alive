@@ -37,6 +37,14 @@ class DateFormatManager {
         return df.string(from: date)
     }
     
+    public func getMouthAndDayString(date: Date) -> (String, String) {
+        df.dateFormat = "MM"
+        let month = df.string(from: date)
+        df.dateFormat = "dd"
+        let day = df.string(from: date)
+        return (month, day)
+    }
+    
     public func getDayOfWeekString(date: Date) -> String {
         df.dateFormat = "EE"
         return df.string(from: date)

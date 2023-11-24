@@ -48,4 +48,15 @@ class Live: Object, ObjectKeyIdentifiable {
         live.setList = "1.AAAAAAA\n2.AAAAAAA\n3.AAAAAAA\n4.AAAAAAA\n5.AAAAAAA\n6.AAAAAAA\n7.AAAAAAA\n"
         return live
     }
+    
+    
+    static var blankLive: Live {
+        let live = Live()
+        live.artist = "ALIVE"
+        live.name = "次のライブの予定はありません"
+        live.date = Date()
+        live.venue = "ー"
+        live.type = .oneman
+        return live
+    }
 }

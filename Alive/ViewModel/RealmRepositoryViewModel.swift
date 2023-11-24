@@ -46,16 +46,19 @@ class RealmRepositoryViewModel: ObservableObject {
         self.readAllLive()
     }
     
-    public var generateAvailability: [Bool] {
+    public var generateAvailability: [ObjectId?] {
         // 日付とその日付が30日前までに存在するかどうかの真偽値を保持する配列を作成
-        var availabilityArray: [Bool] = []
+        var availabilityArray: [ObjectId?] = []
         
         for index in 0...29 {
             let minusIndex = index * -1
             let theday = Calendar.current.date(byAdding: .day, value: minusIndex, to: Date())!
-            availabilityArray.append(lives.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: theday) }))
+            if let index = lives.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: theday) }) {
+                availabilityArray.append(lives[safe: index]?.id ?? nil)
+            } else {
+                availabilityArray.append(nil)
+            }
         }
-
         return availabilityArray.reversed()
     }
 }

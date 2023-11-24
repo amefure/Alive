@@ -35,11 +35,11 @@ enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable {
         case .oneman:
             return .themaRed
         case .battleBands:
-            return .themaYellow
+            return .themaPurple
         case .festival:
             return .themaBlue
         case .unknown:
-            return .themaPurple
+            return .themaYellow
         }
     }
 }

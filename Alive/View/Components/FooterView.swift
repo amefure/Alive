@@ -14,8 +14,6 @@ struct FooterView: View {
     
     var body: some View {
         
-        
-            
             HStack {
                 Spacer()
                 Button {
@@ -27,12 +25,7 @@ struct FooterView: View {
                     .background(.themaYellow)
                     .foregroundStyle(.foundation)
                     .clipShape(RoundedRectangle(cornerRadius: 60))
-                    .shadow(color: .black ,radius: 2, x: 2, y: 2)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 60)
-                            .stroke(.white, lineWidth: 4)
-                    ).padding(2)
-                    .shadow(color: .black ,radius: 2, x: 1, y: 1)
+
                 
                 Spacer()
 
@@ -45,16 +38,7 @@ struct FooterView: View {
                     .background(.themaYellow)
                     .foregroundStyle(.foundation)
                     .clipShape(RoundedRectangle(cornerRadius: 60))
-                    .shadow(color: .black ,radius: 2, x: 2, y: 2)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 60)
-                            .stroke(.white, lineWidth: 4)
-                    ).padding(2)
-                    .shadow(color: .black ,radius: 2, x: 1, y: 1)
                    
-                        
-                
-                
                 Spacer()
                 
                 
@@ -66,12 +50,7 @@ struct FooterView: View {
                     .background(.themaYellow)
                     .foregroundStyle(.foundation)
                     .clipShape(RoundedRectangle(cornerRadius: 60))
-                    .shadow(color: .black ,radius: 2, x: 2, y: 2)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 60)
-                            .stroke(.white, lineWidth: 4)
-                    ).padding(2)
-                    .shadow(color: .black ,radius: 2, x: 1, y: 1)
+
                 
                 Spacer()
             }.padding()

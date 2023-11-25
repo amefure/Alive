@@ -25,13 +25,10 @@ struct SettingView: View {
     var body: some View {
         VStack {
             
-            HeaderView(leadingIcon: "chevron.backward", trailingIcon: "", leadingAction: { dismiss() }, trailingAction: {})
-                .tint(Asset.Colors.themaGreen.swiftUIColor)
+            HeaderView(leadingIcon: "chevron.backward", leadingAction: { dismiss() })
+                .tint(Asset.Colors.themaYellow.swiftUIColor)
             
-            
-           
             List {
-                
                
                 Section(header: Text("広告"), footer: Text("・追加される容量は10個です。\n・容量の追加は1日に1回までです。")) {
                     RewardButtonView()

@@ -29,7 +29,8 @@
 
 // MARK: - Loacle
 "date_locale" = "ja_JP";
-"date_format" = "yyyy年M月dd日";
+"date_format" = "yyyy年M月d日";
+"date_format_blake" = "yyyy年\nM月d日";
 
 // MARK: - Detail Item
 "delete_button_title" = "削除";

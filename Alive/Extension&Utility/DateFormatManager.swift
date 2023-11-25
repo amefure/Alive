@@ -22,6 +22,11 @@ class DateFormatManager {
         return df.string(from: Date())
     }
     
+    public func getString2(date: Date) -> String {
+        df.dateFormat = "yyyy年\nM月d日"
+        return df.string(from: date)
+    }
+    
     public func getString(date: Date) -> String {
         df.dateFormat = L10n.dateFormat
         return df.string(from: date)

@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// https://apps.apple.com/jp/app/alive
+  internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive")
   /// yyyy年M月dd日
   internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月dd日")
   /// ja_JP
@@ -53,6 +55,20 @@ internal enum L10n {
   internal static let liveTypeUnknown = L10n.tr("Localizable", "live_type_unknown", fallback: "未設定")
   /// 開催地
   internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "開催地")
+  /// アプリ設定
+  internal static let settingAppSetting = L10n.tr("Localizable", "setting_app_setting", fallback: "アプリ設定")
+  /// 
+  internal static let settingRecommendShareText = L10n.tr("Localizable", "setting_recommend_share_text", fallback: "")
+  /// 「ALIVE」をオススメする
+  internal static let settingRecommendTitle = L10n.tr("Localizable", "setting_recommend_title", fallback: "「ALIVE」をオススメする")
+  /// アプリをレビューする
+  internal static let settingReviewTitle = L10n.tr("Localizable", "setting_review_title", fallback: "アプリをレビューする")
+  /// ?action=write-review
+  internal static let settingReviewUrlQuery = L10n.tr("Localizable", "setting_review_url_query", fallback: "?action=write-review")
+  /// 利用規約とプライバシーポリシー
+  internal static let settingTermsOfServiceTitle = L10n.tr("Localizable", "setting_terms_of_service_title", fallback: "利用規約とプライバシーポリシー")
+  /// https://tech.amefure.com/app-terms-of-service
+  internal static let settingTermsOfServiceUrl = L10n.tr("Localizable", "setting_terms_of_service_url", fallback: "https://tech.amefure.com/app-terms-of-service")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

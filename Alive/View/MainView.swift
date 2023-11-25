@@ -34,7 +34,7 @@ struct MainView: View {
             FooterView(selectedTab: $selectedTab)
         }.background(.foundation)
             .navigationDestination(isPresented: $isShowSetting) {
-                
+                SettingView()
             }
     }
 }

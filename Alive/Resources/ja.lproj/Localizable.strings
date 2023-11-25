@@ -34,3 +34,17 @@
 // MARK: - Detail Item
 "delete_button_title" = "削除";
 "delete_button_alert_title" = "このLiveを削除しますか？";
+
+
+// MARK: - Setting
+"setting_app_setting" = "アプリ設定";
+
+"setting_review_title" = "アプリをレビューする";
+"setting_review_url_query" = "?action=write-review";
+"app_url" = "https://apps.apple.com/jp/app/alive";
+
+"setting_recommend_title" = "「ALIVE」をオススメする";
+"setting_recommend_share_text" = "";
+
+"setting_terms_of_service_title" = "利用規約とプライバシーポリシー";
+"setting_terms_of_service_url" = "https://tech.amefure.com/app-terms-of-service";

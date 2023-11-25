@@ -19,7 +19,6 @@ class RealmRepositoryViewModel: ObservableObject {
         lives.removeAll()
         let result = repository.readAllLive()
         lives = Array(result).sorted(by: { $0.date > $1.date })
-        tts()
     }
     
     public func createLive(newLive: Live) {
@@ -48,8 +47,8 @@ class RealmRepositoryViewModel: ObservableObject {
         self.readAllLive()
     }
     
-    public var generateAvailability: [ObjectId?] {
-        // 日付とその日付が30日前までに存在するかどうかの真偽値を保持する配列を作成
+    public var getMonthLiveHistory: [ObjectId?] {
+        // 開催日が本日より30日前までに存在するかどうか
         var availabilityArray: [ObjectId?] = []
         
         for index in 0...29 {
@@ -64,20 +63,19 @@ class RealmRepositoryViewModel: ObservableObject {
         return availabilityArray.reversed()
     }
     
-    
-    public func tts() -> [String: Int] {
+    /// 順番を保持したいため配列で返す
+    public var getArtistCounts: Array<(key: String, value: Int)> {
         
+        var artistCounts: [String: Int] = [:]
 
-        var nameCounts = [String: Int]()
-
-        for card in lives {
-            if let count = nameCounts[card.artist] {
-                nameCounts[card.artist] = count + 1
+        for live in lives {
+            if let count = artistCounts[live.artist] {
+                artistCounts[live.artist] = count + 1
             } else {
-                nameCounts[card.artist] = 1
+                artistCounts[live.artist] = 1
             }
         }
 
-        return nameCounts
+        return artistCounts.sorted(by: { $0.key > $1.key }).sorted(by: { $0.value > $1.value })
     }
 }

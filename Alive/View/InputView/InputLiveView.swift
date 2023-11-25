@@ -157,15 +157,6 @@ struct InputLiveView: View {
                     }
                 }.padding(.top, 20)
                 
-                CustomInputView(text: $artist, imgName: "music.mic", placeholder: L10n.liveArtist)
-                
-                CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
-                
-                CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
-                
-                CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
-                    .keyboardType(.numberPad)
-                
                 VStack {
                     Text(L10n.liveType)
                     Divider()
@@ -191,6 +182,14 @@ struct InputLiveView: View {
                     }
                 }
                 
+                CustomInputView(text: $artist, imgName: "music.mic", placeholder: liveType == .festival ? "一押し" + L10n.liveArtist : L10n.liveArtist)
+                
+                CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
+                
+                CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
+                
+                CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
+                    .keyboardType(.numberPad)
                 
                 HStack {
                     Image(systemName: "calendar")

@@ -37,7 +37,7 @@ struct ArtistGridListView: View {
                 ScrollView {
                     LazyVGrid(columns: gridColumns) {
                         
-                        ForEach(repository.tts().sorted(by: { $0.value > $1.value }), id: \.key) { artist, count in
+                        ForEach(repository.getArtistCounts, id: \.key) { artist, count in
                             
                             VStack {
                                 Text(artist)

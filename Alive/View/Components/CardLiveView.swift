@@ -66,7 +66,8 @@ struct CardLiveView:View {
                             HStack {
                                 Image(systemName: "music.mic")
                                     .padding(.leading, 20)
-                                Text(live.artist)
+                                
+                                Text(live.type == .festival ? live.artist + " etc.." : live.artist)
                                 Spacer()
                             }
                             

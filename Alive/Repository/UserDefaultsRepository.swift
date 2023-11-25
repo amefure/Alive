@@ -11,9 +11,11 @@ class UserDefaultsKey {
     
     static let APP_INITIAL_BOOT_FLAG = "APP_INITIAL_BOOT_FLAG"
     
-    static let APP_LOCK_KEY = "APP_LOCK_KEY"
-    
     static let COUNT_INTERSTITIAL_KEY = "COUNT_INTERSTITIAL_KEY"
+    
+    static let LIMIT_CAPACITY = "LIMIT_CAPACITY"
+    
+    static let LAST_ACQUISITION_DATE = "LAST_ACQUISITION_DATE"
     
 }
 
@@ -42,5 +44,15 @@ class UserDefaultsRepository {
     /// Int：取得
     public func getIntData(key: String) -> Int {
         return userDefaults.integer(forKey: key)
+    }
+    
+    /// String：保存
+    public func setStringData(key: String, value: String) {
+        userDefaults.set(value, forKey: key)
+    }
+    
+    /// String：取得
+    public func getStringData(key: String) -> String {
+        return userDefaults.string(forKey: key) ?? ""
     }
 }

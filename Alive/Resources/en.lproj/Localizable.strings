@@ -32,3 +32,18 @@
 // MARK: - Detail Item
 "delete_button_title" = "Delete";
 "delete_button_alert_title" = "Do you want to delete Live?";
+
+
+// MARK: - Setting
+"setting_app_setting" = "App settings";
+
+
+"setting_review_title" = "Review app";
+"setting_review_url_query" = "?action=write-review";
+"app_url" = "https://apps.apple.com/en/app/alive/";
+
+"setting_recommend_title" = "Recommend ’ALIVE’";
+"setting_recommend_share_text" = "";
+
+"setting_terms_of_service_title" = "Terms of Service and Privacy Policy";
+"setting_terms_of_service_url" = "https://tech.amefure.com/app-terms-of-service";

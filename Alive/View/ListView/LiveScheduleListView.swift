@@ -55,7 +55,7 @@ struct LiveScheduleListView: View {
                     .fontWeight(.bold)
                     .padding(.vertical, 10)
                 
-                LiveHistoryBlockView(array: repository.generateAvailability)
+                LiveHistoryBlockView(array: repository.getMonthLiveHistory)
                 
                 Text("LIVE LIST")
                     .fontWeight(.bold)

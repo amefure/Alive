@@ -17,6 +17,11 @@ class DateFormatManager {
         df.calendar = Calendar(identifier: .gregorian)
     }
     
+    public func getNowTime() -> String {
+        df.dateFormat = L10n.dateFormat
+        return df.string(from: Date())
+    }
+    
     public func getString(date: Date) -> String {
         df.dateFormat = L10n.dateFormat
         return df.string(from: date)

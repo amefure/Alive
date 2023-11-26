@@ -9,5 +9,6 @@ target 'Alive' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'FirebaseAnalytics'
   pod 'RealmSwift' 
+  pod 'DGCharts'
 
 end

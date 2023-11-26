@@ -26,7 +26,7 @@ struct SettingView: View {
         VStack {
             
             HeaderView(leadingIcon: "chevron.backward", leadingAction: { dismiss() })
-                .tint(Asset.Colors.themaYellow.swiftUIColor)
+                .tint(.themaYellow)
             
             List {
                

@@ -1,4 +1,7 @@
 PODS:
+  - DGCharts (5.0.0):
+    - DGCharts/Core (= 5.0.0)
+  - DGCharts/Core (5.0.0)
   - FirebaseAnalytics (10.14.0):
     - FirebaseAnalytics/AdIdSupport (= 10.14.0)
     - FirebaseCore (~> 10.0)
@@ -84,12 +87,14 @@ PODS:
     - Realm (= 10.42.1)
 
 DEPENDENCIES:
+  - DGCharts
   - FirebaseAnalytics
   - Google-Mobile-Ads-SDK
   - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - DGCharts
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreInternal
@@ -104,6 +109,7 @@ SPEC REPOS:
     - RealmSwift
 
 SPEC CHECKSUMS:
+  DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   FirebaseAnalytics: 5c6d58814afa4db82cf7fdbc02b0b0e2fa3d43ff
   FirebaseCore: 6fc17ac9f03509d51c131298aacb3ee5698b4f02
   FirebaseCoreInternal: d558159ee6cc4b823c2296ecc193de9f6d9a5bb3
@@ -117,6 +123,6 @@ SPEC CHECKSUMS:
   Realm: f433b80a05f68575e88364d6fcc6234965ccc5af
   RealmSwift: 757e1416e2314f7e1543abdb2aa65b311d7b6545
 
-PODFILE CHECKSUM: f016a414cd17c8d4dbe20093e7647d9b573caa7e
+PODFILE CHECKSUM: e591e4714c9ec282234211e8c38718ac89059437
 
 COCOAPODS: 1.14.2

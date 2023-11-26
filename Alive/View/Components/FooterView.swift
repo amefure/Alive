@@ -45,7 +45,7 @@ struct FooterView: View {
                 Button {
                     selectedTab = 2
                 } label: {
-                    Image(systemName: "square.grid.2x2")
+                    Image(systemName: "chart.bar")
                 }.frame(width: 60, height: 60)
                     .background(.themaYellow)
                     .foregroundStyle(.foundation)

@@ -26,7 +26,7 @@ struct RootView: View {
                         .tag(1)
                 
                     
-                    ArtistGridListView()
+                    ArtistCountChartView()
                         .tag(2)
                     
                     // フッターには表示されていないタブ(リストAllボタンで表示)

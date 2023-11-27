@@ -70,14 +70,14 @@ struct FooterView: View {
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: nil)
             }).padding(5)
-            .alert(Text("保存容量が上限に達しました..."),
+            .alert(Text(L10n.adsLimitAlertTitle),
                    isPresented: $isShowCapacityAlert,
                    actions: {
                 Button(action: {}, label: {
                     Text("OK")
                 })
             }, message: {
-                Text("設定から広告を視聴すると\n保存容量を増やすことができます。")
+                Text((L10n.adsLimitAlertMsg))
             })
         
     }

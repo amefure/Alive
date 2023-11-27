@@ -35,21 +35,21 @@ struct RewardButtonView: View {
             HStack {
                 Image(systemName: "bag.badge.plus")
                     .foregroundStyle(.themaYellow)
-                Text(reward.rewardLoaded ?  "広告を視聴して容量を追加する" : "広告を読み込み中です。" )
+                Text(reward.rewardLoaded ?  L10n.adsAddCapacity : L10n.adsLoading )
             }
         }
         .onAppear {
             reward.loadReward()
         }
         .disabled(!reward.rewardLoaded)
-        .alert(Text("お知らせ"),
+        .alert(Text(L10n.adsAlertTitle),
                isPresented: $isAlertReward,
                actions: {
                    Button(action: {}, label: {
                        Text("OK")
                    })
                }, message: {
-                   Text("広告を視聴できるのは1日に1回までです。")
+                   Text(L10n.adsAlertMsg)
                })
     }
 }

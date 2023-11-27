@@ -48,8 +48,6 @@
 "live_main_artist" = "一押しアーティスト";
 
 // MARK: - Setting
-"setting_app_setting" = "アプリ設定";
-
 "setting_review_title" = "アプリをレビューする";
 "setting_review_url_query" = "?action=write-review";
 "app_url" = "https://apps.apple.com/jp/app/alive/id6473169112";
@@ -59,3 +57,14 @@
 
 "setting_terms_of_service_title" = "利用規約とプライバシーポリシー";
 "setting_terms_of_service_url" = "https://tech.amefure.com/app-terms-of-service";
+
+// MARK: - Ads
+"ads_title" = "広告";
+"ads_desc_1" = "・追加される容量は10個です。\n・容量の追加は1日に1回までです。";
+"ads_current_capacity_%@" = "現在の容量:%@個";
+"ads_add_capacity" = "広告を視聴して容量を追加する";
+"ads_loading" = "広告を読み込み中です。";
+"ads_alert_title" = "お知らせ";
+"ads_alert_msg" = "広告を視聴できるのは1日に1回までです。";
+"ads_limit_alert_title" = "保存容量が上限に達しました...";
+"ads_limit_alert_msg" = "設定から広告を視聴すると\n保存容量を増やすことができます。";

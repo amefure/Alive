@@ -30,35 +30,35 @@ struct SettingView: View {
             
             List {
                
-                Section(header: Text("広告"), footer: Text("・追加される容量は10個です。\n・容量の追加は1日に1回までです。")) {
+                Section(header: Text(L10n.adsTitle), footer: Text(L10n.adsDesc1)) {
                     RewardButtonView()
                        HStack {
                            Image(systemName: "bag")
                                .foregroundStyle(.themaYellow)
-                           Text("現在の容量:\(userDefaults.getCapacity())個")
+                           Text(L10n.adsCurrentCapacity(userDefaults.getCapacity()))
                        }
                    }
                 
                 Section(header: Text("Link")) {
-                    // 1:レビューページ
-                    Link(destination: viewModel.reviewUrl, label: {
-                        HStack {
-                            Image(systemName: "hand.thumbsup")
-                                .foregroundStyle(.themaYellow)
-                            Text(L10n.settingReviewTitle)
-                        }
-                    })
-                    
-                    // 2:シェアボタン
-                    Button(action: {
-                        viewModel.shareApp()
-                    }) {
-                        HStack {
-                            Image(systemName: "star.bubble")
-                                .foregroundStyle(.themaYellow)
-                            Text(L10n.settingRecommendTitle)
-                        }
-                    }
+//                    // 1:レビューページ
+//                    Link(destination: viewModel.reviewUrl, label: {
+//                        HStack {
+//                            Image(systemName: "hand.thumbsup")
+//                                .foregroundStyle(.themaYellow)
+//                            Text(L10n.settingReviewTitle)
+//                        }
+//                    })
+//                    
+//                    // 2:シェアボタン
+//                    Button(action: {
+//                        viewModel.shareApp()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "star.bubble")
+//                                .foregroundStyle(.themaYellow)
+//                            Text(L10n.settingRecommendTitle)
+//                        }
+//                    }
                     
                     // 3:利用規約とプライバシーポリシー
                     Link(destination: viewModel.termsUrl, label: {

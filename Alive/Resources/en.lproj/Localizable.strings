@@ -46,9 +46,6 @@
 
 
 // MARK: - Setting
-"setting_app_setting" = "App settings";
-
-
 "setting_review_title" = "Review app";
 "setting_review_url_query" = "?action=write-review";
 "app_url" = "https://apps.apple.com/en/app/alive/";
@@ -58,3 +55,14 @@
 
 "setting_terms_of_service_title" = "Terms of Service and Privacy Policy";
 "setting_terms_of_service_url" = "https://tech.amefure.com/app-terms-of-service";
+
+// MARK: - Ads
+"ads_title" = "Ads";
+"ads_desc_1" = "・Added capacity is 10 pieces. \n・Capacity can only be added once a day.";
+"ads_current_capacity_%@" = "Current capacity:%@";
+"ads_add_capacity" = "Watch ads and add space";
+"ads_loading" = "Ad is loading.";
+"ads_alert_title" = "Notice";
+"ads_alert_msg" = "You can only view ads once per day.";
+"ads_limit_alert_title" = "Storage capacity has reached the limit...";
+"ads_limit_alert_msg" = "You can increase your storage capacity by viewing advertisements from the settings.";

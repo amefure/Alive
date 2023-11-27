@@ -10,8 +10,30 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  /// https://apps.apple.com/jp/app/alive
-  internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive")
+  /// 広告を視聴して容量を追加する
+  internal static let adsAddCapacity = L10n.tr("Localizable", "ads_add_capacity", fallback: "広告を視聴して容量を追加する")
+  /// 広告を視聴できるのは1日に1回までです。
+  internal static let adsAlertMsg = L10n.tr("Localizable", "ads_alert_msg", fallback: "広告を視聴できるのは1日に1回までです。")
+  /// お知らせ
+  internal static let adsAlertTitle = L10n.tr("Localizable", "ads_alert_title", fallback: "お知らせ")
+  /// 現在の容量:%@個
+  internal static func adsCurrentCapacity(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "ads_current_capacity_%@", String(describing: p1), fallback: "現在の容量:%@個")
+  }
+  /// ・追加される容量は10個です。
+  /// ・容量の追加は1日に1回までです。
+  internal static let adsDesc1 = L10n.tr("Localizable", "ads_desc_1", fallback: "・追加される容量は10個です。\n・容量の追加は1日に1回までです。")
+  /// 設定から広告を視聴すると
+  /// 保存容量を増やすことができます。
+  internal static let adsLimitAlertMsg = L10n.tr("Localizable", "ads_limit_alert_msg", fallback: "設定から広告を視聴すると\n保存容量を増やすことができます。")
+  /// 保存容量が上限に達しました...
+  internal static let adsLimitAlertTitle = L10n.tr("Localizable", "ads_limit_alert_title", fallback: "保存容量が上限に達しました...")
+  /// 広告を読み込み中です。
+  internal static let adsLoading = L10n.tr("Localizable", "ads_loading", fallback: "広告を読み込み中です。")
+  /// 広告
+  internal static let adsTitle = L10n.tr("Localizable", "ads_title", fallback: "広告")
+  /// https://apps.apple.com/jp/app/alive/id6473169112
+  internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive/id6473169112")
   /// yyyy年M月d日
   internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月d日")
   /// yyyy年
@@ -72,8 +94,6 @@ internal enum L10n {
   internal static let onboardingNext = L10n.tr("Localizable", "onboarding_next", fallback: "次へ")
   /// はじめる
   internal static let onboardingStart = L10n.tr("Localizable", "onboarding_start", fallback: "はじめる")
-  /// アプリ設定
-  internal static let settingAppSetting = L10n.tr("Localizable", "setting_app_setting", fallback: "アプリ設定")
   /// 
   internal static let settingRecommendShareText = L10n.tr("Localizable", "setting_recommend_share_text", fallback: "")
   /// 「ALIVE」をオススメする

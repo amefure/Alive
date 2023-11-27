@@ -32,7 +32,8 @@ struct AllLiveListView: View {
             LiveScheduleListView(lives: filteringLives)
             
             AdMobBannerView()
-                .frame(height: 60)
+                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
+                .padding(.bottom, DeviceSizeManager.isSESize ? 25 : 20)
             
         }.onAppear {
             filteringLives = lives

@@ -16,6 +16,14 @@ struct CardLiveView:View {
     // MARK: - Receive
     public var live: Live?
     
+    private var imgSize: CGFloat {
+        if DeviceSizeManager.isSESize {
+            return 40
+        } else {
+            return 50
+        }
+    }
+    
     var body: some View {
         if let live = live {
             
@@ -27,11 +35,11 @@ struct CardLiveView:View {
                         
                         Image(uiImage: image)
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .frame(width: imgSize, height: imgSize)
                             .background(.foundation)
-                            .clipShape(RoundedRectangle(cornerRadius: 50))
+                            .clipShape(RoundedRectangle(cornerRadius: imgSize))
                             .overlay(
-                                RoundedRectangle(cornerRadius: 50)
+                                RoundedRectangle(cornerRadius: imgSize)
                                     .stroke(.white, lineWidth: 3)
                                 
                             ).padding(.leading, 20)
@@ -39,9 +47,9 @@ struct CardLiveView:View {
                     } else {
                         Asset.Images.appLogoElectric.swiftUIImage
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .frame(width: imgSize, height: imgSize)
                             .background(.foundation)
-                            .clipShape(RoundedRectangle(cornerRadius: 50))
+                            .clipShape(RoundedRectangle(cornerRadius: imgSize))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 50)
                                     .stroke(.white, lineWidth: 3)
@@ -52,8 +60,8 @@ struct CardLiveView:View {
                     
                     
                     Text(live.name)
-                        .frame(height: 100)
-                        .font(.system(size: 20))
+                        .frame(height: DeviceSizeManager.isSESize ? 80 : 100)
+                        .font(.system(size: DeviceSizeManager.isSESize ? 14 : 20))
                         .padding(.leading, 20)
                         .textSelection(.enabled)
                     
@@ -87,11 +95,11 @@ struct CardLiveView:View {
                             }
                         }
                         
-                        MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: 80)
+                        MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: DeviceSizeManager.isSESize ? 65 : 80)
                             .padding(.trailing, 20)
                         
                     }
-                }.frame(height: 100)
+                }.frame(height: DeviceSizeManager.isSESize ? 80 : 100)
                     .background(Color.white)
                     .foregroundStyle(.foundation)
                 

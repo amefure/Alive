@@ -16,42 +16,44 @@ struct LiveScheduleListView: View {
     public let lives: [Live]
     
     var body: some View {
-        List {
+        ScrollView {
             ForEach(lives) { live in
-                NavigationLink {
-                    DetailLiveView(live: live)
-                } label: {
-                    HStack {
-                        
-                        Text(dateFormatManager.getString2(date: live.date))
-                            .font(.caption)
-                            .frame(width: 60)
-                        
-                        ZStack {
-                            Text("")
-                                .padding(10)
-                                .frame(width: 80)
-                                .background(live.type.color)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                                .opacity(0.5)
+                VStack(spacing: 0) {
+                    NavigationLink {
+                        DetailLiveView(live: live)
+                    } label: {
+                        HStack {
                             
-                            Text(live.type.value)
-                                .padding(5)
-                                .frame(width: 80)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            Text(dateFormatManager.getString2(date: live.date))
+                                .font(.caption)
+                                .frame(width: 60)
+                            
+                            ZStack {
+                                Text("")
+                                    .padding(10)
+                                    .frame(width: 80)
+                                    .background(live.type.color)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                    .opacity(0.5)
+                                
+                                Text(live.type.value)
+                                    .padding(5)
+                                    .frame(width: 80)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                            }
+                            
+                            
+                            Text(live.artist)
+                            
+                            Spacer()
                         }
-                        
-                        
-                        Text(live.artist)
-                        
-                        Spacer()
                     }
-                }.padding(.vertical, 3)
-                    .listRowSeparatorTint(Asset.Colors.foundation.swiftUIColor)
-                    .listRowBackground(Color.white)
+                }.padding(.vertical, 10)
+                    .background(Color.white)
                     .foregroundStyle(.foundation)
                     .fontWeight(.bold)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(.horizontal, 10)
             }
         }.scrollContentBackground(.hidden)
             .background(.foundation)

@@ -33,11 +33,11 @@ struct ArtistCountChartView: View {
             
             if select == "bar" {
                 ArtistBarChartView(artistCounts: repository.getArtistCounts.reversed().suffix(5).reversed())
-                    .frame(width: DeviceSizeManager.deviceWidth, height: 300)
+                    .frame(width: DeviceSizeManager.deviceWidth, height: DeviceSizeManager.isSESize ? 200 : 300)
                     .id(UUID()) // キャッシュをなくし再描画
             } else {
                 ArtistPieChartView(artistCounts: repository.getArtistCounts.reversed().suffix(5))
-                    .frame(width: DeviceSizeManager.deviceWidth, height: 300)
+                    .frame(width: DeviceSizeManager.deviceWidth, height: DeviceSizeManager.isSESize ? 200 : 300)
                     .id(UUID()) // キャッシュをなくし再描画
             }
             
@@ -57,8 +57,6 @@ struct ArtistCountChartView: View {
                         Text("\(count)")
                             .foregroundStyle(.themaYellow)
                         
-                        
-                        
                     }.padding(5)
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
@@ -67,7 +65,8 @@ struct ArtistCountChartView: View {
                 .background(.clear)
             
             AdMobBannerView()
-                .frame(height: 60)
+                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
+                .padding(.bottom, DeviceSizeManager.isSESize ? 25 : 20)
             
         }.background(.foundation)
             .onAppear {

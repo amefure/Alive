@@ -169,7 +169,7 @@ struct DetailLiveView: View {
             }.padding(.bottom)
             
             AdMobBannerView()
-                .frame(height: 60)
+                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
             
             Spacer()
             

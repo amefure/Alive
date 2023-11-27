@@ -48,7 +48,7 @@ class DateFormatManager {
     }
     
     public func getShortString(date: Date) -> String {
-        df.dateFormat = "Mdd"
+        df.dateFormat = "M/dd"
         return df.string(from: date)
     }
     

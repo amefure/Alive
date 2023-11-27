@@ -28,12 +28,12 @@ struct MainView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: DeviceSizeManager.isSESize ? 2 : 10) {
             
             // MARK: - NEXT LIVE
             Text("NEXT LIVE")
                 .fontWeight(.bold)
-                .padding(.vertical, 10)
+                .padding(.vertical, DeviceSizeManager.isSESize ? 5 : 10)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
@@ -56,7 +56,7 @@ struct MainView: View {
             // MARK: - LIVE HISTORY
             Text("LIVE HISTORY")
                 .fontWeight(.bold)
-                .padding(.vertical, 10)
+                .padding(.vertical, DeviceSizeManager.isSESize ? 5 : 10)
             
             LiveHistoryBlockView(array: repository.getMonthLiveHistory)
             
@@ -66,13 +66,13 @@ struct MainView: View {
                 Spacer()
                     .frame(width: 80)
                     .padding(.leading, 10)
-                    .padding(.top, 20)
+                    .padding(.top, DeviceSizeManager.isSESize ? 10 : 20)
                 
                 Spacer()
                 
                 Text("LIVE LIST")
                     .fontWeight(.bold)
-                    .padding(.top, 20)
+                    .padding(.top, DeviceSizeManager.isSESize ? 10 : 20)
                 
                 Spacer()
                 
@@ -88,7 +88,7 @@ struct MainView: View {
                     
                 }.frame(width: 80)
                     .padding(.trailing, 10)
-                    .padding(.top, 20)
+                    .padding(.top, DeviceSizeManager.isSESize ? 10 : 20)
                 
             }
             
@@ -139,13 +139,13 @@ struct LiveHistoryBlockView: View {
                                 }
                             } label: {
                                 Text("")
-                                    .frame(width:size,height: size)
+                                    .frame(width: size, height: size)
                                     .background(.themaYellow)
                                     .clipShape(RoundedRectangle(cornerRadius: 3))
                             }
                         }else {
                             Text("")
-                                .frame(width:size,height: size)
+                                .frame(width: size, height: size)
                                 .background(.opacityGray)
                                 .clipShape(RoundedRectangle(cornerRadius: 3))
                         }

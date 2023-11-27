@@ -20,6 +20,14 @@ struct FooterView: View {
     @State private var isShowInput: Bool = false
     @State private var isShowCapacityAlert: Bool = false
     
+    private var btnSize: CGFloat {
+        if DeviceSizeManager.isSESize {
+            return 45
+        } else {
+            return 60
+        }
+    }
+    
     var body: some View {
         
         HStack {
@@ -29,10 +37,10 @@ struct FooterView: View {
             } label: {
                 Image(systemName: "list.bullet.below.rectangle")
                 
-            }.frame(width: 60, height: 60)
+            }.frame(width: btnSize, height: btnSize)
                 .background(.themaYellow)
                 .foregroundStyle(.foundation)
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: btnSize))
             
             
             Spacer()
@@ -47,10 +55,10 @@ struct FooterView: View {
             } label: {
                 Image(systemName: "plus")
             }.padding()
-                .frame(width: 60, height: 60)
+                .frame(width: btnSize, height: btnSize)
                 .background(.themaYellow)
                 .foregroundStyle(.foundation)
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: btnSize))
             
             Spacer()
             
@@ -59,10 +67,10 @@ struct FooterView: View {
                 selectedTab = 2
             } label: {
                 Image(systemName: "chart.bar")
-            }.frame(width: 60, height: 60)
+            }.frame(width: btnSize, height: btnSize)
                 .background(.themaYellow)
                 .foregroundStyle(.foundation)
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: btnSize))
             
             
             Spacer()

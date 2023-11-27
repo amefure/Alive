@@ -44,6 +44,8 @@
 "delete_button_title" = "削除";
 "delete_button_alert_title" = "このLiveを削除しますか？";
 
+// MARK: - Input Item
+"live_main_artist" = "一押しアーティスト";
 
 // MARK: - Setting
 "setting_app_setting" = "アプリ設定";

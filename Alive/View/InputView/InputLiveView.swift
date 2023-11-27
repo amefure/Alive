@@ -190,7 +190,7 @@ struct InputLiveView: View {
                     Image(systemName: "music.mic")
                         .foregroundStyle(.black)
                         .frame(width: 23)
-                    TextField(liveType != .oneman ? "一押し" + L10n.liveArtist : L10n.liveArtist, text: $artist)
+                    TextField(liveType != .oneman ? L10n.liveMainArtist : L10n.liveArtist, text: $artist)
                     
                     Spacer()
                     

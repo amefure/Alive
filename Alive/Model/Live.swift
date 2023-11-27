@@ -139,11 +139,6 @@ class Live: Object, ObjectKeyIdentifiable {
         live4.date = df.getDate(str: "2023年11月4日")
         live4.venue = "幕張メッセ"
         live4.type = .festival
-
-//        let list = RealmSwift.List<TimeTable>()
-//        list.append(objectsIn: TimeTable.demoTimeTables)
-//        live4.timeTable = list
-        
         lives.append(live4)
         
         let live5 = Live()
@@ -177,8 +172,119 @@ TREASURE05X 2023 20th Anniersary -NEW PROMISED LAND
         
         lives.append(live7)
         
-
+        return lives
+    }
+    
+    static var demoLivesEn: [Live] {
+        var lives: [Live] = []
+        let df = DateFormatManager()
         
+        let live = Live()
+        live.artist = "ONE OK ROCK"
+        live.name = "VS"
+        live.date = df.getDate(str: "2023年11月14日")
+        live.venue = "TOKYO Dome"
+        live.type = .battleBands
+        live.price = 12000
+        live.openingTime = df.getDate(hour: 16, minute: 0)
+        live.performanceTime = df.getDate(hour: 18, minute: 0)
+        live.memo = "MY FIRST STORY"
+        live.setList = """
+        —-ONE OK ROCK —-
+
+        1. The Beginning
+        2. Never Let This Go
+        3. Nothing Helps
+        4. Make It Out Alive
+        5. C.h.a.o.s.m.y.t.h.
+        6. Wherever you are
+        7. Renegade
+        8. Deeper Deeper
+        9. Right By Your Side
+        10. 未完成交響曲
+        11. We are
+        12. 完全感覚Dreamer
+        13. キミシダイ列車
+
+        —-MY FIRST STORY —-
+
+        1. 最終回STORY
+        2. ALONE
+        3. メリーゴーランド
+        4. 君のいない夜を越えて
+        5. アンダーグラウンド
+        6. 東京ミッドナイト
+        7. PARADOX
+        8. 虚言NEUROSE
+        9. ACCIDENT
+        10. I’M A MESS
+        11. MONSTER
+        12. モノクロエフェクター
+        13. REVIVER
+        14. 不可逆リプレイス
+        15. Home
+        """
+                
+        lives.append(live)
+        
+        let live2 = Live()
+        live2.artist = "Ed Sheeran"
+        live2.name = "Ed Sheeran +-=÷x Tour 2024"
+        live2.date = df.getDate(str: "2023年12月5日")
+        live2.venue = "singapore"
+        live2.type = .oneman
+        
+        lives.append(live2)
+        
+        let live3 = Live()
+        live3.artist = "Bruno Mars"
+        live3.name = "Bruno Mars Las Vegas Tickets at Dolby Live"
+        live3.date = df.getDate(str: "2024年1月25日")
+        live3.venue = "Las Vegas"
+        live3.type = .oneman
+        live3.openingTime = df.getDate(hour: 18, minute: 0)
+        live3.performanceTime = df.getDate(hour: 19, minute: 0)
+        
+        lives.append(live3)
+        
+        let live4 = Live()
+        live4.artist = "Taylor Swift"
+        live4.name = "NEX_FEST -Extra-"
+        live4.date = df.getDate(str: "2023年11月4日")
+        live4.venue = "幕張メッセ"
+        live4.type = .oneman
+        lives.append(live4)
+        
+        let live5 = Live()
+        live5.artist = "Justin Bieber"
+        live5.name = "AIMYON TOUR 2023 - マジカル・バスルーム- "
+        live5.date = df.getDate(str: "2023年11月2日")
+        live5.venue = "和歌山県民文化会館大ホール"
+        live5.type = .festival
+        
+        lives.append(live5)
+        
+        let live6 = Live()
+        live6.artist = "Ed Sheeran"
+        live6.name = "FM802 ROCK FESTIVAL RADIO CRAZY 2023"
+        live6.date = df.getDate(str: "2023年12月27日")
+        live6.venue = "インテックス大阪"
+        live6.type = .festival
+        live6.memo = """
+TREASURE05X 2023 20th Anniersary -NEW PROMISED LAND
+チケット：アプリ「FOLK-S」
+"""
+
+        lives.append(live6)
+        
+        let live7 = Live()
+        live7.artist = "Ed Sheeran"
+        live7.name = "yama Christmas Special Live 2023"
+        live7.date = df.getDate(str: "2023年11月26日")
+        live7.venue = "新川文化ホール"
+        live7.type = .oneman
+        
+        lives.append(live7)
         
         return lives
     }

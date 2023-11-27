@@ -15,7 +15,7 @@ class TimeTable: Object, ObjectKeyIdentifiable {
     @Persisted var memo: String = ""                // MEMO
     @Persisted var color: TimeTableColor = .yellow  // カラー
     
-    
+    // DetailLiveViewに直接渡す
     static var demoTimeTables: Array<TimeTable> {
         var timeTables: [TimeTable] = []
         let df = DateFormatManager()
@@ -64,6 +64,66 @@ class TimeTable: Object, ObjectKeyIdentifiable {
         
         let timeTable8 = TimeTable()
         timeTable8.artist = "ROTTENGRAFFTY"
+        timeTable8.time = df.getDate(hour: 17, minute: 10)
+        timeTable8.color = .purple
+        timeTables.append(timeTable8)
+        
+        let timeTable9 = TimeTable()
+        timeTable9.artist = "MY FIRST STORY"
+        timeTable9.time = df.getDate(hour: 17, minute: 50)
+        timeTable9.color = .yellow
+        timeTables.append(timeTable9)
+        return timeTables
+    }
+    
+    static var demoTimeTablesEn: Array<TimeTable> {
+        var timeTables: [TimeTable] = []
+        let df = DateFormatManager()
+        
+        let timeTable = TimeTable()
+        timeTable.artist = "Avicii"
+        timeTable.time = df.getDate(hour: 11, minute: 5)
+        timeTable.color = .red
+        timeTables.append(timeTable)
+        
+        let timeTable2 = TimeTable()
+        timeTable2.artist = "Ariana Grande"
+        timeTable2.time = df.getDate(hour: 11, minute: 35)
+        timeTable2.color = .yellow
+        timeTables.append(timeTable2)
+        
+        let timeTable3 = TimeTable()
+        timeTable3.artist = "Justin Bieber"
+        timeTable3.time = df.getDate(hour: 13, minute: 15)
+        timeTable3.color = .red
+        timeTables.append(timeTable3)
+        
+        let timeTable4 = TimeTable()
+        timeTable4.artist = "Ed Sheeran"
+        timeTable4.time = df.getDate(hour: 12, minute: 40)
+        timeTable4.color = .purple
+        timeTables.append(timeTable4)
+        
+        let timeTable5 = TimeTable()
+        timeTable5.artist = "Taylor Swift"
+        timeTable5.time = df.getDate(hour: 14, minute: 20)
+        timeTable5.color = .green
+        timeTables.append(timeTable5)
+        
+        let timeTable6 = TimeTable()
+        timeTable6.artist = "Bruno Mars"
+        timeTable6.time = df.getDate(hour: 16, minute: 30)
+        timeTable6.color = .red
+        timeTables.append(timeTable6)
+        
+        let timeTable7 = TimeTable()
+        timeTable7.artist = "THE BACK BORN"
+        timeTable7.time = df.getDate(hour: 15, minute: 55)
+        timeTable7.color = .blue
+        timeTables.append(timeTable7)
+        
+        let timeTable8 = TimeTable()
+        timeTable8.artist = "ONE OK ROCK"
         timeTable8.time = df.getDate(hour: 17, minute: 10)
         timeTable8.color = .purple
         timeTables.append(timeTable8)

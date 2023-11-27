@@ -28,9 +28,9 @@
 "live_timeTable" = "TimeTable";
 
 // MARK: - LiveType
-"live_type_oneman" = "One-man Show";
-"live_type_battleBands" = "Battle of the Bands";
-"live_type_festival" = "Music Festival";
+"live_type_oneman" = "Live";
+"live_type_battleBands" = "Jointgig";
+"live_type_festival" = "Festival";
 "live_type_unknown" = "Unknown";
 
 // MARK: - Loacle
@@ -40,6 +40,9 @@
 // MARK: - Detail Item
 "delete_button_title" = "Delete";
 "delete_button_alert_title" = "Do you want to delete Live?";
+
+// MARK: - Input Item
+"live_main_artist" = "MainArtist";
 
 
 // MARK: - Setting

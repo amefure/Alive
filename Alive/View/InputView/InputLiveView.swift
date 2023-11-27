@@ -56,7 +56,9 @@ struct InputLiveView: View {
             closingTime = live.closingTime
             venue = live.venue
             liveType = live.type
-            price = String(live.price)
+            if live.price != -1 {
+                price = String(live.price)
+            }
             memo = live.memo
         }
     }
@@ -182,7 +184,39 @@ struct InputLiveView: View {
                     }
                 }
                 
-                CustomInputView(text: $artist, imgName: "music.mic", placeholder: liveType == .festival ? "一押し" + L10n.liveArtist : L10n.liveArtist)
+//                CustomInputView(text: $artist, imgName: "music.mic", placeholder: liveType != .oneman ? "一押し" + L10n.liveArtist : L10n.liveArtist)
+                
+                HStack {
+                    Image(systemName: "music.mic")
+                        .foregroundStyle(.black)
+                        .frame(width: 23)
+                    TextField(liveType != .oneman ? "一押し" + L10n.liveArtist : L10n.liveArtist, text: $artist)
+                    
+                    Spacer()
+                    
+                    if repository.artists.count != 0 {
+                        Menu {
+                            ForEach(repository.artists, id: \.self) { artist in
+                                Button {
+                                    self.artist = artist
+                                } label: {
+                                    Text(artist)
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "chevron.up.chevron.down")
+                                .font(.system(size: 13))
+                                .foregroundStyle(.foundation)
+                        }
+                    }
+                   
+                }.padding()
+                    .background(.regularMaterial)
+                    .environment(\.colorScheme, .light)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding()
+                
+             
                 
                 CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
                 

@@ -34,6 +34,7 @@ struct RewardButtonView: View {
         }) {
             HStack {
                 Image(systemName: "bag.badge.plus")
+                    .foregroundStyle(.themaYellow)
                 Text(reward.rewardLoaded ?  "広告を視聴して容量を追加する" : "広告を読み込み中です。" )
             }
         }

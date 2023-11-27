@@ -34,6 +34,7 @@ struct SettingView: View {
                     RewardButtonView()
                        HStack {
                            Image(systemName: "bag")
+                               .foregroundStyle(.themaYellow)
                            Text("現在の容量:\(userDefaults.getCapacity())個")
                        }
                    }
@@ -43,6 +44,7 @@ struct SettingView: View {
                     Link(destination: viewModel.reviewUrl, label: {
                         HStack {
                             Image(systemName: "hand.thumbsup")
+                                .foregroundStyle(.themaYellow)
                             Text(L10n.settingReviewTitle)
                         }
                     })
@@ -53,6 +55,7 @@ struct SettingView: View {
                     }) {
                         HStack {
                             Image(systemName: "star.bubble")
+                                .foregroundStyle(.themaYellow)
                             Text(L10n.settingRecommendTitle)
                         }
                     }
@@ -61,6 +64,7 @@ struct SettingView: View {
                     Link(destination: viewModel.termsUrl, label: {
                         HStack {
                             Image(systemName: "note.text")
+                                .foregroundStyle(.themaYellow)
                             Text(L10n.settingTermsOfServiceTitle)
                             Image(systemName: "link").font(.caption)
                         }

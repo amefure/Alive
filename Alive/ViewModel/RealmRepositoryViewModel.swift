@@ -14,11 +14,15 @@ class RealmRepositoryViewModel: ObservableObject {
     private let repository = RealmRepository()
     
     @Published var lives: Array<Live> = []
+    @Published var artists: Array<String> = []
     
     public func readAllLive() {
         lives.removeAll()
-        let result = repository.readAllLive()
+//        let result = repository.readAllLive()
+        let result = Live.demoLives
         lives = Array(result).sorted(by: { $0.date > $1.date })
+        
+        artists = Array(Set(lives.filter({ $0.artist != "" }).map({ $0.artist }))).sorted()
     }
     
     public func createLive(newLive: Live) {

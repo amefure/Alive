@@ -32,6 +32,11 @@ class DateFormatManager {
         return df.string(from: date)
     }
     
+    public func getDate(str: String) -> Date {
+        df.dateFormat = "yyyy年M月d日"
+        return df.date(from: str) ?? Date()
+    }
+    
     public func getYearString(date: Date) -> String {
         df.dateFormat = "YYYY"
         return df.string(from: date)
@@ -43,14 +48,14 @@ class DateFormatManager {
     }
     
     public func getShortString(date: Date) -> String {
-        df.dateFormat = "MM/dd"
+        df.dateFormat = "Mdd"
         return df.string(from: date)
     }
     
     public func getMouthAndDayString(date: Date) -> (String, String) {
-        df.dateFormat = "MM"
+        df.dateFormat = "M"
         let month = df.string(from: date)
-        df.dateFormat = "dd"
+        df.dateFormat = "d"
         let day = df.string(from: date)
         return (month, day)
     }

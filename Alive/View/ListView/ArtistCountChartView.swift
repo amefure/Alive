@@ -36,11 +36,14 @@ struct ArtistCountChartView: View {
                     .frame(width: DeviceSizeManager.deviceWidth, height: 300)
                     .id(UUID()) // キャッシュをなくし再描画
             } else {
-                ArtistPieChartView(artistCounts: repository.getArtistCounts.reversed().suffix(5).reversed())
+                ArtistPieChartView(artistCounts: repository.getArtistCounts.reversed().suffix(5))
                     .frame(width: DeviceSizeManager.deviceWidth, height: 300)
                     .id(UUID()) // キャッシュをなくし再描画
             }
-           
+            
+            Rectangle()
+                .frame(width: DeviceSizeManager.deviceWidth - 40 , height: 1)
+                .background(.white)
             
             Spacer()
             

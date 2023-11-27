@@ -24,6 +24,13 @@ struct ArtistPieChartView: UIViewRepresentable {
         // チャートビューのサイズと位置を定義
         let chartView = PieChartView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
+        guard artistCounts.count != 0 else {
+            chartView.noDataText = "データがありません"
+            chartView.noDataTextColor = .themaRed
+            chartView.noDataFont = .boldSystemFont(ofSize: 15)
+            return chartView
+        }
+        
         // チャートに渡す用の配列を定義
         var entries: [ChartDataEntry] = []
         
@@ -62,8 +69,7 @@ struct ArtistPieChartView: UIViewRepresentable {
         
         // データのラベル色
     
-        chartView.noDataText = "データがありません"
-        chartView.noDataTextColor = .themaRed
+        
         
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
         

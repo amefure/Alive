@@ -139,9 +139,10 @@ class Live: Object, ObjectKeyIdentifiable {
         live4.date = df.getDate(str: "2023年11月4日")
         live4.venue = "幕張メッセ"
         live4.type = .festival
-        let list = RealmSwift.List<TimeTable>()
-        list.append(objectsIn: TimeTable.demoTimeTables)
-        live4.timeTable = list
+
+//        let list = RealmSwift.List<TimeTable>()
+//        list.append(objectsIn: TimeTable.demoTimeTables)
+//        live4.timeTable = list
         
         lives.append(live4)
         
@@ -160,7 +161,11 @@ class Live: Object, ObjectKeyIdentifiable {
         live6.date = df.getDate(str: "2023年12月27日")
         live6.venue = "インテックス大阪"
         live6.type = .festival
-        
+        live6.memo = """
+TREASURE05X 2023 20th Anniersary -NEW PROMISED LAND
+チケット：アプリ「FOLK-S」
+"""
+
         lives.append(live6)
         
         let live7 = Live()

@@ -42,6 +42,8 @@ struct RootView: View {
             .navigationDestination(isPresented: $isShowSetting) {
                 SettingView()
             }
+            .navigationBarBackButtonHidden()
+                .navigationBarHidden(true)
     }
 }
 

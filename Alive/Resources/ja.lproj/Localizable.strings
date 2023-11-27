@@ -6,6 +6,14 @@
   
 */
 
+// MARK: - Onboarding
+"onboarding1_title" = "次のLive情報をチケット風に表示！\n直近1ヶ月のLive参戦履歴を塗り潰そう！";
+"onboarding2_title" = "アーティストごとの参戦回数をグラフで確認！\n友達に参戦回数を自慢しよう！";
+"onboarding3_title" = "自分だけのタイムテーブルを作成できる！\n開始時間や色分け、MEMOも残せるよ！";
+"onboarding_next" = "次へ";
+"onboarding_start" = "はじめる";
+
+
 // MARK: - Live
 "live_artist" = "アーティスト";
 "live_name" = "ライブ名";

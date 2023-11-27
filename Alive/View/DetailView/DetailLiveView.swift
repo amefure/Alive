@@ -175,8 +175,8 @@ struct DetailLiveView: View {
                                     
                                 }
                             }
-                        
-                        ForEach(live.timeTable.sorted(byKeyPath: "time", ascending: true)) { row in
+                        //live.timeTable.sorted(byKeyPath: "time", ascending: true)
+                        ForEach(TimeTable.demoTimeTables.sorted(by: {$0.time < $1.time})) { row in
                             HStack {
                                 Text(dateFormatManager.getTimeString(date: row.time))
                                 Text(row.artist)

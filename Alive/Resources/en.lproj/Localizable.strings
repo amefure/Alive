@@ -5,6 +5,14 @@
   Created by t&a on 2023/11/20.
   
 */
+
+// MARK: - Onboarding
+"onboarding1_title" = "Display the next Live information like a ticket! \nLet's fill it in yellow the 1 month's Live participation history!";
+"onboarding2_title" = "Check the number of participations for each artist in the graph! \nLet's brag to your friends about the number of times you've participated!";
+"onboarding3_title" = "You can create your own timetable! \nYou can also leave start times, color codes, and MEMOs!";
+"onboarding_next" = "Next";
+"onboarding_start" = "Start";
+
 // MARK: - Live
 "live_artist" = "Artist";
 "live_name" = "Live Name";

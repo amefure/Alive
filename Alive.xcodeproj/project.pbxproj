@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1232EB1D2B1440710072480C /* Onboarding1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232EB1C2B1440710072480C /* Onboarding1View.swift */; };
+		1232EB1F2B14409E0072480C /* Onboarding2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232EB1E2B14409E0072480C /* Onboarding2View.swift */; };
+		1232EB212B1440A70072480C /* Onboarding3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232EB202B1440A70072480C /* Onboarding3View.swift */; };
+		1232EB232B1440E30072480C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232EB222B1440E30072480C /* SplashView.swift */; };
 		1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */; };
 		1242A2CF2B0B66EE0033BD09 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1242A2CE2B0B66EE0033BD09 /* Images.xcassets */; };
 		1242A2D22B0B66EE0033BD09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1242A2D12B0B66EE0033BD09 /* Preview Assets.xcassets */; };
@@ -52,6 +56,10 @@
 
 /* Begin PBXFileReference section */
 		0AFA982D3E503272A6A1DBB4 /* Pods-Alive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.debug.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.debug.xcconfig"; sourceTree = "<group>"; };
+		1232EB1C2B1440710072480C /* Onboarding1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding1View.swift; sourceTree = "<group>"; };
+		1232EB1E2B14409E0072480C /* Onboarding2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2View.swift; sourceTree = "<group>"; };
+		1232EB202B1440A70072480C /* Onboarding3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding3View.swift; sourceTree = "<group>"; };
+		1232EB222B1440E30072480C /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1242A2C72B0B66EC0033BD09 /* Alive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliveApp.swift; sourceTree = "<group>"; };
 		1242A2CE2B0B66EE0033BD09 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -111,6 +119,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1232EB1B2B1440610072480C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1232EB1C2B1440710072480C /* Onboarding1View.swift */,
+				1232EB1E2B14409E0072480C /* Onboarding2View.swift */,
+				1232EB202B1440A70072480C /* Onboarding3View.swift */,
+				1232EB222B1440E30072480C /* SplashView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		1242A2BE2B0B66EC0033BD09 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +178,7 @@
 			children = (
 				1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */,
 				128C3E6E2B10BC6B00CB9A3D /* RootView.swift */,
+				1232EB1B2B1440610072480C /* Onboarding */,
 				128C3E722B10BF2A00CB9A3D /* ListView */,
 				128C3E712B10BF2000CB9A3D /* DetailView */,
 				128C3E702B10BF1300CB9A3D /* InputView */,
@@ -435,13 +455,16 @@
 				1242A3002B0B6F060033BD09 /* UserDefaultsRepository.swift in Sources */,
 				1242A2DE2B0B6A180033BD09 /* AdMobView.swift in Sources */,
 				1242A3022B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift in Sources */,
+				1232EB1F2B14409E0072480C /* Onboarding2View.swift in Sources */,
 				1242A30C2B0B8EAD0033BD09 /* FooterView.swift in Sources */,
 				1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */,
 				128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */,
 				1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */,
+				1232EB232B1440E30072480C /* SplashView.swift in Sources */,
 				1242A30A2B0B8C5F0033BD09 /* InputLiveView.swift in Sources */,
 				1242A2FE2B0B6EA40033BD09 /* DateFormatManager.swift in Sources */,
 				126341DB2B120076001B8E51 /* MainView.swift in Sources */,
+				1232EB212B1440A70072480C /* Onboarding3View.swift in Sources */,
 				1242A2F72B0B6E200033BD09 /* LiveScheduleListView.swift in Sources */,
 				1242A2FA2B0B6E710033BD09 /* ImageFileManager.swift in Sources */,
 				126341D92B11FBBC001B8E51 /* AdsConfig.swift in Sources */,
@@ -455,6 +478,7 @@
 				128C3E792B1162FB00CB9A3D /* RewardButtonView.swift in Sources */,
 				128C3E6D2B104ABD00CB9A3D /* MonthAndDayView.swift in Sources */,
 				128C3E752B10E29C00CB9A3D /* SettingView.swift in Sources */,
+				1232EB1D2B1440710072480C /* Onboarding1View.swift in Sources */,
 				1242A3172B0CBD970033BD09 /* LiveImageView.swift in Sources */,
 				1242A3102B0BA96D0033BD09 /* LiveType.swift in Sources */,
 				128C3E6F2B10BC6B00CB9A3D /* RootView.swift in Sources */,

@@ -12,18 +12,18 @@ import Foundation
 internal enum L10n {
   /// https://apps.apple.com/jp/app/alive
   internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive")
-  /// yyyy年M月dd日
-  internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月dd日")
+  /// yyyy年M月d日
+  internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月d日")
+  /// yyyy年
+  /// M月d日
+  internal static let dateFormatBlake = L10n.tr("Localizable", "date_format_blake", fallback: "yyyy年\nM月d日")
   /// ja_JP
   internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
   /// このLiveを削除しますか？
   internal static let deleteButtonAlertTitle = L10n.tr("Localizable", "delete_button_alert_title", fallback: "このLiveを削除しますか？")
   /// 削除
   internal static let deleteButtonTitle = L10n.tr("Localizable", "delete_button_title", fallback: "削除")
-  /// Localizable.strings
-  ///   Alive
-  /// 
-  ///   Created by t&a on 2023/11/20.
+  /// アーティスト
   internal static let liveArtist = L10n.tr("Localizable", "live_artist", fallback: "アーティスト")
   /// 終演
   internal static let liveClosingTime = L10n.tr("Localizable", "live_closingTime", fallback: "終演")
@@ -55,6 +55,21 @@ internal enum L10n {
   internal static let liveTypeUnknown = L10n.tr("Localizable", "live_type_unknown", fallback: "未設定")
   /// 開催地
   internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "開催地")
+  /// Localizable.strings
+  ///   Alive
+  /// 
+  ///   Created by t&a on 2023/11/20.
+  internal static let onboarding1Title = L10n.tr("Localizable", "onboarding1_title", fallback: "次のLive情報をチケット風に表示！\n直近1ヶ月のLive参戦履歴を塗り潰そう！")
+  /// アーティストごとの参戦回数をグラフで確認！
+  /// 友達に参戦回数を自慢しよう！
+  internal static let onboarding2Title = L10n.tr("Localizable", "onboarding2_title", fallback: "アーティストごとの参戦回数をグラフで確認！\n友達に参戦回数を自慢しよう！")
+  /// 自分だけのタイムテーブルを作成できる！
+  /// 開始時間や色分け、MEMOも残せるよ！
+  internal static let onboarding3Title = L10n.tr("Localizable", "onboarding3_title", fallback: "自分だけのタイムテーブルを作成できる！\n開始時間や色分け、MEMOも残せるよ！")
+  /// 次へ
+  internal static let onboardingNext = L10n.tr("Localizable", "onboarding_next", fallback: "次へ")
+  /// はじめる
+  internal static let onboardingStart = L10n.tr("Localizable", "onboarding_start", fallback: "はじめる")
   /// アプリ設定
   internal static let settingAppSetting = L10n.tr("Localizable", "setting_app_setting", fallback: "アプリ設定")
   /// 

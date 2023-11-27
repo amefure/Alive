@@ -24,7 +24,13 @@ struct AliveApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                RootView()
+                if UserDefaultsRepositoryViewModel.sheard.isInitialBoot {
+                    /// 一度でもアプリを起動していれば
+                    RootView()
+                } else {
+                    /// アプリ初回起動時
+                    SplashView()
+                }
             }
         }
     }

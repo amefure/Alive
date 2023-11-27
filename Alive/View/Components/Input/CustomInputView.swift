@@ -21,11 +21,11 @@ struct CustomInputView: View {
                 .foregroundStyle(.black)
                 .frame(width: 23)
             TextField(placeholder, text: $text)
-        }.padding()
+        }.padding(DeviceSizeManager.isSESize ? 10 : 15)
             .background(.regularMaterial)
             .environment(\.colorScheme, .light)
             .clipShape(RoundedRectangle(cornerRadius: 8))
-            .padding()
+            .padding(DeviceSizeManager.isSESize ? 10 : 15)
     }
 }
 

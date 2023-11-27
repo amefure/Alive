@@ -15,9 +15,7 @@ struct ArtistCountChartView: View {
     // MARK: - View
     @State var select: String = "bar"
     
-    
     var body: some View {
-        
         VStack {
             
             Text("LIVE COUNT")
@@ -47,20 +45,25 @@ struct ArtistCountChartView: View {
             
             Spacer()
             
-            List {
-                ForEach(repository.getArtistCounts, id: \.key) { artist, count in
-                    HStack {
-                        Text(artist)
-                        
-                        Spacer()
-                        
-                        Text("\(count)")
-                            .foregroundStyle(.themaYellow)
-                        
-                    }.padding(5)
-                        .foregroundStyle(.white)
-                        .fontWeight(.bold)
-                }
+            ScrollView {
+                VStack(spacing: 1) {
+                    ForEach(repository.getArtistCounts, id: \.key) { artist, count in
+                        HStack {
+                            Text(artist)
+                            
+                            Spacer()
+                            
+                            Text("\(count)")
+                                .foregroundStyle(.themaYellow)
+                            
+                        }.padding(10)
+                            .foregroundStyle(.white)
+                            .fontWeight(.bold)
+                            .background(.black)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                }.padding(.horizontal, 20)
+                    .padding(.vertical, 5)
             }.scrollContentBackground(.hidden)
                 .background(.clear)
             

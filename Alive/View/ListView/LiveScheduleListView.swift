@@ -16,15 +16,15 @@ struct LiveScheduleListView: View {
     public let lives: [Live]
     
     var body: some View {
-        ScrollView {
-            ForEach(lives) { live in
-                VStack(spacing: 0) {
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 1) {
+                ForEach(lives) { live in
                     NavigationLink {
                         DetailLiveView(live: live)
                     } label: {
                         HStack {
                             
-                            Text(dateFormatManager.getString2(date: live.date))
+                            Text(dateFormatManager.getStringBlake(date: live.date))
                                 .font(.caption)
                                 .frame(width: 60)
                             
@@ -46,14 +46,19 @@ struct LiveScheduleListView: View {
                             Text(live.artist)
                             
                             Spacer()
+                            
+                            Image(systemName: "chevron.forward")
+                                .padding(10)
+                                .foregroundStyle(.opacityGray)
                         }
-                    }
-                }.padding(.vertical, 10)
-                    .background(Color.white)
-                    .foregroundStyle(.foundation)
-                    .fontWeight(.bold)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(.horizontal, 10)
+                        
+                    }.padding(.vertical, 10)
+                        .background(Color.white)
+                        .foregroundStyle(.foundation)
+                        .fontWeight(.bold)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(.horizontal, 20)
+                }
             }
         }.scrollContentBackground(.hidden)
             .background(.foundation)
@@ -65,5 +70,5 @@ struct LiveScheduleListView: View {
 
 
 #Preview {
-    LiveScheduleListView(lives: [])
+    LiveScheduleListView(lives: Live.demoLives)
 }

@@ -215,11 +215,11 @@ struct InputLiveView: View {
                         }
                     }
                     
-                }.padding()
+                }.padding(DeviceSizeManager.isSESize ? 10 : 15)
                     .background(.regularMaterial)
                     .environment(\.colorScheme, .light)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding()
+                    .padding(DeviceSizeManager.isSESize ? 10 : 15)
                 
                 // MARK: - ライブ名
                 CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
@@ -247,11 +247,11 @@ struct InputLiveView: View {
                     
                     
                     Spacer()
-                }.padding()
+                }.padding(DeviceSizeManager.isSESize ? 10 : 15)
                     .background(.regularMaterial)
                     .environment(\.colorScheme, .light)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding()
+                    .padding(DeviceSizeManager.isSESize ? 10 : 15)
                 
                 if isShowCalendar {
                     VStack(alignment: .leading) {
@@ -266,9 +266,6 @@ struct InputLiveView: View {
                         .accentColor(.themaYellow)
                         
                     }.padding()
-                        .onChange(of: date) { _ in
-                            
-                        }
                 }
                 
                 // MARK: - 開場時間

@@ -22,7 +22,7 @@ class DateFormatManager {
         return df.string(from: Date())
     }
     
-    public func getString2(date: Date) -> String {
+    public func getStringBlake(date: Date) -> String {
         df.dateFormat = L10n.dateFormatBlake
         return df.string(from: date)
     }

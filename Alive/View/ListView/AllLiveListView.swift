@@ -37,6 +37,9 @@ struct AllLiveListView: View {
             
             LiveScheduleListView(lives: filteringLives)
             
+            AdMobBannerView()
+                .frame(height: 60)
+            
         }.onAppear {
             filteringLives = lives
         }

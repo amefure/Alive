@@ -66,6 +66,9 @@ struct ArtistCountChartView: View {
             }.scrollContentBackground(.hidden)
                 .background(.clear)
             
+            AdMobBannerView()
+                .frame(height: 60)
+            
         }.background(.foundation)
             .onAppear {
                 repository.readAllLive()

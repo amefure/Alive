@@ -74,6 +74,9 @@ struct SettingView: View {
             }.scrollContentBackground(.hidden)
                 .background(.foundation)
             
+            AdMobBannerView()
+                .frame(height: 60)
+            
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)
             .background(.foundation)

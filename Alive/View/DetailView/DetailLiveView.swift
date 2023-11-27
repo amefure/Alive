@@ -229,7 +229,11 @@ struct DetailLiveView: View {
                 
             }.padding(.bottom)
             
+            AdMobBannerView()
+                .frame(height: 60)
+            
             Spacer()
+            
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)
             .fontWeight(.bold)

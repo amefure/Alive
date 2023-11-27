@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var isPresented: Bool = false
-    @State private var opacity: Double = 0
+    @State private var opacity: Double = 1
     
     var body: some View {
         VStack(spacing: 0) {
@@ -35,7 +35,7 @@ struct SplashView: View {
         }.navigationDestination(isPresented: $isPresented) {
             Onboarding1View()
         }.onAppear {
-            withAnimation(Animation.linear(duration: 2)) {
+            withAnimation(Animation.linear(duration: 0.5)) {
                 opacity = 1
             }
             DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 4) {

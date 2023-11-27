@@ -35,8 +35,11 @@ internal enum Asset {
   }
   internal enum Images {
     internal static let appLogoElectric = ImageAsset(name: "app_logo_electric")
+    internal static let onboarding1En = ImageAsset(name: "onboarding1_en")
     internal static let onboarding1Jp = ImageAsset(name: "onboarding1_jp")
+    internal static let onboarding2En = ImageAsset(name: "onboarding2_en")
     internal static let onboarding2Jp = ImageAsset(name: "onboarding2_jp")
+    internal static let onboarding3En = ImageAsset(name: "onboarding3_en")
     internal static let onboarding3Jp = ImageAsset(name: "onboarding3_jp")
   }
 }

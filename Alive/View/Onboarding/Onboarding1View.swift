@@ -28,10 +28,10 @@ struct Onboarding1View: View {
                     .scaledToFit()
                     .frame(height: DeviceSizeManager.deviceHeight / 1.5)
             } else {
-//                Asset.Images.onboarding1En.swiftUIImage
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(height: DeviceSizeManager.deviceHeight / 1.5)
+                Asset.Images.onboarding1En.swiftUIImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: DeviceSizeManager.deviceHeight / 1.5)
             }
             
             

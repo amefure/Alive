@@ -29,15 +29,27 @@ struct SettingView: View {
                 .tint(.themaYellow)
             
             List {
-               
+                
+                Section(header: Text(L10n.settingAppTitle)) {
+                    NavigationLink {
+                        Onboarding1View()
+                    } label: {
+                        HStack {
+                            Image(systemName: "questionmark.app")
+                                .foregroundStyle(.themaYellow)
+                            Text(L10n.settingAppOnboading)
+                        }
+                    }
+                }
+                
                 Section(header: Text(L10n.adsTitle), footer: Text(L10n.adsDesc1)) {
                     RewardButtonView()
-                       HStack {
-                           Image(systemName: "bag")
-                               .foregroundStyle(.themaYellow)
-                           Text(L10n.adsCurrentCapacity(userDefaults.getCapacity()))
-                       }
-                   }
+                    HStack {
+                        Image(systemName: "bag")
+                            .foregroundStyle(.themaYellow)
+                        Text(L10n.adsCurrentCapacity(userDefaults.getCapacity()))
+                    }
+                }
                 
                 Section(header: Text("Link")) {
                     // 1:レビューページ

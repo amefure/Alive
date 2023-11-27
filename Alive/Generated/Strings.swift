@@ -118,6 +118,10 @@ internal enum L10n {
   internal static let onboardingNext = L10n.tr("Localizable", "onboarding_next", fallback: "次へ")
   /// はじめる
   internal static let onboardingStart = L10n.tr("Localizable", "onboarding_start", fallback: "はじめる")
+  /// アプリの特徴を見る
+  internal static let settingAppOnboading = L10n.tr("Localizable", "setting_app_onboading", fallback: "アプリの特徴を見る")
+  /// Aliveアプリ
+  internal static let settingAppTitle = L10n.tr("Localizable", "setting_app_title", fallback: "Aliveアプリ")
   /// 
   internal static let settingRecommendShareText = L10n.tr("Localizable", "setting_recommend_share_text", fallback: "")
   /// 「ALIVE」をオススメする

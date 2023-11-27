@@ -64,6 +64,9 @@
 "charts_bar_name" = "Musician count bar chart";
 
 // MARK: - Setting
+"setting_app_title" = "Alive app";
+"setting_app_onboading" = "See app features";
+
 "setting_review_title" = "Review app";
 "setting_review_url_query" = "?action=write-review";
 "app_url" = "https://apps.apple.com/en/app/alive/";

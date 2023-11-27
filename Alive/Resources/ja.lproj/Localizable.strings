@@ -71,6 +71,9 @@
 
 
 // MARK: - Setting
+"setting_app_title" = "Aliveアプリ";
+"setting_app_onboading" = "アプリの特徴を見る";
+
 "setting_review_title" = "アプリをレビューする";
 "setting_review_url_query" = "?action=write-review";
 "app_url" = "https://apps.apple.com/jp/app/alive/id6473169112";

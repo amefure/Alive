@@ -55,6 +55,7 @@ struct CardLiveView:View {
                         .frame(height: 100)
                         .font(.system(size: 20))
                         .padding(.leading, 20)
+                        .textSelection(.enabled)
                     
                     
                     Spacer()
@@ -73,6 +74,7 @@ struct CardLiveView:View {
                                     .padding(.leading, 20)
                                 
                                 Text(live.type == .festival ? live.artist + " etc.." : live.artist)
+                                    .textSelection(.enabled)
                                 Spacer()
                             }
                             
@@ -80,6 +82,7 @@ struct CardLiveView:View {
                                 Image(systemName: "mappin.and.ellipse")
                                     .padding(.leading, 20)
                                 Text(live.venue)
+                                    .textSelection(.enabled)
                                 Spacer()
                             }
                         }

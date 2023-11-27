@@ -61,6 +61,7 @@ struct DetailLiveView: View {
                         Text(live.type.value)
                             .foregroundStyle(.white)
                             .font(.system(size: 20))
+                            .textSelection(.enabled)
                         
                     }
                     
@@ -73,6 +74,7 @@ struct DetailLiveView: View {
                         Text(live.price == -1 ? L10n.livePriceNone : L10n.livePriceUnit(live.price))
                             .foregroundStyle(.white)
                             .font(.system(size: 20))
+                            .textSelection(.enabled)
                     }
                     
                     Spacer()
@@ -85,6 +87,7 @@ struct DetailLiveView: View {
                         Text(dateFormatManager.getYearString(date: live.date))
                             .foregroundStyle(.white)
                             .font(.system(size: 20))
+                            .textSelection(.enabled)
                     }
                     
                     Spacer()
@@ -103,6 +106,7 @@ struct DetailLiveView: View {
                             Text(dateFormatManager.getTimeString(date: openingTime))
                                 .foregroundStyle(.white)
                                 .font(.system(size: 20))
+                                .textSelection(.enabled)
                         } else {
                             Text("0:00")
                                 .foregroundStyle(.white)
@@ -120,6 +124,7 @@ struct DetailLiveView: View {
                             Text(dateFormatManager.getTimeString(date: performanceTime))
                                 .foregroundStyle(.white)
                                 .font(.system(size: 20))
+                                .textSelection(.enabled)
                         } else {
                             Text("0:00")
                                 .foregroundStyle(.white)
@@ -137,6 +142,7 @@ struct DetailLiveView: View {
                             Text(dateFormatManager.getTimeString(date: closingTime))
                                 .foregroundStyle(.white)
                                 .font(.system(size: 20))
+                                .textSelection(.enabled)
                         } else {
                             Text("0:00")
                                 .foregroundStyle(.white)
@@ -155,6 +161,7 @@ struct DetailLiveView: View {
                 
                 HStack {
                     Text(live.memo)
+                        .textSelection(.enabled)
                     Spacer()
                 }.frame(width: DeviceSizeManager.deviceWidth - 80)
                     .padding()
@@ -359,6 +366,7 @@ struct SwitchInputEditorView: View {
             } else {
                 HStack {
                     Text(live.setList)
+                        .textSelection(.enabled)
                     Spacer()
                 }.frame(width: DeviceSizeManager.deviceWidth - 80)
                     .padding()

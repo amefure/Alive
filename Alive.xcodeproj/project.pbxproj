@@ -44,6 +44,8 @@
 		126341DF2B1210CF001B8E51 /* AllLiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126341DE2B1210CF001B8E51 /* AllLiveListView.swift */; };
 		126341FD2B122D16001B8E51 /* ArtistPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126341FC2B122D16001B8E51 /* ArtistPieChartView.swift */; };
 		126342002B12D6B3001B8E51 /* ArtistBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126341FF2B12D6B3001B8E51 /* ArtistBarChartView.swift */; };
+		126C6EDB2B14DBA90008A1E7 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C6EDA2B14DBA90008A1E7 /* CustomInputView.swift */; };
+		126C6EDD2B14DBD00008A1E7 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C6EDC2B14DBD00008A1E7 /* TimePicker.swift */; };
 		128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */; };
 		128C3E6B2B10480700CB9A3D /* CardLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E6A2B10480700CB9A3D /* CardLiveView.swift */; };
 		128C3E6D2B104ABD00CB9A3D /* MonthAndDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E6C2B104ABD00CB9A3D /* MonthAndDayView.swift */; };
@@ -96,6 +98,8 @@
 		126341DE2B1210CF001B8E51 /* AllLiveListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLiveListView.swift; sourceTree = "<group>"; };
 		126341FC2B122D16001B8E51 /* ArtistPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPieChartView.swift; sourceTree = "<group>"; };
 		126341FF2B12D6B3001B8E51 /* ArtistBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistBarChartView.swift; sourceTree = "<group>"; };
+		126C6EDA2B14DBA90008A1E7 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
+		126C6EDC2B14DBD00008A1E7 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		128C3E682B0F889600CB9A3D /* InputTimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTimeTableView.swift; sourceTree = "<group>"; };
 		128C3E6A2B10480700CB9A3D /* CardLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLiveView.swift; sourceTree = "<group>"; };
 		128C3E6C2B104ABD00CB9A3D /* MonthAndDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAndDayView.swift; sourceTree = "<group>"; };
@@ -193,11 +197,11 @@
 			isa = PBXGroup;
 			children = (
 				1242A2DD2B0B6A180033BD09 /* AdMobView.swift */,
-				1242A3072B0B7E130033BD09 /* HeaderView.swift */,
-				1242A30B2B0B8EAD0033BD09 /* FooterView.swift */,
 				1242A3162B0CBD970033BD09 /* LiveImageView.swift */,
 				128C3E6A2B10480700CB9A3D /* CardLiveView.swift */,
 				128C3E6C2B104ABD00CB9A3D /* MonthAndDayView.swift */,
+				126C6ED92B14DB960008A1E7 /* Input */,
+				126C6ED82B14DB120008A1E7 /* Layout */,
 				126341FE2B12D69D001B8E51 /* Charts */,
 			);
 			path = Components;
@@ -278,6 +282,24 @@
 				126341FF2B12D6B3001B8E51 /* ArtistBarChartView.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		126C6ED82B14DB120008A1E7 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				1242A3072B0B7E130033BD09 /* HeaderView.swift */,
+				1242A30B2B0B8EAD0033BD09 /* FooterView.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		126C6ED92B14DB960008A1E7 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				126C6EDA2B14DBA90008A1E7 /* CustomInputView.swift */,
+				126C6EDC2B14DBD00008A1E7 /* TimePicker.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		128C3E702B10BF1300CB9A3D /* InputView */ = {
@@ -474,6 +496,7 @@
 				1242A30E2B0B912C0033BD09 /* ArtistCountChartView.swift in Sources */,
 				1242A2F32B0B6CBA0033BD09 /* RealmRepository.swift in Sources */,
 				1242A3042B0B75B20033BD09 /* DetailLiveView.swift in Sources */,
+				126C6EDD2B14DBD00008A1E7 /* TimePicker.swift in Sources */,
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
 				128C3E792B1162FB00CB9A3D /* RewardButtonView.swift in Sources */,
 				128C3E6D2B104ABD00CB9A3D /* MonthAndDayView.swift in Sources */,
@@ -490,6 +513,7 @@
 				1242A3062B0B7CE40033BD09 /* DeviceSizeManager.swift in Sources */,
 				1242A3082B0B7E130033BD09 /* HeaderView.swift in Sources */,
 				126341DF2B1210CF001B8E51 /* AllLiveListView.swift in Sources */,
+				126C6EDB2B14DBA90008A1E7 /* CustomInputView.swift in Sources */,
 				128C3E6B2B10480700CB9A3D /* CardLiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

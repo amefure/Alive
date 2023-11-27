@@ -106,11 +106,18 @@ struct MainView: View {
 
 struct LiveHistoryBlockView: View {
     
+    // MARK: - Utility
+    private let dateFormatManager = DateFormatManager()
+    
+    // MARK: - Receive
     public var array: [ObjectId?]
+    
+    // MARK: - ViewModel
+    @ObservedObject private var repository = RealmRepositoryViewModel.shared
+    
+    // MARK: - View
     private let grids = Array(repeating: GridItem(.fixed(DeviceSizeManager.deviceWidth / 14)), count: 3)
     private let size = DeviceSizeManager.deviceWidth / 14
-    private let dateFormatManager = DateFormatManager()
-    @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
     var body: some View {
         VStack {

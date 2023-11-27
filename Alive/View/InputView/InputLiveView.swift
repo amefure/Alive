@@ -34,18 +34,24 @@ struct InputLiveView: View {
     @State private var closingTime: Date?              // 開催日
     @State private var venue: String = ""              // 開催地
     @State private var price: String = ""              // チケット代
-    @State private var liveType: LiveType = .unknown   // メモ
+    @State private var liveType: LiveType = .unknown   // ライブ形式
     @State private var memo: String = ""               // メモ
-    
+
+    // Pool
     @State private var image: UIImage?                  // 画像表示用
-    @State private var isShowImagePicker: Bool = false  // 画像ピッカー表示
-    @State private var isShowCalendar: Bool = false     // 画像ピッカー表示
     
+    // Show
+    @State private var isShowImagePicker: Bool = false  // 画像ピッカー表示
+    @State private var isShowCalendar: Bool = false     // カレンダー表示
+    
+    // Alert
     @State private var successAlert: Bool = false       // 登録成功アラート
     @State private var validationAlert: Bool = false    // バリデーションアラート
     
+    // Environment
     @Environment(\.dismiss) var dismiss
     
+    // 画面描画時に入力UIとデータを紐づける
     private func setLiveData() {
         if let live = live {
             artist = live.artist
@@ -184,8 +190,7 @@ struct InputLiveView: View {
                     }
                 }
                 
-                //                CustomInputView(text: $artist, imgName: "music.mic", placeholder: liveType != .oneman ? "一押し" + L10n.liveArtist : L10n.liveArtist)
-                
+                // MARK: - アーティスト
                 HStack {
                     Image(systemName: "music.mic")
                         .foregroundStyle(.black)
@@ -216,15 +221,17 @@ struct InputLiveView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .padding()
                 
-                
-                
+                // MARK: - ライブ名
                 CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
                 
+                // MARK: - 会場
                 CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
                 
+                // MARK: - チケット代
                 CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
                     .keyboardType(.numberPad)
                 
+                // MARK: - 開催日
                 HStack {
                     Image(systemName: "calendar")
                         .foregroundStyle(.black)
@@ -264,12 +271,16 @@ struct InputLiveView: View {
                         }
                 }
                 
+                // MARK: - 開場時間
                 TimePicker(selectedTime: $openingTime, title:L10n.liveOpeningTime)
                 
+                // MARK: - 開演時間
                 TimePicker(selectedTime: $performanceTime, title:L10n.livePerformanceTime)
                 
+                // MARK: - 終了時間
                 TimePicker(selectedTime: $closingTime, title:L10n.liveClosingTime)
                 
+                // MARK: - MEMO
                 CustomInputEditorView(text: $memo,  imgName: "note", placeholder: L10n.liveMemo)
                 
             }
@@ -297,28 +308,6 @@ struct InputLiveView: View {
         
     }
 }
-
-struct CustomInputView: View {
-    
-    @Binding var text: String
-    public var imgName: String
-    public var placeholder: String
-    
-    
-    var body: some View {
-        HStack {
-            Image(systemName: imgName)
-                .foregroundStyle(.black)
-                .frame(width: 23)
-            TextField(placeholder, text: $text)
-        }.padding()
-            .background(.regularMaterial)
-            .environment(\.colorScheme, .light)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .padding()
-    }
-}
-
 
 // MARK: - Editor入力要素
 struct CustomInputEditorView: View {
@@ -354,83 +343,7 @@ struct CustomInputEditorView: View {
 }
 
 
-struct TimePicker: View {
-    
-    @Binding var selectedTime: Date?
-    public let title: String
-    
-    private let dateFormatManager = DateFormatManager()
-    
-    @State private var hour: Int = 0
-    @State private var minute: Int = 0
-    private let hours = Array(0...23)
-    private let minutes = Array(0...60)
-    
-    var body: some View {
-        
-        HStack {
-            
-            Text(title + L10n.inputTimePickerExtension)
-                .padding(.leading, 30)
-            
-            Spacer()
-            
-            Menu {
-                ForEach(hours, id: \.self) { hour in
-                    Button {
-                        self.hour = hour
-                    } label: {
-                        Text("\(hour)")
-                    }
-                }
-            } label: {
-                Text("\(hour)")
-                    .padding()
-                    .frame(width: 80)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.white, lineWidth: 1)
-                    )
-            }
-            
-            Text("：")
-            
-            Menu {
-                ForEach(minutes, id: \.self) { minute in
-                    Button {
-                        self.minute = minute
-                    } label: {
-                        Text(minute < 10 ? "0\(minute)" :  "\(minute)")
-                    }
-                }
-            } label: {
-                Text(minute < 10 ? "0\(minute)" :  "\(minute)")
-                    .padding()
-                    .frame(width: 80)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.white, lineWidth: 1)
-                    )
-            }.padding(.trailing)
-            
-        }.foregroundStyle(.white)
-            .onChange(of: hour) { _ in
-                selectedTime = dateFormatManager.getDate(hour: hour, minute: minute)
-            }
-            .onChange(of: minute) { _ in
-                selectedTime = dateFormatManager.getDate(hour: hour, minute: minute)
-            }
-            .onAppear {
-                if let time = selectedTime {
-                    let timeStr = dateFormatManager.getTimeString(date: time)
-                    hour = String(timeStr.prefix(2)).toNum()
-                    minute = String(timeStr.suffix(2)).toNum()
-                }
-            }
-    }
-}
-
 
 #Preview {
-    InputLiveView(live: nil)//Live.demoLive)
+    InputLiveView(live: Live.demoLive)
 }

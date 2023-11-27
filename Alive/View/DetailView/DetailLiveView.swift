@@ -53,42 +53,16 @@ struct DetailLiveView: View {
                 HStack {
                     
                     Spacer()
-                    
-                    VStack {
-                        Text(L10n.liveType)
-                            .foregroundStyle(.themaYellow)
-                            .font(.system(size: 12))
-                        Text(live.type.value)
-                            .foregroundStyle(.white)
-                            .font(.system(size: 20))
-                            .textSelection(.enabled)
-                        
-                    }
-                    
+                    // MARK: - ライブ形式
+                    LiveItemView(label: L10n.liveType, value: live.type.value)
+   
                     Spacer()
-                    
-                    VStack {
-                        Text(L10n.livePrice)
-                            .foregroundStyle(.themaYellow)
-                            .font(.system(size: 12))
-                        Text(live.price == -1 ? L10n.livePriceNone : L10n.livePriceUnit(live.price))
-                            .foregroundStyle(.white)
-                            .font(.system(size: 20))
-                            .textSelection(.enabled)
-                    }
-                    
+                    // MARK: - チケット代
+                    LiveItemView(label: L10n.livePrice, value: live.price == -1 ? L10n.livePriceNone : L10n.livePriceUnit(live.price))
+    
                     Spacer()
-                    
-                    
-                    VStack {
-                        Text(L10n.liveDateYear)
-                            .foregroundStyle(.themaYellow)
-                            .font(.system(size: 12))
-                        Text(dateFormatManager.getYearString(date: live.date))
-                            .foregroundStyle(.white)
-                            .font(.system(size: 20))
-                            .textSelection(.enabled)
-                    }
+                    // MARK: - 開催年
+                    LiveItemView(label: L10n.liveDateYear, value: dateFormatManager.getYearString(date: live.date))
                     
                     Spacer()
                     
@@ -97,67 +71,24 @@ struct DetailLiveView: View {
                 HStack {
                     
                     Spacer()
-                    
-                    VStack {
-                        Text(L10n.liveOpeningTime)
-                            .foregroundStyle(.themaYellow)
-                            .font(.system(size: 12))
-                        if let openingTime = live.openingTime {
-                            Text(dateFormatManager.getTimeString(date: openingTime))
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                                .textSelection(.enabled)
-                        } else {
-                            Text("0:00")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                        }
-                    }
+                    // MARK: - 開場時間
+                    LiveItemView(label: L10n.liveOpeningTime, value: live.openingTime != nil ? dateFormatManager.getTimeString(date: live.openingTime!) : "0:00")
                     
                     Spacer()
-                    
-                    VStack {
-                        Text(L10n.livePerformanceTime)
-                            .foregroundStyle(.themaYellow)
-                            .font(.system(size: 12))
-                        if let performanceTime = live.performanceTime {
-                            Text(dateFormatManager.getTimeString(date: performanceTime))
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                                .textSelection(.enabled)
-                        } else {
-                            Text("0:00")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                        }
-                    }
+                    // MARK: - 開演時間
+                    LiveItemView(label: L10n.livePerformanceTime, value: live.performanceTime != nil ? dateFormatManager.getTimeString(date: live.performanceTime!) : "0:00")
                     
                     Spacer()
-                    
-                    VStack {
-                        Text(L10n.liveClosingTime)
-                            .foregroundStyle(.themaYellow)
-                            .font(.system(size: 12))
-                        if let closingTime = live.closingTime {
-                            Text(dateFormatManager.getTimeString(date: closingTime))
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                                .textSelection(.enabled)
-                        } else {
-                            Text("0:00")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                        }
-                    }
-                    
+                    // MARK: - 終了時間
+                    LiveItemView(label: L10n.liveClosingTime, value: live.closingTime != nil ? dateFormatManager.getTimeString(date: live.closingTime!) : "0:00")
                     
                     Spacer()
                     
                 }.padding()
                     .fontWeight(.bold)
                 
+                // MARK: - MEMO
                 SideBarTitleView(title: L10n.liveMemo)
-                
                 
                 HStack {
                     Text(live.memo)
@@ -169,8 +100,9 @@ struct DetailLiveView: View {
                     .environment(\.colorScheme, .light)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                 
-                
+                // MARK: - セトリ or TimeTable
                 if live.type == .festival {
+                    // MARK: - TimeTable
                     VStack(spacing: 0) {
                         
                         SideBarTitleView(title: L10n.liveTimeTable, trailingAction: {
@@ -214,10 +146,11 @@ struct DetailLiveView: View {
                             .presentationDetents([. medium])
                     }
                 } else {
-                    
+                    // MARK: - セトリ
                     SwitchInputEditorView(live: live)
                 }
                 
+                // MARK: - セトリ
                 Button {
                     isDeleteDialog = true
                 } label: {
@@ -267,6 +200,7 @@ struct DetailLiveView: View {
     }
 }
 
+// MARK: - Receive
 struct SideBarTitleView: View {
     public let title: String
     
@@ -315,7 +249,7 @@ struct SideBarTitleView: View {
     }
 }
 
-
+// MARK: - Receive
 struct SwitchInputEditorView: View {
     
     public var live: Live
@@ -381,7 +315,23 @@ struct SwitchInputEditorView: View {
 }
 
 
-
+struct LiveItemView: View {
+    // MARK: - Receive
+    public var label: String
+    public var value: String
+    
+    var body: some View {
+        VStack {
+            Text(label)
+                .foregroundStyle(.themaYellow)
+                .font(.system(size: 12))
+            Text(value)
+                .foregroundStyle(.white)
+                .font(.system(size: 20))
+                .textSelection(.enabled)
+        }
+    }
+}
 
 #Preview {
     DetailLiveView(live: Live.demoLive)

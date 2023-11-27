@@ -184,7 +184,7 @@ struct InputLiveView: View {
                     }
                 }
                 
-//                CustomInputView(text: $artist, imgName: "music.mic", placeholder: liveType != .oneman ? "一押し" + L10n.liveArtist : L10n.liveArtist)
+                //                CustomInputView(text: $artist, imgName: "music.mic", placeholder: liveType != .oneman ? "一押し" + L10n.liveArtist : L10n.liveArtist)
                 
                 HStack {
                     Image(systemName: "music.mic")
@@ -209,14 +209,14 @@ struct InputLiveView: View {
                                 .foregroundStyle(.foundation)
                         }
                     }
-                   
+                    
                 }.padding()
                     .background(.regularMaterial)
                     .environment(\.colorScheme, .light)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .padding()
                 
-             
+                
                 
                 CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
                 

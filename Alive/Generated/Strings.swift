@@ -34,6 +34,12 @@ internal enum L10n {
   internal static let adsTitle = L10n.tr("Localizable", "ads_title", fallback: "広告")
   /// https://apps.apple.com/jp/app/alive/id6473169112
   internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive/id6473169112")
+  /// アーティストカウント棒グラフ
+  internal static let chartsBarName = L10n.tr("Localizable", "charts_bar_name", fallback: "アーティストカウント棒グラフ")
+  /// データがありません
+  internal static let chartsNoData = L10n.tr("Localizable", "charts_no_data", fallback: "データがありません")
+  /// アーティストカウント円グラフ
+  internal static let chartsPieName = L10n.tr("Localizable", "charts_pie_name", fallback: "アーティストカウント円グラフ")
   /// yyyy年M月d日
   internal static let dateFormat = L10n.tr("Localizable", "date_format", fallback: "yyyy年M月d日")
   /// yyyy年
@@ -41,16 +47,26 @@ internal enum L10n {
   internal static let dateFormatBlake = L10n.tr("Localizable", "date_format_blake", fallback: "yyyy年\nM月d日")
   /// ja_JP
   internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
-  /// このLiveを削除しますか？
-  internal static let deleteButtonAlertTitle = L10n.tr("Localizable", "delete_button_alert_title", fallback: "このLiveを削除しますか？")
   /// 削除
   internal static let deleteButtonTitle = L10n.tr("Localizable", "delete_button_title", fallback: "削除")
+  /// このLiveを削除しますか？
+  internal static let deleteLiveAlertTitle = L10n.tr("Localizable", "delete_live_alert_title", fallback: "このLiveを削除しますか？")
+  /// %@を削除しますか？
+  internal static func deleteTimetableAlertTitle(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "delete_timetable_alert_title_%@", String(describing: p1), fallback: "%@を削除しますか？")
+  }
+  /// 登録しました。
+  internal static let entrySuccessAlertTitle = L10n.tr("Localizable", "entry_success_alert_title", fallback: "登録しました。")
+  /// 時間
+  internal static let inputTimePickerExtension = L10n.tr("Localizable", "input_time_picker_extension", fallback: "時間")
   /// アーティスト
   internal static let liveArtist = L10n.tr("Localizable", "live_artist", fallback: "アーティスト")
   /// 終演
   internal static let liveClosingTime = L10n.tr("Localizable", "live_closingTime", fallback: "終演")
   /// 開催日
   internal static let liveDate = L10n.tr("Localizable", "live_date", fallback: "開催日")
+  /// 開催年
+  internal static let liveDateYear = L10n.tr("Localizable", "live_date_year", fallback: "開催年")
   /// 次のライブの予定はありません
   internal static let liveDemoNextTitle = L10n.tr("Localizable", "live_demo_next_title", fallback: "次のライブの予定はありません")
   /// 一押しアーティスト
@@ -65,6 +81,12 @@ internal enum L10n {
   internal static let livePerformanceTime = L10n.tr("Localizable", "live_performanceTime", fallback: "開演")
   /// チケット代
   internal static let livePrice = L10n.tr("Localizable", "live_price", fallback: "チケット代")
+  /// - 円
+  internal static let livePriceNone = L10n.tr("Localizable", "live_price_none", fallback: "- 円")
+  /// %@円
+  internal static func livePriceUnit(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "live_price_unit_%@", String(describing: p1), fallback: "%@円")
+  }
   /// セトリ
   internal static let liveSetlist = L10n.tr("Localizable", "live_setlist", fallback: "セトリ")
   /// TimeTable
@@ -108,6 +130,17 @@ internal enum L10n {
   internal static let settingTermsOfServiceTitle = L10n.tr("Localizable", "setting_terms_of_service_title", fallback: "利用規約とプライバシーポリシー")
   /// https://tech.amefure.com/app-terms-of-service
   internal static let settingTermsOfServiceUrl = L10n.tr("Localizable", "setting_terms_of_service_url", fallback: "https://tech.amefure.com/app-terms-of-service")
+  /// TimeTableは長押しすることで削除することが可能です。
+  /// 編集することはできないので削除後に新規作成してください。
+  internal static let timetableAlertTitle = L10n.tr("Localizable", "timetable_alert_title", fallback: "TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。")
+  /// 更新しました。
+  internal static let updateSuccessAlertTitle = L10n.tr("Localizable", "update_success_alert_title", fallback: "更新しました。")
+  /// アーティスト名と
+  /// ライブ名は必須入力です。
+  internal static let validationAlertTitle = L10n.tr("Localizable", "validation_alert_title", fallback: "アーティスト名と\nライブ名は必須入力です。")
+  /// 出演時間と
+  /// アーティスト名は必須入力です。
+  internal static let validationTimetableAlertTitle = L10n.tr("Localizable", "validation_timetable_alert_title", fallback: "出演時間と\nアーティスト名は必須入力です。")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

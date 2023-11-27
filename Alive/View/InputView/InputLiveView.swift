@@ -282,12 +282,12 @@ struct InputLiveView: View {
             .background(.foundation)
             .onAppear {
                 setLiveData()
-            }.alert(live == nil ? "登録しました。" : "更新しました。", isPresented: $successAlert) {
+            }.alert(live == nil ? L10n.entrySuccessAlertTitle : L10n.updateSuccessAlertTitle, isPresented: $successAlert) {
                 Button("OK") {
                     dismiss()
                 }
             }
-            .alert("アーティスト名と\nライブ名は必須入力です。", isPresented: $validationAlert) {
+            .alert(L10n.validationAlertTitle, isPresented: $validationAlert) {
                 Button("OK") {
                 }
             }
@@ -370,7 +370,7 @@ struct TimePicker: View {
         
         HStack {
             
-            Text(title + "時間")
+            Text(title + L10n.inputTimePickerExtension)
                 .padding(.leading, 30)
             
             Spacer()

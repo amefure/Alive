@@ -8,13 +8,13 @@
 
 // MARK: - Onboarding
 "onboarding1_title" = "Display the next Live information like a ticket! \nLet's fill it in yellow the 1 month's Live participation history!";
-"onboarding2_title" = "Check the number of participations for each artist in the graph! \nLet's brag to your friends about the number of times you've participated!";
+"onboarding2_title" = "Check the number of participations for each musician in the graph! \nLet's brag to your friends about the number of times you've participated!";
 "onboarding3_title" = "You can create your own timetable! \nYou can also leave start times, color codes, and MEMOs!";
 "onboarding_next" = "Next";
 "onboarding_start" = "Start";
 
 // MARK: - Live
-"live_artist" = "Artist";
+"live_artist" = "Musician";
 "live_name" = "Live Name";
 "live_date" = "Event Date";
 "live_openingTime" = "OpeningTime";
@@ -37,14 +37,31 @@
 // MARK: - Loacle
 "date_locale" = "en_US";
 "date_format" = "M/d/yyyy";
+"date_format_blake" = "M/d\nyyyy";
 
 // MARK: - Detail Item
 "delete_button_title" = "Delete";
-"delete_button_alert_title" = "Do you want to delete Live?";
+"delete_live_alert_title" = "Do you want to delete Live?";
+"live_date_year" = "Year held";
+"live_price_none" = "＄ -";
+"live_price_unit_%@" = "＄%@";
+"timetable_alert_title" = "TimeTable can be deleted by long-pressing it. \nYou cannot edit it, so please delete it and create a new one.";
+"delete_timetable_alert_title_%@" = "Do you want to delete %@?";
 
 // MARK: - Input Item
 "live_main_artist" = "MainArtist";
+"entry_success_alert_title" = "Has registered.";
+"update_success_alert_title" = "Has been updated.";
+"validation_alert_title" = "Musician name and live name are required.";
+"input_time_picker_extension" = "Time";
 
+// MARK: - Input TimeTable Item
+"validation_timetable_alert_title" = "Performance time and musician name are required.";
+
+// MARK: - Charts Item
+"charts_no_data" = "No Data";
+"charts_pie_name" = "Musician count pie chart";
+"charts_bar_name" = "Musician count bar chart";
 
 // MARK: - Setting
 "setting_review_title" = "Review app";

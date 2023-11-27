@@ -25,7 +25,7 @@ struct ArtistPieChartView: UIViewRepresentable {
         let chartView = PieChartView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         guard artistCounts.count != 0 else {
-            chartView.noDataText = "データがありません"
+            chartView.noDataText =  L10n.chartsNoData
             chartView.noDataTextColor = .themaRed
             chartView.noDataFont = .boldSystemFont(ofSize: 15)
             return chartView
@@ -41,7 +41,7 @@ struct ArtistPieChartView: UIViewRepresentable {
             entries.append(entry)
         }
         
-        let dataSet = PieChartDataSet(entries: entries, label: "アーティストカウント円グラフ")
+        let dataSet = PieChartDataSet(entries: entries, label:  L10n.chartsPieName)
         
         chartView.data = PieChartData(dataSet: dataSet)
         

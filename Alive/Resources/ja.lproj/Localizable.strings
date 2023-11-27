@@ -44,10 +44,31 @@
 
 // MARK: - Detail Item
 "delete_button_title" = "削除";
-"delete_button_alert_title" = "このLiveを削除しますか？";
+"delete_live_alert_title" = "このLiveを削除しますか？";
+"live_date_year" = "開催年";
+"live_price_none" = "- 円";
+"live_price_unit_%@" = "%@円";
+"timetable_alert_title" = "TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。";
+
+"delete_button_title" = "削除";
+"delete_timetable_alert_title_%@" = "%@を削除しますか？";
+
 
 // MARK: - Input Item
 "live_main_artist" = "一押しアーティスト";
+"entry_success_alert_title" = "登録しました。";
+"update_success_alert_title" = "更新しました。";
+"validation_alert_title" = "アーティスト名と\nライブ名は必須入力です。";
+"input_time_picker_extension" = "時間";
+
+// MARK: - Input TimeTable Item
+"validation_timetable_alert_title" = "出演時間と\nアーティスト名は必須入力です。";
+
+// MARK: - Charts Item
+"charts_no_data" = "データがありません";
+"charts_pie_name" = "アーティストカウント円グラフ";
+"charts_bar_name" = "アーティストカウント棒グラフ";
+
 
 // MARK: - Setting
 "setting_review_title" = "アプリをレビューする";

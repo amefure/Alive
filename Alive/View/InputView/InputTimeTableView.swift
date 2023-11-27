@@ -75,7 +75,7 @@ struct InputTimeTableView: View {
             
             Spacer()
         }.background(.foundation)
-            .alert("出演時間と\nアーティスト名は必須入力です。", isPresented: $validationAlert) {
+            .alert(L10n.validationTimetableAlertTitle, isPresented: $validationAlert) {
                 Button("OK") {
                 }
             }

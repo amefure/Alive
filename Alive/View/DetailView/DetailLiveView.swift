@@ -70,7 +70,7 @@ struct DetailLiveView: View {
                         Text(L10n.livePrice)
                             .foregroundStyle(.themaYellow)
                             .font(.system(size: 12))
-                        Text(live.price == -1 ? "ー 円" : "\(live.price)円")
+                        Text(live.price == -1 ? L10n.livePriceNone : L10n.livePriceUnit(live.price))
                             .foregroundStyle(.white)
                             .font(.system(size: 20))
                     }
@@ -79,7 +79,7 @@ struct DetailLiveView: View {
                     
                     
                     VStack {
-                        Text(L10n.liveDate)
+                        Text(L10n.liveDateYear)
                             .foregroundStyle(.themaYellow)
                             .font(.system(size: 12))
                         Text(dateFormatManager.getYearString(date: live.date))
@@ -169,7 +169,7 @@ struct DetailLiveView: View {
                         SideBarTitleView(title: L10n.liveTimeTable, trailingAction: {
                             isShowDescDialog = true
                         }, imgName: "questionmark.circle")
-                        .alert("TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。", isPresented: $isShowDescDialog) {
+                        .alert(L10n.timetableAlertTitle, isPresented: $isShowDescDialog) {
                             Button("OK") {
                                 
                             }
@@ -240,14 +240,14 @@ struct DetailLiveView: View {
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: live)
             })
-            .alert(L10n.deleteButtonAlertTitle, isPresented: $isDeleteDialog) {
+            .alert(L10n.deleteLiveAlertTitle, isPresented: $isDeleteDialog) {
                 Button(role: .destructive) {
                     repository.deleteLive(id: live.id)
                     dismiss()
                 } label: {
                     Text(L10n.deleteButtonTitle)
                 }
-            }.alert("\(deleteTimeTable?.artist ?? "")を削除しますか？", isPresented: $isDeleteTimeTableDialog) {
+            }.alert(L10n.deleteTimetableAlertTitle(deleteTimeTable ?? ""), isPresented: $isDeleteTimeTableDialog) {
                 Button(role: .destructive) {
                     if let deleteTimeTable = deleteTimeTable {
                         repository.deleteTimeTable(id: live.id, timeTable: deleteTimeTable)

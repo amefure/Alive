@@ -24,7 +24,7 @@ struct ArtistBarChartView: UIViewRepresentable {
         let chartView = BarChartView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         guard artistCounts.count != 0 else {
-            chartView.noDataText = "データがありません"
+            chartView.noDataText = L10n.chartsNoData
             chartView.noDataTextColor = .themaRed
             chartView.noDataFont = .boldSystemFont(ofSize: 15)
             return chartView
@@ -42,7 +42,7 @@ struct ArtistBarChartView: UIViewRepresentable {
             entries.append(entry)
         }
         
-        let dataSet = BarChartDataSet(entries: entries, label: "アーティストカウント円グラフ")
+        let dataSet = BarChartDataSet(entries: entries, label:  L10n.chartsBarName)
         
         chartView.data = BarChartData(dataSet: dataSet)
         

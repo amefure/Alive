@@ -9,10 +9,14 @@ import SwiftUI
 
 struct RewardButtonView: View {
     
+    // MARK: - Utility
     private let dateFormatManager = DateFormatManager()
+    
+    // MARK: - ViewModel
     private let userDefaults = UserDefaultsRepositoryViewModel.sheard
+    
     // MARK: - AdMob
-    @ObservedObject var reward = Reward()
+    @ObservedObject private var reward = Reward()
 
     // MARK: - View
     @State var isAlertReward: Bool = false // リワード広告視聴回数制限アラート

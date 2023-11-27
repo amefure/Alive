@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct LiveScheduleListView: View {
-
+    
+    // MARK: - Utility
     private let dateFormatManager = DateFormatManager()
+    
+    // MARK: - Receive
     public let lives: [Live]
     
     var body: some View {
@@ -38,17 +41,17 @@ struct LiveScheduleListView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 5))
                         }
                         
-                      
+                        
                         Text(live.artist)
                         
                         Spacer()
                     }
                 }.padding(.vertical, 3)
-                .listRowSeparatorTint(Asset.Colors.foundation.swiftUIColor)
-                .listRowBackground(Color.white)
-                .foregroundStyle(.foundation)
-                .fontWeight(.bold)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .listRowSeparatorTint(Asset.Colors.foundation.swiftUIColor)
+                    .listRowBackground(Color.white)
+                    .foregroundStyle(.foundation)
+                    .fontWeight(.bold)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }.scrollContentBackground(.hidden)
             .background(.foundation)

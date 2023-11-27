@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AllLiveListView: View {
     
-    
+    // MARK: - Receive
     public let lives: [Live]
+    
+    // MARK: - View
     @State private var filteringLives: [Live] = []
     @State private var search: String = ""
     

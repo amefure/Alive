@@ -51,6 +51,8 @@ internal enum L10n {
   internal static let liveClosingTime = L10n.tr("Localizable", "live_closingTime", fallback: "終演")
   /// 開催日
   internal static let liveDate = L10n.tr("Localizable", "live_date", fallback: "開催日")
+  /// 次のライブの予定はありません
+  internal static let liveDemoNextTitle = L10n.tr("Localizable", "live_demo_next_title", fallback: "次のライブの予定はありません")
   /// 一押しアーティスト
   internal static let liveMainArtist = L10n.tr("Localizable", "live_main_artist", fallback: "一押しアーティスト")
   /// MEMO

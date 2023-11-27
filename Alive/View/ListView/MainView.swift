@@ -9,87 +9,92 @@ import SwiftUI
 import RealmSwift
 
 struct MainView: View {
+    
+    // MARK: - Utility
     private let dateFormatManager = DateFormatManager()
     
     // MARK: - ViewModel
     private let userDefaultsRepository = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
-    // MARK: - View
-    @State private var search: String = ""            // 検索テキスト
-    @State private var isShowInput = false           // Input画面表示
-    @State private var isShowSetting = false         // 設定画面表示
-    
-    private var filteringLives: [Live]{
-        repository.lives.filter { $0.date >= Calendar.current.startOfDay(for: Date()) }.reversed()
-    }
+    // MARK: - Binding
     @Binding var selectedTab: Int
     
+    // MARK: - View
+    private var filteringLives: [Live]{
+        // 本日を含む後のライブのみを表示
+        repository.lives.filter { $0.date >= Calendar.current.startOfDay(for: Date()) }.reversed()
+    }
+    
     var body: some View {
-
-            VStack {
-
-                Text("NEXT LIVE")
-                    .fontWeight(.bold)
-                    .padding(.vertical, 10)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        if filteringLives.count != 0 {
-                            ForEach(filteringLives) { live in
-                                NavigationLink {
-                                    DetailLiveView(live: live)
-                                } label: {
-                                    CardLiveView(live: live)
-                                }
-                            }
-                        } else {
-                            CardLiveView(live: Live.blankLive)
-                        }
-                        
-                    }.padding(.horizontal, 20)
-                }
-                
-                Text("LIVE HISTORY")
-                    .fontWeight(.bold)
-                    .padding(.vertical, 10)
-                
-                LiveHistoryBlockView(array: repository.getMonthLiveHistory)
-                
+        
+        VStack {
+            
+            // MARK: - NEXT LIVE
+            Text("NEXT LIVE")
+                .fontWeight(.bold)
+                .padding(.vertical, 10)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
+                    if filteringLives.count != 0 {
+                        ForEach(filteringLives) { live in
+                            NavigationLink {
+                                DetailLiveView(live: live)
+                            } label: {
+                                CardLiveView(live: live)
+                            }
+                        }
+                    } else {
+                        // 存在しない場合
+                        CardLiveView(live: Live.blankLive)
+                    }
                     
-                   Spacer()
-                        .frame(width: 80)
-                        .padding(.leading, 10)
-                        .padding(.top, 20)
-
-                    Spacer()
-                    
-                    Text("LIVE LIST")
-                        .fontWeight(.bold)
-                        .padding(.top, 20)
-                    
-                    Spacer()
-                    
-                    Button {
-                        selectedTab = 3
-                    } label: {
-                        HStack {
-                            Text("ALL")
-                            Image(systemName: "arrow.forward")
-                        }.padding(5)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .fontWeight(.bold)
-                        
-                    }.frame(width: 80)
-                        .padding(.trailing, 10)
-                        .padding(.top, 20)
-
-                }
+                }.padding(.horizontal, 20)
+            }
+            
+            // MARK: - LIVE HISTORY
+            Text("LIVE HISTORY")
+                .fontWeight(.bold)
+                .padding(.vertical, 10)
+            
+            LiveHistoryBlockView(array: repository.getMonthLiveHistory)
+            
+            // MARK: - LIVE LIST
+            HStack {
                 
-                // prefixだとSliceになってしまう
-                LiveScheduleListView(lives: repository.lives.reversed().suffix(5).reversed())
-
+                Spacer()
+                    .frame(width: 80)
+                    .padding(.leading, 10)
+                    .padding(.top, 20)
+                
+                Spacer()
+                
+                Text("LIVE LIST")
+                    .fontWeight(.bold)
+                    .padding(.top, 20)
+                
+                Spacer()
+                
+                Button {
+                    selectedTab = 3
+                } label: {
+                    HStack {
+                        Text("ALL")
+                        Image(systemName: "arrow.forward")
+                    }.padding(5)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .fontWeight(.bold)
+                    
+                }.frame(width: 80)
+                    .padding(.trailing, 10)
+                    .padding(.top, 20)
+                
+            }
+            
+            // prefixだとSliceになってしまう
+            LiveScheduleListView(lives: repository.lives.reversed().suffix(5).reversed())
+            
             
         }.background(.foundation)
             .onAppear {
@@ -131,7 +136,6 @@ struct LiveHistoryBlockView: View {
                                     .background(.themaYellow)
                                     .clipShape(RoundedRectangle(cornerRadius: 3))
                             }
-
                         }else {
                             Text("")
                                 .frame(width:size,height: size)

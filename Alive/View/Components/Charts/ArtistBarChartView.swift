@@ -13,7 +13,6 @@ struct ArtistBarChartView: UIViewRepresentable {
     
     public var artistCounts: Array<(key: String, value: Int)>
     
-
     private let colors = [Asset.Colors.themaRed.color,
                           Asset.Colors.themaYellow.color,
                           Asset.Colors.themaGreen.color,
@@ -44,14 +43,13 @@ struct ArtistBarChartView: UIViewRepresentable {
         }
         
         let dataSet = BarChartDataSet(entries: entries, label: "アーティストカウント円グラフ")
-
         
         chartView.data = BarChartData(dataSet: dataSet)
-       
-
+        
+        // 下部にラベルを表示
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: keys)
-        // カラーリストの設定（必要に応じて）
-        dataSet.colors = colors// ChartColorTemplates.material()
+        
+        dataSet.colors = colors
         // グラフ内に値を表示しない
         dataSet.drawValuesEnabled = false
         dataSet.valueTextColor = .foundation
@@ -59,7 +57,7 @@ struct ArtistBarChartView: UIViewRepresentable {
         
         // タッチでハイライトしない
         chartView.highlightPerTapEnabled = false
-
+        // ラベルに位置を中央に
         chartView.legend.horizontalAlignment = .center
         
         // グラフ名ラベルを非表示
@@ -71,24 +69,19 @@ struct ArtistBarChartView: UIViewRepresentable {
         chartView.xAxis.labelPosition = .bottom
         // x軸のラベル数をデータの数にする
         chartView.xAxis.labelCount = entries.count - 1
-
+        
         // y軸ラベルの表示個数
         chartView.leftAxis.labelCount = 5
         
         // Y軸ラベルの変化幅を調整1単位に
         chartView.leftAxis.granularity = 1
         
-        // データのラベル色
-        chartView.noDataText = "データがありません"
-        chartView.noDataTextColor = .themaRed
-        
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-
+        
         chartView.notifyDataSetChanged()
-       return chartView
-   }
-
-   func updateUIView(_ uiView: BarChartView, context: Context) {
-   }
-
+        return chartView
+    }
+    
+    func updateUIView(_ uiView: BarChartView, context: Context) { }
+    
 }

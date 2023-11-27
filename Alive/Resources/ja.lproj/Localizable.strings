@@ -27,6 +27,8 @@
 "live_memo" = "MEMO";
 "live_setlist" = "セトリ";
 "live_timeTable" = "TimeTable";
+"live_demo_next_title" = "次のライブの予定はありません";
+
 
 // MARK: - LiveType
 "live_type_oneman" = "ワンマン";

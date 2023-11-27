@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct InputTimeTableView: View {
+    
+    // MARK: - ViewModel
+    @ObservedObject private var repository = RealmRepositoryViewModel.shared
+    
+    // MARK: - View
     public let live: Live
     @State private var time: Date? = nil
     @State private var artist: String = ""
     @State private var memo: String = ""
     @State private var color: TimeTableColor = .yellow
-    
     @State private var validationAlert: Bool = false
-
-    @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
     @Environment(\.dismiss) var dismiss
     var body: some View {

@@ -9,11 +9,16 @@ import SwiftUI
 
 struct FooterView: View {
     
+    // MARK: - ViewModel
     private let userDefaults = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
+    
+    // MARK: - Binding
     @Binding var selectedTab: Int
-    @State var isShowInput: Bool = false
-    @State var isShowCapacityAlert: Bool = false
+    
+    // MARK: - View
+    @State private var isShowInput: Bool = false
+    @State private var isShowCapacityAlert: Bool = false
     
     var body: some View {
         

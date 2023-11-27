@@ -30,7 +30,7 @@ struct ArtistCountChartView: View {
             } label: {
                 Text("")
             }.pickerStyle(SegmentedPickerStyle())
-
+            
             if select == "bar" {
                 ArtistBarChartView(artistCounts: repository.getArtistCounts.reversed().suffix(5).reversed())
                     .frame(width: DeviceSizeManager.deviceWidth, height: 300)

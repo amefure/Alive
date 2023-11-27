@@ -15,7 +15,7 @@ class Live: Object, ObjectKeyIdentifiable {
     
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var artist: String = ""           // アーティスト
-    @Persisted var name: String = "未登録"             // ライブ名
+    @Persisted var name: String = ""             // ライブ名
     @Persisted var date = Date()                 // 開催日
     @Persisted var openingTime: Date? = nil      // 開場
     @Persisted var performanceTime: Date? = nil  // 開演
@@ -53,7 +53,7 @@ class Live: Object, ObjectKeyIdentifiable {
     static var blankLive: Live {
         let live = Live()
         live.artist = "ALIVE"
-        live.name = "次のライブの予定はありません"
+        live.name = L10n.liveDemoNextTitle
         live.date = Date()
         live.venue = "ー"
         live.type = .oneman

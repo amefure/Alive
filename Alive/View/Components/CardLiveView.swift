@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct CardLiveView:View {
-    public var live: Live?
+    
+    // MARK: - Utility
     private let imageFileManager = ImageFileManager()
     private let dateFormatManager = DateFormatManager()
+    
+    // MARK: - Receive
+    public var live: Live?
+    
     var body: some View {
         if let live = live {
             
@@ -81,7 +86,7 @@ struct CardLiveView:View {
                         
                         MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: 80)
                             .padding(.trailing, 20)
-               
+                        
                     }
                 }.frame(height: 100)
                     .background(Color.white)

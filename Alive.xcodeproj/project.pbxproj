@@ -159,8 +159,8 @@
 				1242A2ED2B0B6B470033BD09 /* Model */,
 				1242A2DB2B0B69ED0033BD09 /* View */,
 				1242A2EE2B0B6B4C0033BD09 /* ViewModel */,
-				1242A2D02B0B66EE0033BD09 /* Preview Content */,
 				1242A2EF2B0B6B6F0033BD09 /* Repository */,
+				1242A2D02B0B66EE0033BD09 /* Preview Content */,
 			);
 			path = Alive;
 			sourceTree = "<group>";

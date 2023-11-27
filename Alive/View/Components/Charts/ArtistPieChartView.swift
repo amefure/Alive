@@ -35,20 +35,18 @@ struct ArtistPieChartView: UIViewRepresentable {
         var entries: [ChartDataEntry] = []
         
         // Y軸のデータリストからインデックスと値を取得し配列に格納
-        for (_, item) in artistCounts.enumerated() {
+        for item in artistCounts {
             // X軸は配列のインデックス番号
             let entry = PieChartDataEntry(value: Double(item.value), label: item.key)
             entries.append(entry)
         }
         
         let dataSet = PieChartDataSet(entries: entries, label: "アーティストカウント円グラフ")
-
         
         chartView.data = PieChartData(dataSet: dataSet)
-       
-
-        // カラーリストの設定（必要に応じて）
-        dataSet.colors = colors// ChartColorTemplates.material()
+        
+        // カラーリストの設定
+        dataSet.colors = colors
         // グラフ内に値を表示しない
         dataSet.drawValuesEnabled = false
         dataSet.valueTextColor = .foundation
@@ -61,22 +59,16 @@ struct ArtistPieChartView: UIViewRepresentable {
         // タッチでハイライトしない
         chartView.highlightPerTapEnabled = false
         chartView.rotationEnabled = false
-        // グラフ内にラベルを表示しない
-//        chartView.drawEntryLabelsEnabled = false
-
+        
         chartView.legend.horizontalAlignment = .center
         chartView.legend.enabled = false
-        
-        // データのラベル色
-    
         
         
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
         
-       return chartView
-   }
-
-   func updateUIView(_ uiView: PieChartView, context: Context) {
-   }
-
+        return chartView
+    }
+    
+    func updateUIView(_ uiView: PieChartView, context: Context) { }
+    
 }

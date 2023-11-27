@@ -26,6 +26,7 @@
 "live_memo" = "MEMO";
 "live_setlist" = "SetList";
 "live_timeTable" = "TimeTable";
+"live_demo_next_title" = "There are no plans for the next live show.";
 
 // MARK: - LiveType
 "live_type_oneman" = "Live";

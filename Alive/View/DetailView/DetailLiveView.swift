@@ -30,11 +30,10 @@ struct DetailLiveView: View {
     @State private var isShowDescDialog = false
     @State private var isDeleteDialog = false
     @State private var isDeleteTimeTableDialog = false
-    
     @State private var isModal = false
-    @Environment(\.dismiss) var dismiss
-    
     @State private var deleteTimeTable: TimeTable? = nil
+    
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -170,12 +169,12 @@ struct DetailLiveView: View {
                         SideBarTitleView(title: L10n.liveTimeTable, trailingAction: {
                             isShowDescDialog = true
                         }, imgName: "questionmark.circle")
-                            .alert("TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。", isPresented: $isShowDescDialog) {
-                                Button("OK") {
-                                    
-                                }
+                        .alert("TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。", isPresented: $isShowDescDialog) {
+                            Button("OK") {
+                                
                             }
-        
+                        }
+                        
                         ForEach(live.timeTable.sorted(byKeyPath: "time", ascending: true).sorted(by: {$0.time < $1.time})) { row in
                             HStack {
                                 Text(dateFormatManager.getTimeString(date: row.time))
@@ -184,11 +183,11 @@ struct DetailLiveView: View {
                                 Spacer()
                             }
                             .padding()
-                                .background(row.color.color)
-                                .onLongPressGesture() {
-                                    deleteTimeTable = row
-                                    isDeleteTimeTableDialog = true
-                                }
+                            .background(row.color.color)
+                            .onLongPressGesture() {
+                                deleteTimeTable = row
+                                isDeleteTimeTableDialog = true
+                            }
                         }
                         
                         Button {
@@ -205,8 +204,8 @@ struct DetailLiveView: View {
                         }
                     }.sheet(isPresented: $isModal) {
                         InputTimeTableView(live: live)
-                        .presentationDetents([. medium])
-                      }
+                            .presentationDetents([. medium])
+                    }
                 } else {
                     
                     SwitchInputEditorView(live: live)
@@ -356,7 +355,7 @@ struct SwitchInputEditorView: View {
                     .environment(\.colorScheme, .light)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .focused($isActive)
-                    
+                
             } else {
                 HStack {
                     Text(live.setList)

@@ -62,7 +62,6 @@ struct LiveScheduleListView: View {
             }
         }.scrollContentBackground(.hidden)
             .background(.foundation)
-            .padding(.bottom, 20)
     }
 }
 

@@ -21,14 +21,18 @@ struct MainView: View {
     @Binding var selectedTab: Int
     
     // MARK: - View
-    private var filteringLives: [Live]{
-        // 本日を含む後のライブのみを表示
+    // 本日を含む後のライブのみを全て表示
+    private var filteringNextLives: [Live] {
         repository.lives.filter { $0.date >= Calendar.current.startOfDay(for: Date()) }.reversed()
     }
     
+    // 本日を含まない過去のライブのみを5個のみ表示
+    private var filteringPastLives: [Live] {
+        repository.lives.filter { $0.date <= Calendar.current.startOfDay(for: Date()) }.reversed().suffix(5)
+    }
+    
     var body: some View {
-        
-        VStack(spacing: DeviceSizeManager.isSESize ? 2 : 10) {
+        ScrollView {
             
             // MARK: - NEXT LIVE
             Text("NEXT LIVE")
@@ -37,8 +41,8 @@ struct MainView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    if filteringLives.count != 0 {
-                        ForEach(filteringLives) { live in
+                    if filteringNextLives.count != 0 {
+                        ForEach(filteringNextLives) { live in
                             NavigationLink {
                                 DetailLiveView(live: live)
                             } label: {
@@ -93,8 +97,9 @@ struct MainView: View {
             }
             
             // prefixだとSliceになってしまう
-            LiveScheduleListView(lives: repository.lives.reversed().suffix(5).reversed())
-            
+            LiveScheduleListView(lives: filteringPastLives)
+                .padding(.horizontal, 10)
+                .padding(.bottom, 20)
             
         }.background(.foundation)
             .onAppear {

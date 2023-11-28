@@ -15,12 +15,15 @@ struct RootView: View {
     // MARK: - View
     @State private var selectedTab = 1
     @State private var isShowSetting = false
+    @State private var isShowShare = false
     
     var body: some View {
         
         ZStack {
             VStack {
-                HeaderView(trailingIcon: "gearshape",trailingAction: {
+                HeaderView(leadingIcon: "square.and.arrow.up", trailingIcon: "gearshape", leadingAction: {
+                    isShowShare = true
+                }, trailingAction: {
                     isShowSetting = true
                 }).tint(.themaYellow)
                 
@@ -46,6 +49,9 @@ struct RootView: View {
         }.background(.foundation)
             .navigationDestination(isPresented: $isShowSetting) {
                 SettingView()
+            }
+            .navigationDestination(isPresented: $isShowShare) {
+                ShareLiveInfoView()
             }
             .navigationBarBackButtonHidden()
             .navigationBarHidden(true)

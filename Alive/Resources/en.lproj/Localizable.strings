@@ -49,7 +49,7 @@
 "delete_timetable_alert_title_%@" = "Do you want to delete %@?";
 
 // MARK: - Input Item
-"live_main_artist" = "MainArtist";
+"live_main_artist" = "Main Musician";
 "entry_success_alert_title" = "Has registered.";
 "update_success_alert_title" = "Has been updated.";
 "validation_alert_title" = "Musician name and live name are required.";
@@ -57,6 +57,10 @@
 
 // MARK: - Input TimeTable Item
 "validation_timetable_alert_title" = "Performance time and musician name are required.";
+
+// MARK: - ShareLiveInfo Item
+"share_no_text" = "No Text";
+"share_no_text_alert" = "Please check the Live information you would like to share.";
 
 // MARK: - Charts Item
 "charts_no_data" = "No Data";

@@ -64,6 +64,10 @@
 // MARK: - Input TimeTable Item
 "validation_timetable_alert_title" = "出演時間と\nアーティスト名は必須入力です。";
 
+// MARK: - ShareLiveInfo Item
+"share_no_text" = "テキストがありません";
+"share_no_text_alert" = "シェアしたいLive情報にチェックを入れてください。";
+
 // MARK: - Charts Item
 "charts_no_data" = "データがありません";
 "charts_pie_name" = "アーティストカウント円グラフ";

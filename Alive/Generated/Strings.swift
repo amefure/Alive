@@ -134,6 +134,10 @@ internal enum L10n {
   internal static let settingTermsOfServiceTitle = L10n.tr("Localizable", "setting_terms_of_service_title", fallback: "利用規約とプライバシーポリシー")
   /// https://tech.amefure.com/app-terms-of-service
   internal static let settingTermsOfServiceUrl = L10n.tr("Localizable", "setting_terms_of_service_url", fallback: "https://tech.amefure.com/app-terms-of-service")
+  /// テキストがありません
+  internal static let shareNoText = L10n.tr("Localizable", "share_no_text", fallback: "テキストがありません")
+  /// シェアしたいLive情報にチェックを入れてください。
+  internal static let shareNoTextAlert = L10n.tr("Localizable", "share_no_text_alert", fallback: "シェアしたいLive情報にチェックを入れてください。")
   /// TimeTableは長押しすることで削除することが可能です。
   /// 編集することはできないので削除後に新規作成してください。
   internal static let timetableAlertTitle = L10n.tr("Localizable", "timetable_alert_title", fallback: "TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。")

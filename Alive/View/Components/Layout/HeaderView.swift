@@ -54,7 +54,7 @@ struct HeaderView: View {
                 Spacer()
                     .frame(width: 50)
             }
-        }
+        }.foregroundStyle(.themaYellow)
     }
 }
 

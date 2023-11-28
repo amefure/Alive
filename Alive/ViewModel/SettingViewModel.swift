@@ -9,6 +9,8 @@ import UIKit
 
 class SettingViewModel {
     
+    private let shareInfoManager = ShareInfoManager()
+    
     private let appUrlStr = L10n.appUrl
     private let shareText = L10n.settingRecommendShareText
 
@@ -43,18 +45,6 @@ class SettingViewModel {
 
     // アプリのシェアロジック
     public func shareApp() {
-        let items = [shareText, appUrl] as [Any]
-        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if let popPC = activityVC.popoverPresentationController {
-                popPC.sourceView = activityVC.view
-                popPC.barButtonItem = .none
-                popPC.sourceRect = activityVC.accessibilityFrame
-            }
-        }
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let rootVC = windowScene?.windows.first?.rootViewController
-        rootVC?.present(activityVC, animated: true, completion: {})
+        shareInfoManager.shareApp(text: shareText, url: appUrl)
     }
-    
 }

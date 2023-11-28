@@ -32,8 +32,8 @@ internal enum L10n {
   internal static let adsLoading = L10n.tr("Localizable", "ads_loading", fallback: "広告を読み込み中です。")
   /// 広告
   internal static let adsTitle = L10n.tr("Localizable", "ads_title", fallback: "広告")
-  /// https://apps.apple.com/jp/app/alive/id6473169112
-  internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive/id6473169112")
+  /// https://apps.apple.com/jp/app/alive-live参戦記録アプリ/id6473169112
+  internal static let appUrl = L10n.tr("Localizable", "app_url", fallback: "https://apps.apple.com/jp/app/alive-live参戦記録アプリ/id6473169112")
   /// アーティストカウント棒グラフ
   internal static let chartsBarName = L10n.tr("Localizable", "charts_bar_name", fallback: "アーティストカウント棒グラフ")
   /// データがありません
@@ -122,8 +122,8 @@ internal enum L10n {
   internal static let settingAppOnboading = L10n.tr("Localizable", "setting_app_onboading", fallback: "アプリの特徴を見る")
   /// Aliveアプリ
   internal static let settingAppTitle = L10n.tr("Localizable", "setting_app_title", fallback: "Aliveアプリ")
-  /// 
-  internal static let settingRecommendShareText = L10n.tr("Localizable", "setting_recommend_share_text", fallback: "")
+  /// Live情報をメモするLive好きのためのアプリだよ！
+  internal static let settingRecommendShareText = L10n.tr("Localizable", "setting_recommend_share_text", fallback: "Live情報をメモするLive好きのためのアプリだよ！")
   /// 「ALIVE」をオススメする
   internal static let settingRecommendTitle = L10n.tr("Localizable", "setting_recommend_title", fallback: "「ALIVE」をオススメする")
   /// アプリをレビューする

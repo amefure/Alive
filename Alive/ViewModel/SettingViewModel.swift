@@ -11,8 +11,8 @@ class SettingViewModel {
     
     private let shareInfoManager = ShareInfoManager()
     
-    private let appUrlStr = L10n.appUrl
-    private let shareText = L10n.settingRecommendShareText
+    private let appUrlStr: String = L10n.appUrl
+    private let shareText: String = L10n.settingRecommendShareText
 
     // App Store URL
     private var appUrl: URL {

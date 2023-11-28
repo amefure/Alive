@@ -188,7 +188,6 @@
 			children = (
 				1242A2CA2B0B66EC0033BD09 /* AliveApp.swift */,
 				128C3E6E2B10BC6B00CB9A3D /* RootView.swift */,
-				12A2216E2B156F3200C5165D /* ShareLiveInfoView.swift */,
 				1232EB1B2B1440610072480C /* Onboarding */,
 				128C3E722B10BF2A00CB9A3D /* ListView */,
 				128C3E712B10BF2000CB9A3D /* DetailView */,
@@ -335,6 +334,7 @@
 				1242A2F62B0B6E200033BD09 /* LiveScheduleListView.swift */,
 				126341DE2B1210CF001B8E51 /* AllLiveListView.swift */,
 				1242A30D2B0B912C0033BD09 /* ArtistCountChartView.swift */,
+				12A2216E2B156F3200C5165D /* ShareLiveInfoView.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -673,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Alive/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -692,7 +692,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.Alive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -710,7 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Alive/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -729,7 +729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.Alive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

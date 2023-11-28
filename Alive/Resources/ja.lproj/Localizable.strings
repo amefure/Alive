@@ -80,10 +80,10 @@
 
 "setting_review_title" = "アプリをレビューする";
 "setting_review_url_query" = "?action=write-review";
-"app_url" = "https://apps.apple.com/jp/app/alive/id6473169112";
+"app_url" = "https://apps.apple.com/jp/app/alive-live参戦記録アプリ/id6473169112";
 
 "setting_recommend_title" = "「ALIVE」をオススメする";
-"setting_recommend_share_text" = "";
+"setting_recommend_share_text" = "Live情報をメモするLive好きのためのアプリだよ！";
 
 "setting_terms_of_service_title" = "利用規約とプライバシーポリシー";
 "setting_terms_of_service_url" = "https://tech.amefure.com/app-terms-of-service";

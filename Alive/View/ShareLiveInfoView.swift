@@ -22,10 +22,35 @@ struct ShareLiveInfoView: View {
             
             HeaderView(leadingIcon: "chevron.backward", leadingAction: { dismiss() })
             
-            // MARK: - SHARE TEXT
-            Text("SHARE TEXT")
-                .fontWeight(.bold)
-                .padding(.vertical, DeviceSizeManager.isSESize ? 5 : 10)
+            HStack {
+                
+                Spacer()
+                    .frame(width: 100)
+                    .padding(.leading, 10)
+                
+                Spacer()
+                
+                // MARK: - SHARE TEXT
+                Text("SHARE TEXT")
+                    .fontWeight(.bold)
+                    .padding(.vertical, DeviceSizeManager.isSESize ? 5 : 10)
+                
+                Spacer()
+                
+                Button {
+                    viewModel.toggleFlag()
+                } label: {
+                    Text(viewModel.switchFlag ? L10n.liveArtist : L10n.liveName)
+                        .font(.caption)
+                }.padding(8)
+                    .frame(width: 90)
+                    .background(viewModel.switchFlag ? .themaPurple : .themaYellow )
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .shadow(color: .black ,radius: 2, x: 2, y: 2)
+                    .foregroundStyle(.white)
+                    .padding(.trailing, 10)
+            }
+            
             
             VStack {
                 HStack {
@@ -126,9 +151,9 @@ struct ShareRowLiveView: View {
                 
                 Text(dateFormatManager.getStringBlake(date: live.date))
                     .font(.caption)
-                    .frame(width: 60)
-                
-                Text(live.artist)
+                    .frame(width: 55)
+
+                Text(viewModel.switchFlag ? live.artist : live.name)
                 
                 Spacer()
             }

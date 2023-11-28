@@ -16,12 +16,17 @@ class ShareLiveInfoViewModel: ObservableObject {
     private var lives: [Live] = []
     
     @Published var text: String = ""
+    @Published var switchFlag: Bool = false
     
     public func convertLiveInfoString() {
         let df = DateFormatManager()
         text = ""
         for live in lives.sorted(by: { $0.date > $1.date}) {
-            text = text + df.getShortString(date: live.date) + " " + live.artist + "\n"
+            if switchFlag {
+                text = text + df.getStringSlash(date: live.date) + " " + live.name + "\n"
+            } else {
+                text = text + df.getStringSlash(date: live.date) + " " + live.artist + "\n"
+            }
         }
     }
     
@@ -39,5 +44,10 @@ class ShareLiveInfoViewModel: ObservableObject {
             lives.remove(at: index)
             convertLiveInfoString()
         }
+    }
+    
+    public func toggleFlag() {
+        switchFlag.toggle()
+        convertLiveInfoString()
     }
 }

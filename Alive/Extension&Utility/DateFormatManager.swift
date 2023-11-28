@@ -35,6 +35,12 @@ class DateFormatManager {
         return df.string(from: date)
     }
     
+    /// yyyy/M/d/
+    public func getStringSlash(date: Date) -> String {
+        df.dateFormat = "YYYY/M/d"
+        return df.string(from: date)
+    }
+    
     /// yyyy年M月d日 Date
     public func getDate(str: String) -> Date {
         df.dateFormat = L10n.dateFormat
@@ -55,7 +61,7 @@ class DateFormatManager {
     
     /// "M/dd"
     public func getShortString(date: Date) -> String {
-        df.dateFormat = "M/dd"
+        df.dateFormat = "M/d"
         return df.string(from: date)
     }
     

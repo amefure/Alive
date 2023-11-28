@@ -27,9 +27,9 @@ struct MainView: View {
     }
     
     // 本日を含まない過去のライブのみを5個のみ表示
-    private var filteringPastLives: [Live] {
-        repository.lives.filter { $0.date <= Calendar.current.startOfDay(for: Date()) }.reversed().suffix(5)
-    }
+//    private var filteringPastLives: [Live] {
+//        repository.lives.filter { $0.date <= Calendar.current.startOfDay(for: Date()) }.reversed().suffix(5)
+//    }
     
     var body: some View {
         ScrollView {
@@ -97,7 +97,7 @@ struct MainView: View {
             }
             
             // prefixだとSliceになってしまう
-            LiveScheduleListView(lives: filteringPastLives)
+            LiveScheduleListView(lives: repository.lives)
                 .padding(.horizontal, 10)
                 .padding(.bottom, 20)
             

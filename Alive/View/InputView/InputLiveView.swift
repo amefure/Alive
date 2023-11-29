@@ -66,6 +66,7 @@ struct InputLiveView: View {
                 price = String(live.price)
             }
             memo = live.memo
+            image = imageFileManager.loadImage(name: live.imagePath)
         }
     }
     

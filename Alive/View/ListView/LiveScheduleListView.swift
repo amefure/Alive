@@ -44,6 +44,7 @@ struct LiveScheduleListView: View {
                             
                             
                             Text(live.artist)
+                                .lineLimit(1)
                             
                             Spacer()
                             

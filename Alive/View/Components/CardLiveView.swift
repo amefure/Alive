@@ -35,6 +35,7 @@ struct CardLiveView:View {
                         
                         Image(uiImage: image)
                             .resizable()
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: imgSize, height: imgSize)
                             .background(.foundation)
                             .clipShape(RoundedRectangle(cornerRadius: imgSize))

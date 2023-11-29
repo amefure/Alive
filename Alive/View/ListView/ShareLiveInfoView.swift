@@ -154,6 +154,7 @@ struct ShareRowLiveView: View {
                     .frame(width: 55)
 
                 Text(viewModel.switchFlag ? live.artist : live.name)
+                    .lineLimit(1)
                 
                 Spacer()
             }

@@ -9,11 +9,10 @@ import SwiftUI
 
 struct AllLiveListView: View {
     
-    // MARK: - Receive
-    public let lives: [Live]
+    // MARK: - ViewModel
+    @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
     // MARK: - View
-    @State private var filteringLives: [Live] = []
     @State private var search: String = ""
     
     var body: some View {
@@ -23,20 +22,20 @@ struct AllLiveListView: View {
             CustomInputView(text: $search, imgName: "magnifyingglass", placeholder: L10n.liveArtist + "...")
                 .onChange(of: search) { newValue in
                     if newValue.isEmpty {
-                        filteringLives = lives
+                        repository.readAllLive()
                     } else {
-                        filteringLives = lives.filter( {$0.artist.contains(search) || $0.name.contains(search) })
+                        repository.searchFilteringLive(search: search)
                     }
                 }
             
-            LiveScheduleListView(lives: filteringLives)
+            LiveScheduleListView(lives: repository.lives)
             
             AdMobBannerView()
                 .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
                 .padding(.bottom, DeviceSizeManager.isSESize ? 25 : 20)
             
-        }.onAppear {
-            filteringLives = lives
+        }.onDisappear {
+            repository.readAllLive()
         }
         .navigationBarBackButtonHidden()
         .navigationBarHidden(true)
@@ -45,5 +44,5 @@ struct AllLiveListView: View {
 }
 
 #Preview {
-    AllLiveListView(lives: [])
+    AllLiveListView()
 }

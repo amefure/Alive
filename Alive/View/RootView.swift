@@ -38,7 +38,7 @@ struct RootView: View {
                     
                     // フッターには表示されていないタブ(リストAllボタンで表示)
                     // タブにしないと詳細画面へ遷移できない
-                    AllLiveListView(lives: repository.lives)
+                    AllLiveListView()
                         .tag(3)
                     
                 }

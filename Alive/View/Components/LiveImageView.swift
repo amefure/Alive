@@ -16,7 +16,8 @@ struct LiveImageView: View {
         if let image = image {
             Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(CGSize(width: 3, height: 2), contentMode: .fill)
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: DeviceSizeManager.deviceWidth, height: 180)
                     .clipped()
         } else {

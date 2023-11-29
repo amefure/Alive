@@ -23,6 +23,12 @@ class RealmRepositoryViewModel: ObservableObject {
         artists = Array(Set(lives.filter({ $0.artist != "" }).map({ $0.artist }))).sorted()
     }
     
+    public func searchFilteringLive(search: String) {
+        lives.removeAll()
+        let result = repository.readAllLive()
+        lives = Array(result).sorted(by: { $0.date > $1.date }).filter( {$0.artist.contains(search) || $0.name.contains(search) })
+    }
+    
     public func createLive(newLive: Live) {
         repository.createLive(newLive: newLive)
         self.readAllLive()

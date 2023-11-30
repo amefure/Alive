@@ -31,8 +31,9 @@ struct AllLiveListView: View {
             LiveScheduleListView(lives: repository.lives)
             
             AdMobBannerView()
-                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
-                .padding(.bottom, DeviceSizeManager.isSESize ? 25 : 20)
+                .frame(height: 60)
+                .padding(.bottom, DeviceSizeManager.isSESize ? 70 : 100)
+                
             
         }.onDisappear {
             repository.readAllLive()
@@ -40,6 +41,7 @@ struct AllLiveListView: View {
         .navigationBarBackButtonHidden()
         .navigationBarHidden(true)
         .background(.foundation)
+        .ignoresSafeArea()
     }
 }
 

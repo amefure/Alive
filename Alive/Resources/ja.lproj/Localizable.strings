@@ -13,7 +13,6 @@
 "onboarding_next" = "次へ";
 "onboarding_start" = "はじめる";
 
-
 // MARK: - Live
 "live_artist" = "アーティスト";
 "live_name" = "ライブ名";
@@ -29,13 +28,11 @@
 "live_timeTable" = "TimeTable";
 "live_demo_next_title" = "次のライブの予定はありません";
 
-
 // MARK: - LiveType
 "live_type_oneman" = "ワンマン";
 "live_type_battleBands" = "対バン";
 "live_type_festival" = "フェス";
 "live_type_unknown" = "未設定";
-
 
 // MARK: - Loacle
 "date_locale" = "ja_JP";
@@ -50,9 +47,8 @@
 "live_price_unit_%@" = "%@円";
 "timetable_alert_title" = "TimeTableは長押しすることで削除することが可能です。\n編集することはできないので削除後に新規作成してください。";
 
-"delete_button_title" = "削除";
+"entry_timetable_button" = "登録";
 "delete_timetable_alert_title_%@" = "%@を削除しますか？";
-
 
 // MARK: - Input Item
 "live_main_artist" = "一押しアーティスト";
@@ -72,7 +68,6 @@
 "charts_no_data" = "データがありません";
 "charts_pie_name" = "アーティストカウント円グラフ";
 "charts_bar_name" = "アーティストカウント棒グラフ";
-
 
 // MARK: - Setting
 "setting_app_title" = "Aliveアプリ";

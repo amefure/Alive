@@ -46,6 +46,8 @@
 "live_price_none" = "＄ -";
 "live_price_unit_%@" = "＄%@";
 "timetable_alert_title" = "TimeTable can be deleted by long-pressing it. \nYou cannot edit it, so please delete it and create a new one.";
+
+"entry_timetable_button" = "Entry";
 "delete_timetable_alert_title_%@" = "Do you want to delete %@?";
 
 // MARK: - Input Item
@@ -73,7 +75,7 @@
 
 "setting_review_title" = "Review app";
 "setting_review_url_query" = "?action=write-review";
-"app_url" = "https://apps.apple.com/en/app/alive-live参戦記録アプリ/id6473169112";
+"app_url" = "https://apps.apple.com/us/app/alive-live-memo/id6473169112";
 
 "setting_recommend_title" = "Recommend ’ALIVE’";
 "setting_recommend_share_text" = "It's an app for Live fans who take notes on Live information!";

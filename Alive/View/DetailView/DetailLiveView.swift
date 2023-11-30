@@ -166,10 +166,10 @@ struct DetailLiveView: View {
                         }.padding(.top , 20)
                 }
                 
-            }.padding(.bottom)
+            }
             
             AdMobBannerView()
-                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
+                .frame(height: 60)
             
             Spacer()
             
@@ -187,7 +187,7 @@ struct DetailLiveView: View {
                 } label: {
                     Text(L10n.deleteButtonTitle)
                 }
-            }.alert(L10n.deleteTimetableAlertTitle(deleteTimeTable ?? ""), isPresented: $isDeleteTimeTableDialog) {
+            }.alert(L10n.deleteTimetableAlertTitle(deleteTimeTable?.artist ?? ""), isPresented: $isDeleteTimeTableDialog) {
                 Button(role: .destructive) {
                     if let deleteTimeTable = deleteTimeTable {
                         repository.deleteTimeTable(id: live.id, timeTable: deleteTimeTable)

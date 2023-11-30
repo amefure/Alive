@@ -61,7 +61,7 @@ struct InputTimeTableView: View {
                 }
                 
             } label: {
-                Text(L10n.deleteButtonTitle)
+                Text(L10n.entryTimetableButton)
                     .padding(.vertical, 7)
                     .frame(width: 100)
                     .foregroundStyle(.themaYellow)

@@ -57,6 +57,8 @@ internal enum L10n {
   }
   /// 登録しました。
   internal static let entrySuccessAlertTitle = L10n.tr("Localizable", "entry_success_alert_title", fallback: "登録しました。")
+  /// 登録
+  internal static let entryTimetableButton = L10n.tr("Localizable", "entry_timetable_button", fallback: "登録")
   /// 時間
   internal static let inputTimePickerExtension = L10n.tr("Localizable", "input_time_picker_extension", fallback: "時間")
   /// アーティスト

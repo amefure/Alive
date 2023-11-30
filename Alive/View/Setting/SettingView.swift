@@ -86,7 +86,7 @@ struct SettingView: View {
                 .background(.foundation)
             
             AdMobBannerView()
-                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
+                .frame(height: 60)
                 .padding(.bottom, DeviceSizeManager.isSESize ? 25 : 20)
             
         }.navigationBarBackButtonHidden()

@@ -23,9 +23,9 @@ class ShareLiveInfoViewModel: ObservableObject {
         text = ""
         for live in lives.sorted(by: { $0.date > $1.date}) {
             if switchFlag {
-                text = text + df.getStringSlash(date: live.date) + " " + live.name + "\n"
-            } else {
                 text = text + df.getStringSlash(date: live.date) + " " + live.artist + "\n"
+            } else {
+                text = text + df.getStringSlash(date: live.date) + " " + live.name + "\n"
             }
         }
     }

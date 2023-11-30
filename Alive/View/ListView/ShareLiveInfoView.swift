@@ -104,7 +104,7 @@ struct ShareLiveInfoView: View {
             Spacer()
             
             AdMobBannerView()
-                .frame(height: DeviceSizeManager.isSESize ? 40 : 60)
+                .frame(height: DeviceSizeManager.isSESize ? 50 : 60)
             
         }.navigationBarBackButtonHidden()
             .navigationBarHidden(true)

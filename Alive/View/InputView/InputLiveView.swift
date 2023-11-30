@@ -36,7 +36,7 @@ struct InputLiveView: View {
     @State private var price: String = ""              // チケット代
     @State private var liveType: LiveType = .unknown   // ライブ形式
     @State private var memo: String = ""               // メモ
-
+    
     // Pool
     @State private var image: UIImage?                  // 画像表示用
     
@@ -48,6 +48,7 @@ struct InputLiveView: View {
     @State private var successAlert: Bool = false       // 登録成功アラート
     @State private var validationAlert: Bool = false    // バリデーションアラート
     
+    @FocusState  var isActive:Bool
     // Environment
     @Environment(\.dismiss) var dismiss
     
@@ -151,135 +152,146 @@ struct InputLiveView: View {
             
             Spacer()
             
-            ScrollView(showsIndicators: false) {
+            ScrollViewReader { reader in
                 
-                ZStack {
-                    LiveImageView(image: image)
+                ScrollView(showsIndicators: false) {
                     
-                    Button {
-                        isShowImagePicker = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .frame(width: DeviceSizeManager.deviceWidth, height: 180)
-                            .foregroundStyle(.white)
-                            .background(.opacityGray)
-                    }
-                }.padding(.top, 20)
-                
-                VStack {
-                    Text(L10n.liveType)
-                    Divider()
-                    HStack(spacing: 20) {
-                        ForEach(LiveType.allCases, id: \.self) { item in
-                            
-                            if item != .unknown {
-                                Button {
-                                    liveType = item
-                                } label: {
-                                    Text(item.value)
-                                }.foregroundStyle(liveType == item ? .foundation : .white)
-                                    .padding()
-                                    .frame(width: 100)
-                                    .background(liveType == item ? item.color : .opacityGray)
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .stroke(.white, lineWidth: 1)
-                                    )
-                            }
+                    ZStack {
+                        LiveImageView(image: image)
+                        
+                        Button {
+                            isShowImagePicker = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .frame(width: DeviceSizeManager.deviceWidth, height: 180)
+                                .foregroundStyle(.white)
+                                .background(.opacityGray)
                         }
-                    }
-                }
-                
-                // MARK: - アーティスト
-                HStack {
-                    Image(systemName: "music.mic")
-                        .foregroundStyle(.black)
-                        .frame(width: 23)
-                    TextField(liveType != .oneman ? L10n.liveMainArtist : L10n.liveArtist, text: $artist)
+                    }.padding(.top, 20)
                     
-                    Spacer()
-                    
-                    if repository.artists.count != 0 {
-                        Menu {
-                            ForEach(repository.artists, id: \.self) { artist in
-                                Button {
-                                    self.artist = artist
-                                } label: {
-                                    Text(artist)
+                    VStack {
+                        Text(L10n.liveType)
+                        Divider()
+                        HStack(spacing: 20) {
+                            ForEach(LiveType.allCases, id: \.self) { item in
+                                
+                                if item != .unknown {
+                                    Button {
+                                        liveType = item
+                                    } label: {
+                                        Text(item.value)
+                                    }.foregroundStyle(liveType == item ? .foundation : .white)
+                                        .padding()
+                                        .frame(width: 100)
+                                        .background(liveType == item ? item.color : .opacityGray)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .stroke(.white, lineWidth: 1)
+                                        )
                                 }
                             }
-                        } label: {
-                            Image(systemName: "chevron.up.chevron.down")
-                                .font(.system(size: 13))
-                                .foregroundStyle(.foundation)
                         }
                     }
                     
-                }.padding(DeviceSizeManager.isSESize ? 10 : 15)
-                    .background(.regularMaterial)
-                    .environment(\.colorScheme, .light)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(DeviceSizeManager.isSESize ? 10 : 15)
-                
-                // MARK: - ライブ名
-                CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
-                
-                // MARK: - 会場
-                CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
-                
-                // MARK: - チケット代
-                CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
-                    .keyboardType(.numberPad)
-                
-                // MARK: - 開催日
-                HStack {
-                    Image(systemName: "calendar")
-                        .foregroundStyle(.black)
-                        .frame(width: 23)
-                    
-                    Button {
-                        isShowCalendar.toggle()
-                    } label: {
-                        Text(L10n.liveDate)
-                        Text(dateFormatManager.getString(date: date))
-                        Image(systemName: isShowCalendar ? "checkmark" : "chevron.up.chevron.down")
-                    }.foregroundStyle(.opacityGray)
-                    
-                    
-                    Spacer()
-                }.padding(DeviceSizeManager.isSESize ? 10 : 15)
-                    .background(.regularMaterial)
-                    .environment(\.colorScheme, .light)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(DeviceSizeManager.isSESize ? 10 : 15)
-                
-                if isShowCalendar {
-                    VStack(alignment: .leading) {
-                        Text(L10n.liveDate)
-                        Divider()
-                        DatePicker(selection: $date,
-                                   displayedComponents: DatePickerComponents.date,
-                                   label: { Text(L10n.liveDate) })
-                        .environment(\.locale, Locale(identifier: L10n.dateLocale))
-                        .environment(\.calendar, Calendar(identifier: .gregorian))
-                        .datePickerStyle(.graphical)
-                        .accentColor(.themaYellow)
+                    // MARK: - アーティスト
+                    HStack {
+                        Image(systemName: "music.mic")
+                            .foregroundStyle(.black)
+                            .frame(width: 23)
+                        TextField(liveType != .oneman ? L10n.liveMainArtist : L10n.liveArtist, text: $artist)
                         
-                    }.padding()
+                        Spacer()
+                        
+                        if repository.artists.count != 0 {
+                            Menu {
+                                ForEach(repository.artists, id: \.self) { artist in
+                                    Button {
+                                        self.artist = artist
+                                    } label: {
+                                        Text(artist)
+                                    }
+                                }
+                            } label: {
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(.foundation)
+                            }
+                        }
+                        
+                    }.padding(DeviceSizeManager.isSESize ? 10 : 15)
+                        .background(.regularMaterial)
+                        .environment(\.colorScheme, .light)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(DeviceSizeManager.isSESize ? 10 : 15)
+                    
+                    // MARK: - ライブ名
+                    CustomInputView(text: $name, imgName: "bolt.fill", placeholder: L10n.liveName)
+                    
+                    // MARK: - 会場
+                    CustomInputView(text: $venue, imgName: "mappin.and.ellipse", placeholder: L10n.liveVenue)
+                    
+                    // MARK: - チケット代
+                    CustomInputView(text: $price, imgName: "banknote", placeholder: L10n.livePrice)
+                        .keyboardType(.numberPad)
+                        .focused($isActive)
+                    
+                    // MARK: - 開催日
+                    HStack {
+                        Image(systemName: "calendar")
+                            .foregroundStyle(.black)
+                            .frame(width: 23)
+                        
+                        Button {
+                            isActive = false
+                            isShowCalendar.toggle()
+                            withAnimation {
+                                reader.scrollTo("calendar")
+                            }
+                        } label: {
+                            Text(L10n.liveDate)
+                            Text(dateFormatManager.getString(date: date))
+                            Image(systemName: isShowCalendar ? "checkmark" : "chevron.up.chevron.down")
+                        }.foregroundStyle(.opacityGray)
+                        
+                        
+                        Spacer()
+                    }.padding(DeviceSizeManager.isSESize ? 10 : 15)
+                        .background(.regularMaterial)
+                        .environment(\.colorScheme, .light)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(DeviceSizeManager.isSESize ? 10 : 15)
+                    
+                    if isShowCalendar {
+                        VStack(alignment: .leading) {
+                            Text(L10n.liveDate)
+                            Divider()
+                            DatePicker(selection: $date,
+                                       displayedComponents: DatePickerComponents.date,
+                                       label: { Text(L10n.liveDate) })
+                            .environment(\.locale, Locale(identifier: L10n.dateLocale))
+                            .environment(\.calendar, Calendar(identifier: .gregorian))
+                            .datePickerStyle(.graphical)
+                            .accentColor(.themaYellow)
+                            
+                        }.padding()
+                            
+                    }
+                    
+                    // MARK: - 開場時間
+                    TimePicker(selectedTime: $openingTime, title:L10n.liveOpeningTime)
+                        .id("calendar") // カレンダーを表示させるため開場時間にセット(カレンダーは最初非表示のため)
+                    
+                    // MARK: - 開演時間
+                    TimePicker(selectedTime: $performanceTime, title:L10n.livePerformanceTime)
+                    
+                    // MARK: - 終了時間
+                    TimePicker(selectedTime: $closingTime, title:L10n.liveClosingTime)
+                    
+                    // MARK: - MEMO
+                    CustomInputEditorView(text: $memo,  imgName: "note", placeholder: L10n.liveMemo)
+                    
                 }
-                
-                // MARK: - 開場時間
-                TimePicker(selectedTime: $openingTime, title:L10n.liveOpeningTime)
-                
-                // MARK: - 開演時間
-                TimePicker(selectedTime: $performanceTime, title:L10n.livePerformanceTime)
-                
-                // MARK: - 終了時間
-                TimePicker(selectedTime: $closingTime, title:L10n.liveClosingTime)
-                
-                // MARK: - MEMO
-                CustomInputEditorView(text: $memo,  imgName: "note", placeholder: L10n.liveMemo)
                 
             }
             Spacer()

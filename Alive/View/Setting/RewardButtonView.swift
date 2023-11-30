@@ -16,7 +16,7 @@ struct RewardButtonView: View {
     private let userDefaults = UserDefaultsRepositoryViewModel.sheard
     
     // MARK: - AdMob
-    @ObservedObject private var reward = Reward()
+    @ObservedObject private var reward = Reward.shared
 
     // MARK: - View
     @State var isAlertReward: Bool = false // リワード広告視聴回数制限アラート

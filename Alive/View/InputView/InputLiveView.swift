@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct InputLiveView: View {
@@ -17,6 +18,8 @@ struct InputLiveView: View {
     // MARK: - ViewModel
     private let userDefaultsRepository = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
+    
+    @State private var cancellables:Set<AnyCancellable> = Set()
     
     // Updateデータ受け取り用
     public var live: Live?
@@ -92,10 +95,19 @@ struct InputLiveView: View {
                     }
                     
                     if let image = image {
-                        let result = imageFileManager.saveImage(name: imgName, image: image)
-                        if result {
-                            print("保存成功")
-                        }
+                        imageFileManager.saveImage(name: imgName, image: image).sink { result in
+                            switch result {
+                            case .finished:
+                                print("Image：保存成功")
+                                break
+                            case .failure(let error):
+                                print("Image：\(error.message)")
+                                break
+                            }
+                        } receiveValue: { _ in
+                            
+                        }.store(in: &cancellables)
+
                     }
                     
                     let newLive = Live()
@@ -121,10 +133,18 @@ struct InputLiveView: View {
                     /// 画像がセットされていれば画像を表示
                     if let image = image {
                         imgName = UUID().uuidString   // 画像のファイル名を構築
-                        let result = imageFileManager.saveImage(name: imgName, image: image)
-                        if result {
-                            print("保存成功")
-                        }
+                        imageFileManager.saveImage(name: imgName, image: image).sink { result in
+                            switch result {
+                            case .finished:
+                                print("Image：保存成功")
+                                break
+                            case .failure(let error):
+                                print("Image：\(error.message)")
+                                break
+                            }
+                        } receiveValue: { _ in
+                            
+                        }.store(in: &cancellables)
                     }
                     
                     let newLive = Live()
@@ -303,7 +323,8 @@ struct InputLiveView: View {
             .background(.foundation)
             .onAppear {
                 setLiveData()
-            }.alert(live == nil ? L10n.entrySuccessAlertTitle : L10n.updateSuccessAlertTitle, isPresented: $successAlert) {
+            }
+            .alert(live == nil ? L10n.entrySuccessAlertTitle : L10n.updateSuccessAlertTitle, isPresented: $successAlert) {
                 Button("OK") {
                     dismiss()
                 }

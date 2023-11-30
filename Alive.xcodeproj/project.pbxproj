@@ -56,6 +56,7 @@
 		128C3E792B1162FB00CB9A3D /* RewardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C3E782B1162FB00CB9A3D /* RewardButtonView.swift */; };
 		12A2216F2B156F3200C5165D /* ShareLiveInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2216E2B156F3200C5165D /* ShareLiveInfoView.swift */; };
 		12A221712B15A66600C5165D /* ShareLiveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A221702B15A66600C5165D /* ShareLiveInfoViewModel.swift */; };
+		12F909E92B18C29500DDF4D1 /* ImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F909E82B18C29500DDF4D1 /* ImageError.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		128C3E782B1162FB00CB9A3D /* RewardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardButtonView.swift; sourceTree = "<group>"; };
 		12A2216E2B156F3200C5165D /* ShareLiveInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLiveInfoView.swift; sourceTree = "<group>"; };
 		12A221702B15A66600C5165D /* ShareLiveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLiveInfoViewModel.swift; sourceTree = "<group>"; };
+		12F909E82B18C29500DDF4D1 /* ImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageError.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +241,7 @@
 				1242A30F2B0BA96D0033BD09 /* LiveType.swift */,
 				1242A3112B0C62FC0033BD09 /* TimeTable.swift */,
 				126341D82B11FBBC001B8E51 /* AdsConfig.swift */,
+				12F909E72B18C27300DDF4D1 /* Error */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,14 @@
 				128C3E782B1162FB00CB9A3D /* RewardButtonView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		12F909E72B18C27300DDF4D1 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				12F909E82B18C29500DDF4D1 /* ImageError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		52C2971FC94C465977190C45 /* Pods */ = {
@@ -491,6 +502,7 @@
 				1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */,
 				128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */,
 				1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */,
+				12F909E92B18C29500DDF4D1 /* ImageError.swift in Sources */,
 				1232EB232B1440E30072480C /* SplashView.swift in Sources */,
 				1242A30A2B0B8C5F0033BD09 /* InputLiveView.swift in Sources */,
 				1242A2FE2B0B6EA40033BD09 /* DateFormatManager.swift in Sources */,

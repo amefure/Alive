@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 /// アプリからデバイス内(Docmentsフォルダ)へ画像を保存するクラス
 class ImageFileManager {
@@ -48,25 +49,38 @@ class ImageFileManager {
     }
     
     /// 画像保存処理
-    public func saveImage(name: String, image: UIImage) -> Bool {
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else { return false }
-        guard let path = getDocmentsUrl("\(name + suffix)") else { return false }
-        do {
-            try imageData.write(to: path)
-            return true
-        } catch {
-            print("保存失敗")
-            return false
-        }
+    public func saveImage(name: String, image: UIImage) -> AnyPublisher<Void, ImageError> {
+        Deferred {
+            Future<Void, ImageError>() { [weak self] promise in
+                guard let self = self else { return promise(.failure(.castFailed)) }
+                guard let imageData = image.jpegData(compressionQuality: 1.0) else { return promise(.failure(.castFailed)) }
+                guard let path = self.getDocmentsUrl("\(name + self.suffix)") else { return promise(.failure(.castFailed)) }
+                do {
+                    try imageData.write(to: path)
+                    promise(.success(()))
+                } catch {
+                    promise(.failure(.saveFailed))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
     
     /// 画像削除処理
-    public func deleteImage(name: String) {
-        guard let path = getDocmentsUrl("\(name + suffix)") else { return }
-        do {
-            try fileManager.removeItem(at: path)
-        } catch {
-            print("削除失敗")
-        }
+    public func deleteImage(name: String) -> AnyPublisher<Void, ImageError> {
+        Deferred {
+            Future<Void, ImageError>() { [weak self] promise in
+                guard let self = self else { return promise(.failure(.castFailed)) }
+                
+                guard let path = self.getDocmentsUrl("\(name + self.suffix)") else { return promise(.failure(.castFailed)) }
+                do {
+                    try fileManager.removeItem(at: path)
+                    promise(.success(()))
+                } catch {
+                    promise(.failure(.deleteFailed))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
+
+

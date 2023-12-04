@@ -9,37 +9,37 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable {
+enum LiveType: Int, PersistableEnum, Identifiable, CaseIterable, Codable {
     var id:String{self.value}
     
-    case oneman 
+    case oneman
     case battleBands
     case festival
     case unknown
     
     public var value: String {
-        switch self {
+        return switch self {
         case .oneman:
-            return L10n.liveTypeOneman
+            L10n.liveTypeOneman
         case .battleBands:
-            return L10n.liveTypeBattleBands
+            L10n.liveTypeBattleBands
         case .festival:
-            return L10n.liveTypeFestival
+            L10n.liveTypeFestival
         case .unknown:
-            return L10n.liveTypeUnknown
+            L10n.liveTypeUnknown
         }
     }
     
     public var color: Color {
-        switch self {
+        return switch self {
         case .oneman:
-            return .themaRed
+                .themaRed
         case .battleBands:
-            return .themaPurple
+                .themaPurple
         case .festival:
-            return .themaBlue
+                .themaBlue
         case .unknown:
-            return .themaYellow
+                .themaYellow
         }
     }
 }

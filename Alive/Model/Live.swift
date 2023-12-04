@@ -7,11 +7,7 @@
 
 import RealmSwift
 
-class Live2 {
-    var date = Date()
-}
-
-class Live: Object, ObjectKeyIdentifiable {
+class Live: Object, ObjectKeyIdentifiable, Codable {
     
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var artist: String = ""           // アーティスト
@@ -31,6 +27,9 @@ class Live: Object, ObjectKeyIdentifiable {
     @Persisted var setList: String = "1.\n2.\n3.\n4.\n5.\n6.\n7.\n"
     @Persisted var timeTable: List<TimeTable>  // タイムテーブル
     
+    enum CodingKeys: String, CodingKey {
+        case id, artist, name, date, openingTime, performanceTime, closingTime, venue, price, type, memo, imagePath, setList, timeTable
+    }
     
 
     static var demoLive: Live {

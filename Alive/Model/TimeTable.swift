@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-class TimeTable: Object, ObjectKeyIdentifiable {
+class TimeTable: Object, ObjectKeyIdentifiable, Codable {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var time: Date = Date()              // 演奏時間
     @Persisted var artist: String = ""              // アーティスト
@@ -138,7 +138,7 @@ class TimeTable: Object, ObjectKeyIdentifiable {
 }
 
 
-enum TimeTableColor: String, PersistableEnum, Identifiable, CaseIterable {
+enum TimeTableColor: String, PersistableEnum, Identifiable, CaseIterable, Codable {
     var id:String{self.rawValue}
     
     case red

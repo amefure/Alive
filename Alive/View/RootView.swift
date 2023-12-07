@@ -12,6 +12,8 @@ struct RootView: View {
     // MARK: - ViewModel
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
+    @ObservedObject private var watchConnectViewModel = WatchConnectViewModel.shared
+    
     // MARK: - View
     @State private var selectedTab = 1
     @State private var isShowSetting = false
@@ -23,6 +25,7 @@ struct RootView: View {
             VStack {
                 HeaderView(leadingIcon: "square.and.arrow.up", trailingIcon: "gearshape", leadingAction: {
                     isShowShare = true
+                    
                 }, trailingAction: {
                     isShowSetting = true
                 }).tint(.themaYellow)

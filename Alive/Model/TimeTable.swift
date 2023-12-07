@@ -15,6 +15,33 @@ class TimeTable: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var memo: String = ""                // MEMO
     @Persisted var color: TimeTableColor = .yellow  // カラー
     
+    enum CodingKeys: String, CodingKey {
+        case id, time, artist, memo, color
+    }
+    
+    required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(ObjectId.self, forKey: .id)
+        time = try container.decode(Date.self, forKey: .time)
+        artist = try container.decode(String.self, forKey: .artist)
+        memo = try container.decode(String.self, forKey: .memo)
+        color = try container.decode(TimeTableColor.self, forKey: .color)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(time, forKey: .time)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(memo, forKey: .memo)
+        try container.encode(color, forKey: .color)
+    }
+}
+
+// MARK: DemoData
+extension TimeTable {
+    
     // DetailLiveViewに直接渡す
     static var demoTimeTables: Array<TimeTable> {
         var timeTables: [TimeTable] = []
@@ -136,7 +163,6 @@ class TimeTable: Object, ObjectKeyIdentifiable, Codable {
         return timeTables
     }
 }
-
 
 enum TimeTableColor: String, PersistableEnum, Identifiable, CaseIterable, Codable {
     var id:String{self.rawValue}

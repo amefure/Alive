@@ -32,6 +32,47 @@ class Live: Object, ObjectKeyIdentifiable, Codable {
     }
     
 
+    required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(ObjectId.self, forKey: .id)
+        artist = try container.decode(String.self, forKey: .artist)
+        name = try container.decode(String.self, forKey: .name)
+        date = try container.decode(Date.self, forKey: .date)
+        openingTime = try container.decodeIfPresent(Date.self, forKey: .openingTime)
+        performanceTime = try container.decodeIfPresent(Date.self, forKey: .performanceTime)
+        closingTime = try container.decodeIfPresent(Date.self, forKey: .closingTime)
+        venue = try container.decode(String.self, forKey: .venue)
+        price = try container.decode(Int.self, forKey: .price)
+        type = try container.decode(LiveType.self, forKey: .type)
+        memo = try container.decode(String.self, forKey: .memo)
+        imagePath = try container.decode(String.self, forKey: .imagePath)
+        setList = try container.decode(String.self, forKey: .setList)
+        timeTable = try container.decode(List<TimeTable>.self, forKey: .timeTable)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(name, forKey: .name)
+        try container.encode(date, forKey: .date)
+        try container.encodeIfPresent(openingTime, forKey: .openingTime)
+        try container.encodeIfPresent(performanceTime, forKey: .performanceTime)
+        try container.encodeIfPresent(closingTime, forKey: .closingTime)
+        try container.encode(venue, forKey: .venue)
+        try container.encode(price, forKey: .price)
+        try container.encode(type, forKey: .type)
+        try container.encode(memo, forKey: .memo)
+        try container.encode(imagePath, forKey: .imagePath)
+        try container.encode(setList, forKey: .setList)
+        try container.encode(timeTable, forKey: .timeTable)
+    }
+
+}
+
+// MARK: DemoData
+extension Live {
     static var demoLive: Live {
         let live = Live()
         live.artist = "吉田　真紘"

@@ -65,6 +65,9 @@
 		12E9DE362B1D890800AD8223 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1242A2FD2B0B6EA40033BD09 /* DateFormatManager.swift */; };
 		12E9DE372B1D898300AD8223 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1242A2E72B0B6AC10033BD09 /* Colors.xcassets */; };
 		12E9DE382B1D898500AD8223 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1242A2CE2B0B66EE0033BD09 /* Images.xcassets */; };
+		12E9DE3B2B21884500AD8223 /* WatchHeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9DE3A2B21884500AD8223 /* WatchHeaderKey.swift */; };
+		12E9DE3C2B21888700AD8223 /* WatchHeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9DE3A2B21884500AD8223 /* WatchHeaderKey.swift */; };
+		12E9DE422B22044A00AD8223 /* WatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9DE412B22044A00AD8223 /* WatchError.swift */; };
 		12F909E92B18C29500DDF4D1 /* ImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F909E82B18C29500DDF4D1 /* ImageError.swift */; };
 		12F909F12B18CB6200DDF4D1 /* AliveWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F909F02B18CB6200DDF4D1 /* AliveWatchApp.swift */; };
 		12F909F32B18CB6200DDF4D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F909F22B18CB6200DDF4D1 /* ContentView.swift */; };
@@ -155,6 +158,8 @@
 		12A2216E2B156F3200C5165D /* ShareLiveInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLiveInfoView.swift; sourceTree = "<group>"; };
 		12A221702B15A66600C5165D /* ShareLiveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLiveInfoViewModel.swift; sourceTree = "<group>"; };
 		12A95D4B2B1AF08B00AC2591 /* iOSConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnectViewModel.swift; sourceTree = "<group>"; };
+		12E9DE3A2B21884500AD8223 /* WatchHeaderKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHeaderKey.swift; sourceTree = "<group>"; };
+		12E9DE412B22044A00AD8223 /* WatchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchError.swift; sourceTree = "<group>"; };
 		12F909E82B18C29500DDF4D1 /* ImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageError.swift; sourceTree = "<group>"; };
 		12F909EE2B18CB6200DDF4D1 /* AliveWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AliveWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F909F02B18CB6200DDF4D1 /* AliveWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliveWatchApp.swift; sourceTree = "<group>"; };
@@ -302,6 +307,7 @@
 				1242A3112B0C62FC0033BD09 /* TimeTable.swift */,
 				126341D82B11FBBC001B8E51 /* AdsConfig.swift */,
 				12F909E72B18C27300DDF4D1 /* Error */,
+				12E9DE392B21880800AD8223 /* WatchHeader */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,10 +418,19 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		12E9DE392B21880800AD8223 /* WatchHeader */ = {
+			isa = PBXGroup;
+			children = (
+				12E9DE3A2B21884500AD8223 /* WatchHeaderKey.swift */,
+			);
+			path = WatchHeader;
+			sourceTree = "<group>";
+		};
 		12F909E72B18C27300DDF4D1 /* Error */ = {
 			isa = PBXGroup;
 			children = (
 				12F909E82B18C29500DDF4D1 /* ImageError.swift */,
+				12E9DE412B22044A00AD8223 /* WatchError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -710,8 +725,10 @@
 				1242A2F52B0B6D660033BD09 /* RealmRepositoryViewModel.swift in Sources */,
 				1242A2F12B0B6B900033BD09 /* Live.swift in Sources */,
 				1242A3062B0B7CE40033BD09 /* DeviceSizeManager.swift in Sources */,
+				12E9DE3B2B21884500AD8223 /* WatchHeaderKey.swift in Sources */,
 				1242A3082B0B7E130033BD09 /* HeaderView.swift in Sources */,
 				126341DF2B1210CF001B8E51 /* AllLiveListView.swift in Sources */,
+				12E9DE422B22044A00AD8223 /* WatchError.swift in Sources */,
 				126C6EDF2B1569790008A1E7 /* ShareInfoManager.swift in Sources */,
 				126C6EDB2B14DBA90008A1E7 /* CustomInputView.swift in Sources */,
 				128C3E6B2B10480700CB9A3D /* CardLiveView.swift in Sources */,
@@ -728,6 +745,7 @@
 				12A95D4F2B1AF24400AC2591 /* TimeTable.swift in Sources */,
 				12F909F32B18CB6200DDF4D1 /* ContentView.swift in Sources */,
 				12A95D4D2B1AF24000AC2591 /* Live.swift in Sources */,
+				12E9DE3C2B21888700AD8223 /* WatchHeaderKey.swift in Sources */,
 				12F909F12B18CB6200DDF4D1 /* AliveWatchApp.swift in Sources */,
 				12E9DE362B1D890800AD8223 /* DateFormatManager.swift in Sources */,
 				12A95D4C2B1AF08B00AC2591 /* iOSConnectViewModel.swift in Sources */,
@@ -982,7 +1000,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -1014,7 +1032,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

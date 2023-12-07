@@ -5,12 +5,6 @@
 //  Created by t&a on 2023/11/30.
 //
 
-//
-//  WatchConnectViewModel.swift
-//  Stock
-//
-//  Created by t&a on 2023/11/02.
-//
 
 import UIKit
 import Combine
@@ -36,7 +30,8 @@ class WatchConnectViewModel: NSObject, ObservableObject {
         }
     }
     
-    private func jsonConverter(lives: [Live]) -> String {
+    /// [Live] をJSON形式に変換する
+    public func jsonConverter(lives: [Live]) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         if let jsonData = try? encoder.encode(lives) {
@@ -46,15 +41,20 @@ class WatchConnectViewModel: NSObject, ObservableObject {
             }
         }
         // エンコード失敗
-        return ""
+        throw WatchError.jsonConversionFailure
     }
     
     public func send(lives: [Live]) {
         guard isReachable == true else { return }
-        let json = jsonConverter(lives: lives)
-        let stockDic: [String: String] = ["stocks": json]
-        self.session.sendMessage(stockDic) { error in
-            print(error)
+        do {
+
+            let json = try jsonConverter(lives: lives)
+            let liveDic: [String: String] = [WatchHeaderKey.LIVES: json]
+            self.session.sendMessage(liveDic) { error in
+                print(error)
+            }
+        } catch {
+            
         }
     }
 }
@@ -67,6 +67,7 @@ extension WatchConnectViewModel: WCSessionDelegate {
         if let error = error {
             print("Watch コネクトエラー" + error.localizedDescription)
         } else {
+            print("Watch セッション：アクティベート")
             isReachable = session.isReachable
         }
     }
@@ -82,21 +83,13 @@ extension WatchConnectViewModel: WCSessionDelegate {
     
     /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        // watchOSからデータを取得
-        // ["CheckItemNotify":"stockID,itemID,Flag(Bool)"]
-        guard let value = message["CheckItemNotify"] as? String else { return }
-
-        let array = value.components(separatedBy: ",")
-        let stockId = array[safe: 0] ?? ""
-        let itemId = array[safe:1] ?? ""
-        let flag = array[safe: 2] ?? "true" == "true"
-        guard let stockObjId = try? ObjectId(string: stockId) else { return }
-        guard let itemObjId = try? ObjectId(string: itemId) else { return }
-        
-        /// 少しタイミングをずらしてwatch側も更新
-        DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 0.01) { [weak self] in
-            self?.send(lives: self?.repository.lives ?? [])
+        print("リクエストを受けたよ")
+        guard let result = message[WatchHeaderKey.REQUEST_DATA] as? Bool else { return }
+        if result {
+            print("データを送信したよ")
+            send(lives: repository.lives)
         }
+        
    }
 
     func sessionDidBecomeInactive(_ session: WCSession) { }

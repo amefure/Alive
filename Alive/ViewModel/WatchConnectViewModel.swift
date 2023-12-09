@@ -41,7 +41,7 @@ class WatchConnectViewModel: NSObject, ObservableObject {
             }
         }
         // エンコード失敗
-        throw WatchError.jsonConversionFailure
+        throw ConnectError.connectError
     }
     
     public func send(lives: [Live]) {

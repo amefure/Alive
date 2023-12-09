@@ -1,8 +1,8 @@
 //
 //  CardLiveView.swift
-//  Alive
+//  AliveWatch Watch App
 //
-//  Created by t&a on 2023/11/24.
+//  Created by t&a on 2023/12/08.
 //
 
 import SwiftUI
@@ -10,19 +10,11 @@ import SwiftUI
 struct CardLiveView: View {
     
     // MARK: - Utility
-    private let imageFileManager = ImageFileManager()
     private let dateFormatManager = DateFormatManager()
     
     // MARK: - Receive
     public var live: Live?
     
-    private var imgSize: CGFloat {
-        if DeviceSizeManager.isSESize {
-            return 40
-        } else {
-            return 50
-        }
-    }
     
     var body: some View {
         if let live = live {
@@ -31,40 +23,21 @@ struct CardLiveView: View {
                 
                 HStack {
                     
-                    if let image = imageFileManager.loadImage(name: live.imagePath) {
-                        
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: imgSize, height: imgSize)
-                            .background(.foundation)
-                            .clipShape(RoundedRectangle(cornerRadius: imgSize))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: imgSize)
-                                    .stroke(.white, lineWidth: 3)
-                                
-                            ).padding(.leading, 20)
-                        
-                    } else {
-                        Asset.Images.appLogoElectric.swiftUIImage
-                            .resizable()
-                            .frame(width: imgSize, height: imgSize)
-                            .background(.foundation)
-                            .clipShape(RoundedRectangle(cornerRadius: imgSize))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(.white, lineWidth: 3)
-                                
-                            ).padding(.leading, 20)
-                        
-                    }
-                    
+                    Asset.Images.appLogoElectric.swiftUIImage
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .background(.foundation)
+                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 50)
+                                .stroke(.white, lineWidth: 3)
+                            
+                        ).padding(.leading, 20)
                     
                     Text(live.name)
-                        .frame(height: DeviceSizeManager.isSESize ? 80 : 100)
-                        .font(.system(size: DeviceSizeManager.isSESize ? 14 : 20))
+                        .frame(height: 80)
+                        .font(.system(size: 20))
                         .padding(.leading, 20)
-                        .textSelection(.enabled)
                     
                     
                     Spacer()
@@ -73,17 +46,16 @@ struct CardLiveView: View {
                 
                 ZigzagBottomLine()
                     .fill(Color.white)
-                    .frame(width: DeviceSizeManager.deviceWidth - 55, height: 1)
+                    .frame(width: DeviceSizeManager.deviceWidth - 20, height: 1)
                 VStack {
                     HStack {
-                        
                         VStack {
                             HStack {
                                 Image(systemName: "music.mic")
                                     .padding(.leading, 20)
                                 
                                 Text(live.type == .festival ? live.artist + " etc.." : live.artist)
-                                    .textSelection(.enabled)
+                                    
                                 Spacer()
                             }
                             
@@ -91,22 +63,22 @@ struct CardLiveView: View {
                                 Image(systemName: "mappin.and.ellipse")
                                     .padding(.leading, 20)
                                 Text(live.venue)
-                                    .textSelection(.enabled)
+                                    
                                 Spacer()
                             }
                         }
                         
-                        MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: DeviceSizeManager.isSESize ? 65 : 80)
+                        MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: 80)
                             .padding(.trailing, 20)
                         
                     }
-                }.frame(height: DeviceSizeManager.isSESize ? 80 : 100)
+                }.frame(height: DeviceSizeManager.deviceHeight / 4)
                     .background(Color.white)
                     .foregroundStyle(.foundation)
                 
                 
             }.background(live.type.color)
-                .frame(width: DeviceSizeManager.deviceWidth - 45)
+                .frame(width: DeviceSizeManager.deviceWidth - 10)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .fontWeight(.bold)
                 .padding(6)
@@ -134,5 +106,6 @@ struct ZigzagBottomLine: Shape {
 }
 
 #Preview {
-    CardLiveView()
+    CardLiveView(live: Live.blankLive)
 }
+

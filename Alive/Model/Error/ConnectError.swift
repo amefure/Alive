@@ -7,11 +7,12 @@
 
 import UIKit
 
-enum WatchError: Error {
+enum ConnectError: Error {
     
-    case jsonConversionFailure
     case connectError
+    case sendError
     case nothingHeader
+    case noSupported
 
 }
     

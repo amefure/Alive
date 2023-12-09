@@ -17,10 +17,13 @@ class RootEnvironment: ObservableObject {
     
     private let sessionManager: SessionManager
     
-    var cancellables: Set<AnyCancellable> = []
+    private var repositoryViewModel: RepositoryViewModel
     
-    init(sessionManager: SessionManager) {
+    private var cancellables: Set<AnyCancellable> = []
+    
+    init(sessionManager: SessionManager, repositoryViewModel: RepositoryViewModel) {
         self.sessionManager = sessionManager
+        self.repositoryViewModel = repositoryViewModel
         
         do {
             try sessionManager.activateSession()
@@ -32,13 +35,15 @@ class RootEnvironment: ObservableObject {
     }
     
     private func subscribeSession() {
+        
         sessionManager.sessionPublisher.sink { [weak self] error in
             guard let self = self else { return }
             print("\(error)")
             self.isPresentErrorDialog = true
         } receiveValue: { lives in
-            print("データが取れたよ")
-            print(lives)
+            DispatchQueue.main.async { [weak self] in
+                self?.repositoryViewModel.setAllLive(lives: lives)
+            }
         }.store(in: &cancellables)
         
         
@@ -48,12 +53,10 @@ class RootEnvironment: ObservableObject {
             self.isPresentErrorDialog = true
         } receiveValue: { [weak self] isReachable in
             guard let self = self else { return }
-            self.isReachable = isReachable
+            DispatchQueue.main.async { [weak self] in
+                self?.isReachable = isReachable
+            }
         }.store(in: &cancellables)
-
     }
     
-    public func requestLivesData() {
-        sessionManager.requestLivesData()
-    }
 }

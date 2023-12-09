@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CustomDialog: View {
-    @ObservedObject private var rootEnvironment = RootEnvironment(sessionManager: SessionManager())
+    
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     var body: some View {
         VStack {
             

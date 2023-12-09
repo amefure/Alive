@@ -13,77 +13,82 @@ struct CardLiveView: View {
     private let dateFormatManager = DateFormatManager()
     
     // MARK: - Receive
-    public var live: Live?
-    
+    public var live: Live
     
     var body: some View {
-        if let live = live {
+        VStack(spacing:0) {
             
-            VStack(spacing:0) {
+            HStack {
                 
+                Asset.Images.appLogoElectric.swiftUIImage
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .background(.foundation)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.white, lineWidth: 2)
+                        
+                    ).padding(.leading, 5)
+                
+                Text(live.name)
+                    .frame(height: 50)
+                    .font(.system(size: 12))
+                    .padding(.leading, 5)
+                    .lineLimit(2)
+                
+                
+                Spacer()
+                
+            }.foregroundStyle(.white)
+            
+            ZigzagBottomLine()
+                .fill(Color.white)
+                .frame(width: DeviceSizeManager.deviceWidth - 10, height: 1)
+            
+            VStack {
                 HStack {
-                    
-                    Asset.Images.appLogoElectric.swiftUIImage
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .background(.foundation)
-                        .clipShape(RoundedRectangle(cornerRadius: 30))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 50)
-                                .stroke(.white, lineWidth: 3)
+                    VStack {
+                        HStack {
+                            Image(systemName: "music.mic")
+                                .font(.system(size: 12))
+                                .padding(.leading, 5)
                             
-                        ).padding(.leading, 20)
-                    
-                    Text(live.name)
-                        .frame(height: 80)
-                        .font(.system(size: 20))
-                        .padding(.leading, 20)
-                    
-                    
-                    Spacer()
-                    
-                }.foregroundStyle(.white)
-                
-                ZigzagBottomLine()
-                    .fill(Color.white)
-                    .frame(width: DeviceSizeManager.deviceWidth - 20, height: 1)
-                VStack {
-                    HStack {
-                        VStack {
-                            HStack {
-                                Image(systemName: "music.mic")
-                                    .padding(.leading, 20)
-                                
-                                Text(live.type == .festival ? live.artist + " etc.." : live.artist)
-                                    
-                                Spacer()
-                            }
+                            Text(live.type == .festival ? live.artist + " etc.." : live.artist)
+                                .font(.system(size: 12))
+                                .lineLimit(1)
                             
-                            HStack {
-                                Image(systemName: "mappin.and.ellipse")
-                                    .padding(.leading, 20)
-                                Text(live.venue)
-                                    
-                                Spacer()
-                            }
+                            Spacer()
                         }
                         
-                        MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: 80)
-                            .padding(.trailing, 20)
-                        
+                        HStack {
+                            Image(systemName: "mappin.and.ellipse")
+                                .font(.system(size: 12))
+                                .padding(.leading, 5)
+                            
+                            Text(live.venue)
+                                .font(.system(size: 12))
+                                .lineLimit(1)
+                            
+                            Spacer()
+                        }
                     }
-                }.frame(height: DeviceSizeManager.deviceHeight / 4)
-                    .background(Color.white)
-                    .foregroundStyle(.foundation)
-                
-                
-            }.background(live.type.color)
-                .frame(width: DeviceSizeManager.deviceWidth - 10)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .fontWeight(.bold)
-                .padding(6)
-                .shadow(color: .black ,radius: 2, x: 4, y: 4)
-        }
+                    
+                    MonthAndDayView(month: dateFormatManager.getMouthAndDayString(date: live.date).0, day: dateFormatManager.getMouthAndDayString(date: live.date).1, size: 40)
+                        .padding(.trailing, 5)
+                    
+                }
+            }.frame(height: DeviceSizeManager.deviceHeight / 4)
+                .background(Color.white)
+                .foregroundStyle(.foundation)
+            
+            
+        }.background(live.type.color)
+            .frame(width: DeviceSizeManager.deviceWidth - 5)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .fontWeight(.bold)
+            .padding(6)
+            .shadow(color: .black ,radius: 2, x: 4, y: 4)
     }
 }
 

@@ -12,7 +12,6 @@ struct RootView: View {
     // MARK: - ViewModel
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
-    @ObservedObject private var watchConnectViewModel = WatchConnectViewModel.shared
     
     // MARK: - View
     @State private var selectedTab = 1

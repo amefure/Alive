@@ -28,6 +28,7 @@ class SessionManager: NSObject {
     // Mutation
     private let _reachablePublisher = CurrentValueSubject<Bool, ConnectError>(false)
     
+    // セッション開始
     public func activateSession() throws {
         if WCSession.isSupported() {
             self.session.delegate = self
@@ -37,13 +38,13 @@ class SessionManager: NSObject {
         }
     }
     
-    // iOS側のデータ要求
-    public func requestLivesData() {
+    // iOS側のデータ要求(transferUserInfoならキューとして貯まる)
+    // iOS側が非アクティブでもアクティブになった後に処理してくれる(sendMessageでは×)
+    // シミュレーターでは動作しない
+    private func requestLivesData() {
         guard session.isReachable == true else { return }
         let requestDic: [String: Bool] = [WatchHeaderKey.REQUEST_DATA: true]
-        self.session.sendMessage(requestDic) { error in
-            print(error)
-        }
+        self.session.transferUserInfo(requestDic)
     }
 }
 
@@ -56,7 +57,6 @@ extension SessionManager: WCSessionDelegate {
 #if DEBUG
             print("Watch セッション：アクティベート")
 #endif
-            requestLivesData()
         }
     }
     
@@ -65,6 +65,9 @@ extension SessionManager: WCSessionDelegate {
 #if DEBUG
         print("通信状態が変化：\(session.isReachable)")
 #endif
+        if session.isReachable {
+            requestLivesData()
+        }
         _reachablePublisher.send(session.isReachable)
     }
     

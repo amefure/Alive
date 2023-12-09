@@ -46,6 +46,8 @@
 		126342002B12D6B3001B8E51 /* ArtistBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126341FF2B12D6B3001B8E51 /* ArtistBarChartView.swift */; };
 		1269A1B42B2423CE00D7F415 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A1B32B2423CE00D7F415 /* SessionError.swift */; };
 		1269A1B52B24251300D7F415 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A1B32B2423CE00D7F415 /* SessionError.swift */; };
+		1269A1B82B2449B200D7F415 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A1B72B2449B200D7F415 /* SessionManager.swift */; };
+		1269A1BA2B2469C000D7F415 /* DetailLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A1B92B2469C000D7F415 /* DetailLiveView.swift */; };
 		126C6EDB2B14DBA90008A1E7 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C6EDA2B14DBA90008A1E7 /* CustomInputView.swift */; };
 		126C6EDD2B14DBD00008A1E7 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C6EDC2B14DBD00008A1E7 /* TimePicker.swift */; };
 		126C6EDF2B1569790008A1E7 /* ShareInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C6EDE2B1569790008A1E7 /* ShareInfoManager.swift */; };
@@ -85,7 +87,6 @@
 		12F909F52B18CB6400DDF4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12F909F42B18CB6400DDF4D1 /* Assets.xcassets */; };
 		12F909F82B18CB6400DDF4D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12F909F72B18CB6400DDF4D1 /* Preview Assets.xcassets */; };
 		12F909FB2B18CB6400DDF4D1 /* AliveWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 12F909EE2B18CB6200DDF4D1 /* AliveWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		12F90A012B18CB8B00DDF4D1 /* WatchConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F90A002B18CB8B00DDF4D1 /* WatchConnectViewModel.swift */; };
 		3F7636776BFE4A61BC175C92 /* Pods_Alive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */; };
 		5E9FEC1662873E5B4D40414C /* Pods_AliveWatch_Watch_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79343CB9FAA916E10CD9C75 /* Pods_AliveWatch_Watch_App.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +158,8 @@
 		126341FC2B122D16001B8E51 /* ArtistPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPieChartView.swift; sourceTree = "<group>"; };
 		126341FF2B12D6B3001B8E51 /* ArtistBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistBarChartView.swift; sourceTree = "<group>"; };
 		1269A1B32B2423CE00D7F415 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
+		1269A1B72B2449B200D7F415 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		1269A1B92B2469C000D7F415 /* DetailLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLiveView.swift; sourceTree = "<group>"; };
 		126C6EDA2B14DBA90008A1E7 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
 		126C6EDC2B14DBD00008A1E7 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		126C6EDE2B1569790008A1E7 /* ShareInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoManager.swift; sourceTree = "<group>"; };
@@ -185,7 +188,6 @@
 		12F909F22B18CB6200DDF4D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		12F909F42B18CB6400DDF4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12F909F72B18CB6400DDF4D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		12F90A002B18CB8B00DDF4D1 /* WatchConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectViewModel.swift; sourceTree = "<group>"; };
 		50CBE1B59773CF5328B9A8D8 /* Pods_Alive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		514A17A386FF4D5734F351A6 /* Pods-Alive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alive.release.xcconfig"; path = "Target Support Files/Pods-Alive/Pods-Alive.release.xcconfig"; sourceTree = "<group>"; };
 		E5A967D569A80849054C39E2 /* Pods-AliveWatch Watch App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AliveWatch Watch App.release.xcconfig"; path = "Target Support Files/Pods-AliveWatch Watch App/Pods-AliveWatch Watch App.release.xcconfig"; sourceTree = "<group>"; };
@@ -338,7 +340,7 @@
 				12A221702B15A66600C5165D /* ShareLiveInfoViewModel.swift */,
 				1242A3012B0B6F380033BD09 /* UserDefaultsRepositoryViewModel.swift */,
 				128C3E762B10E3C200CB9A3D /* SettingViewModel.swift */,
-				12F90A002B18CB8B00DDF4D1 /* WatchConnectViewModel.swift */,
+				1269A1B62B2449A100D7F415 /* WatchConnect */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -379,6 +381,14 @@
 				126341FF2B12D6B3001B8E51 /* ArtistBarChartView.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		1269A1B62B2449A100D7F415 /* WatchConnect */ = {
+			isa = PBXGroup;
+			children = (
+				1269A1B72B2449B200D7F415 /* SessionManager.swift */,
+			);
+			path = WatchConnect;
 			sourceTree = "<group>";
 		};
 		126C6ED82B14DB120008A1E7 /* Layout */ = {
@@ -499,6 +509,7 @@
 				12E9DE542B22CFFE00AD8223 /* RootView.swift */,
 				12F909F22B18CB6200DDF4D1 /* ContentView.swift */,
 				12E9DE512B22CCC100AD8223 /* CardLiveView.swift */,
+				1269A1B92B2469C000D7F415 /* DetailLiveView.swift */,
 				12E9DE582B22D2D400AD8223 /* CustomDialog.swift */,
 			);
 			path = View;
@@ -734,7 +745,6 @@
 				1242A30C2B0B8EAD0033BD09 /* FooterView.swift in Sources */,
 				1242A2EC2B0B6AE60033BD09 /* Strings.swift in Sources */,
 				128C3E692B0F889600CB9A3D /* InputTimeTableView.swift in Sources */,
-				12F90A012B18CB8B00DDF4D1 /* WatchConnectViewModel.swift in Sources */,
 				1242A2EB2B0B6AE60033BD09 /* Assets.swift in Sources */,
 				12F909E92B18C29500DDF4D1 /* ImageError.swift in Sources */,
 				1232EB232B1440E30072480C /* SplashView.swift in Sources */,
@@ -755,6 +765,7 @@
 				126C6EDD2B14DBD00008A1E7 /* TimePicker.swift in Sources */,
 				1242A2CB2B0B66EC0033BD09 /* AliveApp.swift in Sources */,
 				128C3E792B1162FB00CB9A3D /* RewardButtonView.swift in Sources */,
+				1269A1B82B2449B200D7F415 /* SessionManager.swift in Sources */,
 				128C3E6D2B104ABD00CB9A3D /* MonthAndDayView.swift in Sources */,
 				128C3E752B10E29C00CB9A3D /* SettingView.swift in Sources */,
 				1232EB1D2B1440710072480C /* Onboarding1View.swift in Sources */,
@@ -788,6 +799,7 @@
 				12E9DE352B1D88F800AD8223 /* Strings.swift in Sources */,
 				12A95D4F2B1AF24400AC2591 /* TimeTable.swift in Sources */,
 				12F909F32B18CB6200DDF4D1 /* ContentView.swift in Sources */,
+				1269A1BA2B2469C000D7F415 /* DetailLiveView.swift in Sources */,
 				12E9DE472B22C75200AD8223 /* RealmRepository.swift in Sources */,
 				12E9DE522B22CCC100AD8223 /* CardLiveView.swift in Sources */,
 				12A95D4D2B1AF24000AC2591 /* Live.swift in Sources */,

@@ -1,32 +1,41 @@
 //
-//  WatchConnectViewModel.swift
+//  SessionManager.swift
 //  Alive
 //
-//  Created by t&a on 2023/11/30.
+//  Created by t&a on 2023/12/09.
 //
 
-
-import UIKit
 import Combine
 import WatchConnectivity
-import RealmSwift
 
-class WatchConnectViewModel: NSObject, ObservableObject {
+class SessionManager: NSObject {
     
-    static var shared = WatchConnectViewModel()
+    private var session: WCSession = .default
     
     private var repository = RealmRepositoryViewModel.shared
     
-    @Published var isReachable = false
+    // iOSから送信されたデータを外部へ公開する
+    public var sessionPublisher: AnyPublisher<[Live], SessionError> {
+        _sessionPublisher.eraseToAnyPublisher()
+    }
     
-    private var session: WCSession
+    // Mutation
+    private let _sessionPublisher = PassthroughSubject<[Live], SessionError>()
     
-    override init() {
-        self.session = .default
-        super.init()
+    // iOSとのコネクト状況を外部へ公開する
+    public var reachablePublisher: AnyPublisher<Bool, ConnectError> {
+        _reachablePublisher.eraseToAnyPublisher()
+    }
+    
+    // Mutation
+    private let _reachablePublisher = CurrentValueSubject<Bool, ConnectError>(false)
+    
+    public func activateSession() throws {
         if WCSession.isSupported() {
             self.session.delegate = self
             self.session.activate()
+        } else {
+            throw ConnectError.noSupported
         }
     }
     
@@ -45,7 +54,7 @@ class WatchConnectViewModel: NSObject, ObservableObject {
     }
     
     public func send(lives: [Live]) {
-        guard isReachable == true else { return }
+        guard session.isReachable == true else { return }
         do {
 
             let json = try jsonConverter(lives: lives)
@@ -60,39 +69,44 @@ class WatchConnectViewModel: NSObject, ObservableObject {
 }
 
 
-extension WatchConnectViewModel: WCSessionDelegate {
+extension SessionManager: WCSessionDelegate {
     
-    /// セッションのアクティベート状態が変化した際に呼ばれる
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
-            print("Watch コネクトエラー" + error.localizedDescription)
+            print(error.localizedDescription)
         } else {
+#if DEBUG
             print("Watch セッション：アクティベート")
-            isReachable = session.isReachable
+#endif
         }
     }
     
-    /// Watchアプリ通信可能状態が変化した際に呼ばれる
+    /// iOSアプリ通信可能状態が変化した際に呼ばれる
     func sessionReachabilityDidChange(_ session: WCSession) {
-        isReachable = session.isReachable
-        if isReachable {
-            // 未接続状態から接続された時にも情報を送信
-            send(lives: repository.lives)
-        }
+#if DEBUG
+        print("通信状態が変化：\(session.isReachable)")
+#endif
+        _reachablePublisher.send(session.isReachable)
     }
     
     /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        print("リクエストを受けたよ")
-        guard let result = message[WatchHeaderKey.REQUEST_DATA] as? Bool else { return }
+#if DEBUG
+        print("Watch データ受信：\(message)")
+#endif
+    }
+    
+    /// transferUserInfoメソッドで送信されたデータを受け取るデリゲートメソッド(バックグラウンドでもキューとして残る)
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        guard let result = userInfo[WatchHeaderKey.REQUEST_DATA] as? Bool else { return }
         if result {
-            print("データを送信したよ")
             send(lives: repository.lives)
         }
-        
-   }
-
+    }
+    
     func sessionDidBecomeInactive(_ session: WCSession) { }
-
+    
     func sessionDidDeactivate(_ session: WCSession) { }
+    
 }
+

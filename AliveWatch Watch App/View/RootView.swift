@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     
-    @ObservedObject private var rootEnvironment = RootEnvironment(sessionManager: SessionManager())
+    @ObservedObject private var rootEnvironment = RootEnvironment(sessionManager: SessionManager(), repositoryViewModel: RepositoryViewModel.shared)
     
     var body: some View {
         ZStack {
@@ -18,8 +18,9 @@ struct RootView: View {
             
             if rootEnvironment.isPresentErrorDialog {
                 CustomDialog()
+                    .environmentObject(rootEnvironment)
             }
-        }
+        }.background(Color.foundation)
     }
 }
 

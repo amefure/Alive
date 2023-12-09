@@ -9,11 +9,13 @@ import SwiftUI
 
 struct RootView: View {
     
+    // MARK: - Environment
     @ObservedObject private var rootEnvironment = RootEnvironment(sessionManager: SessionManager(), repositoryViewModel: RepositoryViewModel.shared)
     
     var body: some View {
         ZStack {
-            ContentView()
+            
+            MainView()
                 .environmentObject(rootEnvironment)
             
             if rootEnvironment.isPresentErrorDialog {

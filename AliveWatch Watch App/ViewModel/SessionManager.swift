@@ -20,13 +20,6 @@ class SessionManager: NSObject {
     // Mutation
     private let _sessionPublisher = PassthroughSubject<[Live], SessionError>()
     
-    // iOSとのコネクト状況を外部へ公開する
-    public var reachablePublisher: AnyPublisher<Bool, ConnectError> {
-        _reachablePublisher.eraseToAnyPublisher()
-    }
-    
-    // Mutation
-    private let _reachablePublisher = CurrentValueSubject<Bool, ConnectError>(false)
     
     // セッション開始
     public func activateSession() throws {
@@ -68,7 +61,6 @@ extension SessionManager: WCSessionDelegate {
         if session.isReachable {
             requestLivesData()
         }
-        _reachablePublisher.send(session.isReachable)
     }
     
     /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド

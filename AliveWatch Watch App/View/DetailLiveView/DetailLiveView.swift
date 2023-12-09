@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailLiveView: View {
     
+    // MARK: - Utility
     private let dateFormatManager = DateFormatManager()
     
     // MARK: - Receive

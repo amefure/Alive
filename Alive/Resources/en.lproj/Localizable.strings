@@ -93,3 +93,7 @@
 "ads_alert_msg" = "You can only view ads once per day.";
 "ads_limit_alert_title" = "Storage capacity has reached the limit...";
 "ads_limit_alert_msg" = "You can increase your storage capacity by viewing advertisements from the settings.";
+
+// MARK: - Apple Watch
+"watch_error_text" = "Communication with iPhone failed.";
+"watch_error_back_button" = "Return to TOP";

@@ -151,6 +151,10 @@ internal enum L10n {
   /// 出演時間と
   /// アーティスト名は必須入力です。
   internal static let validationTimetableAlertTitle = L10n.tr("Localizable", "validation_timetable_alert_title", fallback: "出演時間と\nアーティスト名は必須入力です。")
+  /// TOPに戻る
+  internal static let watchErrorBackButton = L10n.tr("Localizable", "watch_error_back_button", fallback: "TOPに戻る")
+  /// iPhoneとの通信に失敗しました。
+  internal static let watchErrorText = L10n.tr("Localizable", "watch_error_text", fallback: "iPhoneとの通信に失敗しました。")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

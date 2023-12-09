@@ -93,3 +93,7 @@
 "ads_alert_msg" = "広告を視聴できるのは1日に1回までです。";
 "ads_limit_alert_title" = "保存容量が上限に達しました...";
 "ads_limit_alert_msg" = "設定から広告を視聴すると\n保存容量を増やすことができます。";
+
+// MARK: - Apple Watch
+"watch_error_text" = "iPhoneとの通信に失敗しました。";
+"watch_error_back_button" = "TOPに戻る";

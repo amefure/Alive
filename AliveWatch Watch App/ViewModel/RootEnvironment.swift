@@ -10,8 +10,6 @@ import Combine
 
 class RootEnvironment: ObservableObject {
     
-    // iOSと接続中
-    @Published var isReachable: Bool = false
     // エラーダイアログ表示
     @Published var isPresentErrorDialog: Bool = false
     
@@ -43,18 +41,6 @@ class RootEnvironment: ObservableObject {
         } receiveValue: { lives in
             DispatchQueue.main.async { [weak self] in
                 self?.repositoryViewModel.setAllLive(lives: lives)
-            }
-        }.store(in: &cancellables)
-        
-        
-        sessionManager.reachablePublisher.sink { [weak self] error in
-            guard let self = self else { return }
-            print("\(error)")
-            self.isPresentErrorDialog = true
-        } receiveValue: { [weak self] isReachable in
-            guard let self = self else { return }
-            DispatchQueue.main.async { [weak self] in
-                self?.isReachable = isReachable
             }
         }.store(in: &cancellables)
     }

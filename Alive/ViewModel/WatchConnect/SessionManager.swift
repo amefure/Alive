@@ -30,12 +30,11 @@ class SessionManager: NSObject {
     // Mutation
     private let _reachablePublisher = CurrentValueSubject<Bool, ConnectError>(false)
     
-    public func activateSession() throws {
+    override init() {
+        super.init()
         if WCSession.isSupported() {
             self.session.delegate = self
             self.session.activate()
-        } else {
-            throw ConnectError.noSupported
         }
     }
     

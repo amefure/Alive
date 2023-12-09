@@ -11,7 +11,7 @@ struct RootView: View {
     
     // MARK: - ViewModel
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
-    
+    private let sessionManager = SessionManager()
     
     // MARK: - View
     @State private var selectedTab = 1

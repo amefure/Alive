@@ -87,6 +87,21 @@ struct DetailLiveView: View {
                 }.padding()
                     .fontWeight(.bold)
                 
+                if !live.url.isEmpty , let url = URL(string: live.url) {
+                    
+                    // MARK: - MEMO
+                    SideBarTitleView(title: L10n.liveUrl)
+                    
+                    Link(destination: url, label: {
+                        Text(live.url)
+                            .font(.system(size: 20))
+                            .textSelection(.enabled)
+                            .foregroundStyle(.themaBlue)
+                            .underline()
+                    }).font(.system(size: 18))
+                        .textSelection(.enabled)
+                }
+                
                 // MARK: - MEMO
                 SideBarTitleView(title: L10n.liveMemo)
                 

@@ -19,8 +19,9 @@ class Live: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var venue: String = ""            // 開催地(箱)
     @Persisted var price: Int = -1               // 料金
     @Persisted var type: LiveType = .unknown     // ライブ種類
+    @Persisted var url: String = ""              // 公式サイトURL
     @Persisted var memo: String = ""             // メモ
-    @Persisted var imagePath: String = ""      // 画像
+    @Persisted var imagePath: String = ""        // 画像
     
     // Live後に追加できる項目
     // セトリ
@@ -28,7 +29,7 @@ class Live: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var timeTable: List<TimeTable>  // タイムテーブル
     
     enum CodingKeys: String, CodingKey {
-        case id, artist, name, date, openingTime, performanceTime, closingTime, venue, price, type, memo, imagePath, setList, timeTable
+        case id, artist, name, date, openingTime, performanceTime, closingTime, venue, price, type, url, memo, imagePath, setList, timeTable
     }
     
 
@@ -45,6 +46,7 @@ class Live: Object, ObjectKeyIdentifiable, Codable {
         venue = try container.decode(String.self, forKey: .venue)
         price = try container.decode(Int.self, forKey: .price)
         type = try container.decode(LiveType.self, forKey: .type)
+        url = try container.decode(String.self, forKey: .url)
         memo = try container.decode(String.self, forKey: .memo)
         imagePath = try container.decode(String.self, forKey: .imagePath)
         setList = try container.decode(String.self, forKey: .setList)
@@ -63,6 +65,7 @@ class Live: Object, ObjectKeyIdentifiable, Codable {
         try container.encode(venue, forKey: .venue)
         try container.encode(price, forKey: .price)
         try container.encode(type, forKey: .type)
+        try container.encode(url, forKey: .url)
         try container.encode(memo, forKey: .memo)
         try container.encode(imagePath, forKey: .imagePath)
         try container.encode(setList, forKey: .setList)
@@ -84,6 +87,7 @@ extension Live {
         live.venue = "Tokyo Studio"
         live.price = 2500
         live.type = .oneman
+        live.url = "https://tech.amefure.com/"
         live.memo = "グッズの販売は10時\n依ちゃんと一緒に集合"
         live.setList = "1.AAAAAAA\n2.AAAAAAA\n3.AAAAAAA\n4.AAAAAAA\n5.AAAAAAA\n6.AAAAAAA\n7.AAAAAAA\n"
         return live

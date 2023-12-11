@@ -103,6 +103,8 @@ internal enum L10n {
   internal static let liveTypeOneman = L10n.tr("Localizable", "live_type_oneman", fallback: "ワンマン")
   /// 未設定
   internal static let liveTypeUnknown = L10n.tr("Localizable", "live_type_unknown", fallback: "未設定")
+  /// URL
+  internal static let liveUrl = L10n.tr("Localizable", "live_url", fallback: "URL")
   /// 開催地
   internal static let liveVenue = L10n.tr("Localizable", "live_venue", fallback: "開催地")
   /// Localizable.strings
@@ -151,6 +153,8 @@ internal enum L10n {
   /// 出演時間と
   /// アーティスト名は必須入力です。
   internal static let validationTimetableAlertTitle = L10n.tr("Localizable", "validation_timetable_alert_title", fallback: "出演時間と\nアーティスト名は必須入力です。")
+  /// 無効なURLです。
+  internal static let validationUrlTitle = L10n.tr("Localizable", "validation_url_title", fallback: "無効なURLです。")
   /// TOPに戻る
   internal static let watchErrorBackButton = L10n.tr("Localizable", "watch_error_back_button", fallback: "TOPに戻る")
   /// iPhoneとの通信に失敗しました。

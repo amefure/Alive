@@ -38,6 +38,7 @@ struct InputLiveView: View {
     @State private var venue: String = ""              // 開催地
     @State private var price: String = ""              // チケット代
     @State private var liveType: LiveType = .unknown   // ライブ形式
+    @State private var url: String = ""               // メモ
     @State private var memo: String = ""               // メモ
     
     // Pool
@@ -48,8 +49,9 @@ struct InputLiveView: View {
     @State private var isShowCalendar: Bool = false     // カレンダー表示
     
     // Alert
-    @State private var successAlert: Bool = false       // 登録成功アラート
-    @State private var validationAlert: Bool = false    // バリデーションアラート
+    @State private var successAlert: Bool = false          // 登録成功アラート
+    @State private var validationAlert: Bool = false       // バリデーションアラート
+    @State private var validationUrlAlert: Bool = false    // バリデーションURLアラート
     
     @FocusState  var isActive:Bool
     // Environment
@@ -86,6 +88,19 @@ struct InputLiveView: View {
                     return
                 }
                 
+                if !url.isEmpty {
+                    /// 有効なURLかチェック
+                    guard let nsurl = NSURL(string: url) else {
+                        validationUrlAlert = true
+                        return
+                    }
+                    if !UIApplication.shared.canOpenURL(nsurl as URL) {
+                        validationUrlAlert = true
+                        return
+                    }
+                }
+                
+                
                 if let live = live {
                     
                     var imgName = live.imagePath
@@ -120,6 +135,7 @@ struct InputLiveView: View {
                     newLive.venue = venue
                     newLive.price = price.toNum()
                     newLive.type = liveType
+                    newLive.url = url
                     newLive.memo = memo
                     newLive.imagePath = imgName
                     newLive.setList = live.setList
@@ -157,6 +173,7 @@ struct InputLiveView: View {
                     newLive.venue = venue
                     newLive.price = price.toNum()
                     newLive.type = liveType
+                    newLive.url = url
                     newLive.memo = memo
                     newLive.imagePath = imgName
                     /// 新規登録
@@ -308,6 +325,9 @@ struct InputLiveView: View {
                     // MARK: - 終了時間
                     TimePicker(selectedTime: $closingTime, title:L10n.liveClosingTime)
                     
+                    // MARK: - URL
+                    CustomInputView(text: $url, imgName: "network", placeholder: L10n.liveUrl)
+                    
                     // MARK: - MEMO
                     CustomInputEditorView(text: $memo,  imgName: "note", placeholder: L10n.liveMemo)
                     
@@ -330,6 +350,10 @@ struct InputLiveView: View {
                 }
             }
             .alert(L10n.validationAlertTitle, isPresented: $validationAlert) {
+                Button("OK") {
+                }
+            }
+            .alert(L10n.validationUrlTitle, isPresented: $validationUrlAlert) {
                 Button("OK") {
                 }
             }

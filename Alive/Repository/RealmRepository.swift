@@ -11,8 +11,9 @@ import RealmSwift
 class RealmRepository {
     
     init() {
-//        let config = Realm.Configuration(schemaVersion: 1)
-//        Realm.Configuration.defaultConfiguration = config
+        // 1：「Live」に「URL」の追加
+        let config = Realm.Configuration(schemaVersion: 1)
+        Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
     }
 
@@ -32,6 +33,7 @@ class RealmRepository {
             live.venue = newLive.venue
             live.price = newLive.price
             live.type = newLive.type
+            live.url = newLive.url
             live.memo = newLive.memo
             live.imagePath = newLive.imagePath
             realm.add(live)
@@ -51,6 +53,7 @@ class RealmRepository {
                 live.venue = newLive.venue
                 live.price = newLive.price
                 live.type = newLive.type
+                live.url = newLive.url
                 live.memo = newLive.memo
                 live.imagePath = newLive.imagePath
                 live.setList = newLive.setList

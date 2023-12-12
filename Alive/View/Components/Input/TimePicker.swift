@@ -20,7 +20,7 @@ struct TimePicker: View {
     @State private var hour: Int = 0
     @State private var minute: Int = 0
     private let hours = Array(0...23)
-    private let minutes = Array(0...60)
+    private let minutes = Array(0...59)
     
     var body: some View {
         

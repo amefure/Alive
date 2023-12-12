@@ -11,7 +11,6 @@ struct RootView: View {
     
     // MARK: - ViewModel
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
-    private let sessionManager = SessionManager()
     
     // MARK: - Environment
     @EnvironmentObject private var rootEnvironment: RootEnvironment
@@ -56,6 +55,7 @@ struct RootView: View {
         }.background(.foundation)
             .navigationDestination(isPresented: $isShowSetting) {
                 SettingView()
+                    .environmentObject(rootEnvironment)
             }
             .navigationDestination(isPresented: $isShowShare) {
                 ShareLiveInfoView()

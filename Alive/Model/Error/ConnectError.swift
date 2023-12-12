@@ -7,12 +7,28 @@
 
 import UIKit
 
-enum ConnectError: Error {
+// Watch ↔︎ iOS 間接続エラークラス
+enum ConnectError: WatchError {
+    /// EC001：コネクトエラー
+    case connectFailed
     
-    case connectError
-    case sendError
-    case nothingHeader
+    /// EC002：セッションアアクティベート失敗
+    case activateFailed
+
+    /// EC003：非サポート(これはエラーとして外部に公開しない)
     case noSupported
 
+    public var title: String { L10n.connectErrorTitle }
+    
+    var message: String {
+        return switch self {
+        case .connectFailed:
+            L10n.connectErrorConnectFailedMessage
+        case .activateFailed:
+            L10n.connectErrorActivateFailedMessage
+        case .noSupported:
+            ""
+        }
+    }
 }
     

@@ -20,6 +20,9 @@ struct SettingView: View {
     private let viewModel = SettingViewModel()
     private let userDefaults = UserDefaultsRepositoryViewModel.sheard
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -32,6 +35,7 @@ struct SettingView: View {
                 Section(header: Text(L10n.settingAppTitle)) {
                     NavigationLink {
                         Onboarding1View()
+                            .environmentObject(rootEnvironment)
                     } label: {
                         HStack {
                             Image(systemName: "questionmark.app")

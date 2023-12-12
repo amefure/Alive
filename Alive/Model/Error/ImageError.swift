@@ -7,8 +7,7 @@
 
 import UIKit
 
-enum ImageError: Error {
-    
+enum ImageError: AliveError {
     /// EI001：保存失敗エラー
     case saveFailed
     
@@ -18,16 +17,16 @@ enum ImageError: Error {
     /// EI003：型変換失敗エラー(公開しない)
     case castFailed
     
-    static let title: String = "画像エラー"
+    public var title: String { L10n.imageErrorTitle }
     
     public var message: String {
         return switch self {
         case .saveFailed:
-            "画像の保存に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。"
+            L10n.imageErrorSaveFailedMessage
         case .deleteFailed:
-            "画像の削除に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。"
+            L10n.imageErrorDeleteFailedMessage
         case .castFailed:
-            "予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。"
+            L10n.imageErrorCastFailedMessage
         }
     }
 }

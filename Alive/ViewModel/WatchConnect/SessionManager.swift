@@ -13,28 +13,22 @@ class SessionManager: NSObject {
     private var session: WCSession = .default
     
     private var repository = RealmRepositoryViewModel.shared
-    
-    // iOSから送信されたデータを外部へ公開する
-    public var sessionPublisher: AnyPublisher<[Live], SessionError> {
-        _sessionPublisher.eraseToAnyPublisher()
+
+    // Errorを外部へ公開する
+    public var errorPublisher: AnyPublisher<WatchError, Never> {
+        _errorPublisher.eraseToAnyPublisher()
     }
     
     // Mutation
-    private let _sessionPublisher = PassthroughSubject<[Live], SessionError>()
-    
-    // iOSとのコネクト状況を外部へ公開する
-    public var reachablePublisher: AnyPublisher<Bool, ConnectError> {
-        _reachablePublisher.eraseToAnyPublisher()
-    }
-    
-    // Mutation
-    private let _reachablePublisher = CurrentValueSubject<Bool, ConnectError>(false)
+    private let _errorPublisher = PassthroughSubject<WatchError, Never>()
     
     override init() {
         super.init()
         if WCSession.isSupported() {
             self.session.delegate = self
             self.session.activate()
+        } else {
+            _errorPublisher.send(ConnectError.noSupported)
         }
     }
     
@@ -49,20 +43,20 @@ class SessionManager: NSObject {
             }
         }
         // エンコード失敗
-        throw ConnectError.connectError
+        throw SessionDataError.jsonConversionFailed
     }
     
     public func send(lives: [Live]) {
         guard session.isReachable == true else { return }
         do {
-
             let json = try jsonConverter(lives: lives)
             let liveDic: [String: String] = [WatchHeaderKey.LIVES: json]
-            self.session.sendMessage(liveDic) { error in
-                print(error)
+            self.session.sendMessage(liveDic) { [weak self] error in
+                guard let self = self else { return }
+                self._errorPublisher.send(SessionDataError.sendFailed)
             }
         } catch {
-            
+            _errorPublisher.send(error as? SessionDataError ?? SessionDataError.unidentified)
         }
     }
 }
@@ -71,8 +65,10 @@ class SessionManager: NSObject {
 extension SessionManager: WCSessionDelegate {
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
+        if error != nil {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self._errorPublisher.send(ConnectError.activateFailed)
+            }
         } else {
 #if DEBUG
             print("Watch セッション：アクティベート")
@@ -85,10 +81,9 @@ extension SessionManager: WCSessionDelegate {
 #if DEBUG
         print("通信状態が変化：\(session.isReachable)")
 #endif
-        _reachablePublisher.send(session.isReachable)
     }
     
-    /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド
+    /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド(使用されていない)
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
 #if DEBUG
         print("Watch データ受信：\(message)")
@@ -97,7 +92,10 @@ extension SessionManager: WCSessionDelegate {
     
     /// transferUserInfoメソッドで送信されたデータを受け取るデリゲートメソッド(バックグラウンドでもキューとして残る)
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        guard let result = userInfo[WatchHeaderKey.REQUEST_DATA] as? Bool else { return }
+        guard let result = userInfo[WatchHeaderKey.REQUEST_DATA] as? Bool else {
+            _errorPublisher.send(SessionDataError.notExistHeader)
+            return
+        }
         if result {
             send(lives: repository.lives)
         }

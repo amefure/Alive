@@ -45,19 +45,29 @@ struct MainView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     if filteringNextLives.count != 0 {
-                        ForEach(filteringNextLives) { live in
+                        if filteringNextLives.count == 1 , let live = filteringNextLives.first {
                             NavigationLink {
                                 DetailLiveView(live: live)
                                     .environmentObject(rootEnvironment)
                             } label: {
                                 CardLiveView(live: live)
+                                    .padding(.leading, DeviceSizeManager.isSESize ? 15 : 6) // 1つの場合位置調整
+                            }
+                        } else {
+                            ForEach(filteringNextLives) { live in
+                                NavigationLink {
+                                    DetailLiveView(live: live)
+                                        .environmentObject(rootEnvironment)
+                                } label: {
+                                    CardLiveView(live: live)
+                                }
                             }
                         }
                     } else {
                         // 存在しない場合
                         CardLiveView(live: Live.blankLive)
+                            .padding(.leading, DeviceSizeManager.isSESize ? 15 : 6) // 1つの場合位置調整
                     }
-                    
                 }.padding(.horizontal, 20)
             }
             
@@ -105,7 +115,7 @@ struct MainView: View {
             LiveScheduleListView(lives: repository.lives)
                 .environmentObject(rootEnvironment)
                 .padding(.horizontal, 10)
-                .padding(.bottom, 20)
+                .padding(.bottom, DeviceSizeManager.isSESize ? 30 : 20)
             
         }.background(.foundation)
             .onAppear {

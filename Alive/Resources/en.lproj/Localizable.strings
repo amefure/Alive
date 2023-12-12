@@ -99,3 +99,19 @@
 // MARK: - Apple Watch
 "watch_error_text" = "Communication with iPhone failed.";
 "watch_error_back_button" = "Return to TOP";
+
+// MARK: - Error
+"image_error_title" = "Image manipulation error";
+"image_error_save_failed_message" = "Failed to save image. If the error occurs repeatedly, please restart the app and try again.";
+"image_error_delete_failed_message" = "Failed to delete image. If the error occurs repeatedly, please restart the app and try again.";
+"image_error_cast_failed_message" = "An unexpected error has occurred. If the error occurs repeatedly, please restart the app and try again.";
+
+"connect_error_title" = "Connect error";
+"connect_error_connect_failed_message" = "Connection between iPhone and Apple Watch failed. Check the Bluetooth pairing status.";
+"connect_error_activate_failed_message" = "Synchronization between iPhone and Apple Watch failed. If the error occurs repeatedly, please restart the app and try again.";
+
+"session_error_title" = "Session Error";
+"session_error_json_failed_message" = "A data inconsistency error has occurred. If the error occurs repeatedly, please restart the app and try again.";
+"session_error_send_failed_message" = "Failed to send data. If the error occurs repeatedly, please restart the app and try again.";
+"session_error_not_exist_header_message" = "Failed to receive data. If the error occurs repeatedly, please restart the app and try again.";
+"session_error_unidentified_message" = "An unexpected error has occurred. If the error occurs repeatedly, please restart the app and try again.";

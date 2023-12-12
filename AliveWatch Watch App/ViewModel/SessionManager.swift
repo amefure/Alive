@@ -13,12 +13,12 @@ class SessionManager: NSObject {
     private var session: WCSession = .default
     
     // iOSから送信されたデータを外部へ公開する
-    public var sessionPublisher: AnyPublisher<[Live], SessionError> {
+    public var sessionPublisher: AnyPublisher<[Live], SessionDataError> {
         _sessionPublisher.eraseToAnyPublisher()
     }
     
     // Mutation
-    private let _sessionPublisher = PassthroughSubject<[Live], SessionError>()
+    private let _sessionPublisher = PassthroughSubject<[Live], SessionDataError>()
     
     
     // セッション開始
@@ -75,14 +75,14 @@ extension SessionManager: WCSessionDelegate {
         }
         // JSONデータをString型→Data型に変換
         guard let jsonData = String(json).data(using: .utf8) else {
-            _sessionPublisher.send(completion: .failure(.jsonConversionFailure))
+            _sessionPublisher.send(completion: .failure(.jsonConversionFailed))
             return
         }
         // JSONデータを構造体に準拠した形式に変換
         if let lives = try? JSONDecoder().decode([Live].self, from: jsonData) {
             _sessionPublisher.send(lives)
         } else {
-            _sessionPublisher.send(completion: .failure(.jsonConversionFailure))
+            _sessionPublisher.send(completion: .failure(.jsonConversionFailed))
         }
     }
     

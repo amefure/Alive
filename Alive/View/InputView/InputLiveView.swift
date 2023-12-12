@@ -144,7 +144,7 @@ struct InputLiveView: View {
                                 break
                             case .failure(let error):
                                 dismiss()
-                                rootEnvironment.presentErrorView(title: ImageError.title, messege: error.message)
+                                rootEnvironment.presentErrorView(error: error)
                                 return
                             }
                         } receiveValue: { _ in
@@ -184,7 +184,7 @@ struct InputLiveView: View {
                                 break
                             case .failure(let error):
                                 dismiss()
-                                rootEnvironment.presentErrorView(title: ImageError.title, messege: error.message)
+                                rootEnvironment.presentErrorView(error: error)
                                 return
                             }
                         } receiveValue: { _ in

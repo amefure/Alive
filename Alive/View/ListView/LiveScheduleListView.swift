@@ -62,7 +62,7 @@ struct LiveScheduleListView: View {
                         .foregroundStyle(.foundation)
                         .fontWeight(.bold)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 10)
                 }
             }
         }.scrollContentBackground(.hidden)

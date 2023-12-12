@@ -23,7 +23,7 @@ struct AliveApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     // MARK: - Environment
-    @ObservedObject private var rootEnvironment = RootEnvironment()
+    @ObservedObject private var rootEnvironment = RootEnvironment(sessionManager: SessionManager())
     
     var body: some Scene {
         WindowGroup {

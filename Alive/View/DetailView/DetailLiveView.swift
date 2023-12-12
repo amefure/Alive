@@ -220,9 +220,10 @@ struct DetailLiveView: View {
                         } receiveValue: { _ in
                             
                         }.store(in: &cancellables)
+                    } else {
+                        repository.deleteLive(id: live.id)
+                        dismiss()
                     }
-                    
-                    
                 } label: {
                     Text(L10n.deleteButtonTitle)
                 }

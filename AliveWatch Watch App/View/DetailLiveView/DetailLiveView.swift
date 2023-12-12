@@ -36,6 +36,8 @@ struct DetailLiveView: View {
             
             ItemView(label: L10n.liveClosingTime, value: live.closingTime != nil ? dateFormatManager.getTimeString(date: live.closingTime!) : "0:00")
             
+            ItemView(label: L10n.liveUrl, value: live.url)
+            
             ItemView(label: L10n.liveMemo, value: live.memo)
             
             if live.type == .festival {

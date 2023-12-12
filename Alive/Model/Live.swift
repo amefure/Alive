@@ -118,6 +118,7 @@ extension Live {
         live.price = 12000
         live.openingTime = df.getDate(hour: 16, minute: 0)
         live.performanceTime = df.getDate(hour: 18, minute: 0)
+        live.url = "https://tech.amefure.com/"
         live.memo = "MY FIRST STORY"
         live.setList = """
         —-ONE OK ROCK —-

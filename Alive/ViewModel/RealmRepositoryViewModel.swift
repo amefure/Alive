@@ -18,7 +18,8 @@ class RealmRepositoryViewModel: ObservableObject {
     
     public func readAllLive() {
         lives.removeAll()
-        let result = repository.readAllLive()
+//        let result = repository.readAllLive()
+        let result = Live.demoLives
         lives = Array(result).sorted(by: { $0.date > $1.date })
         artists = Array(Set(lives.filter({ $0.artist != "" }).map({ $0.artist }))).sorted()
     }

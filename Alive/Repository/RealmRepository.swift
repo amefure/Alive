@@ -11,8 +11,7 @@ import RealmSwift
 class RealmRepository {
     
     init() {
-        // 1：「Live」に「URL」の追加
-        let config = Realm.Configuration(schemaVersion: 1)
+        let config = Realm.Configuration(schemaVersion: RealmConfig.MIGRATION_VERSION)
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
     }

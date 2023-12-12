@@ -95,12 +95,11 @@ struct DetailLiveView: View {
                 
                 if !live.url.isEmpty , let url = URL(string: live.url) {
                     
-                    // MARK: - MEMO
+                    // MARK: - URL
                     SideBarTitleView(title: L10n.liveUrl)
                     
                     Link(destination: url, label: {
                         Text(live.url)
-                            .font(.system(size: 20))
                             .textSelection(.enabled)
                             .foregroundStyle(.themaBlue)
                             .underline()

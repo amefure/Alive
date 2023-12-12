@@ -31,6 +31,7 @@ struct LiveScheduleListView: View {
                             Text(dateFormatManager.getStringBlake(date: live.date))
                                 .font(.caption)
                                 .frame(width: 60)
+                                .padding(.leading, 10)
                             
                             ZStack {
                                 Text("")
@@ -38,7 +39,7 @@ struct LiveScheduleListView: View {
                                     .frame(width: 80)
                                     .background(live.type.color)
                                     .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    .opacity(0.5)
+                                    .opacity(0.8)
                                 
                                 Text(live.type.value)
                                     .padding(5)
@@ -54,12 +55,12 @@ struct LiveScheduleListView: View {
                             
                             Image(systemName: "chevron.forward")
                                 .padding(10)
-                                .foregroundStyle(.opacityGray)
+                                .foregroundStyle(.white)
                         }
                         
                     }.padding(.vertical, 10)
-                        .background(Color.white)
-                        .foregroundStyle(.foundation)
+                        .background(Color.black)
+                        .foregroundStyle(.white)
                         .fontWeight(.bold)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .padding(.horizontal, 10)

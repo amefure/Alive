@@ -17,6 +17,9 @@ struct MainView: View {
     private let userDefaultsRepository = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     // MARK: - Binding
     @Binding var selectedTab: Int
     
@@ -45,6 +48,7 @@ struct MainView: View {
                         ForEach(filteringNextLives) { live in
                             NavigationLink {
                                 DetailLiveView(live: live)
+                                    .environmentObject(rootEnvironment)
                             } label: {
                                 CardLiveView(live: live)
                             }
@@ -63,6 +67,7 @@ struct MainView: View {
                 .padding(.vertical, DeviceSizeManager.isSESize ? 5 : 10)
             
             LiveHistoryBlockView(array: repository.getMonthLiveHistory)
+                .environmentObject(rootEnvironment)
             
             // MARK: - LIVE LIST
             HStack {
@@ -98,6 +103,7 @@ struct MainView: View {
             
             // prefixだとSliceになってしまう
             LiveScheduleListView(lives: repository.lives)
+                .environmentObject(rootEnvironment)
                 .padding(.horizontal, 10)
                 .padding(.bottom, 20)
             
@@ -120,6 +126,9 @@ struct LiveHistoryBlockView: View {
     // MARK: - ViewModel
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     // MARK: - View
     private let grids = Array(repeating: GridItem(.fixed(DeviceSizeManager.deviceWidth / 14)), count: 3)
     private let size = DeviceSizeManager.deviceWidth / 14
@@ -141,6 +150,7 @@ struct LiveHistoryBlockView: View {
                             NavigationLink {
                                 if let live = repository.lives.first(where: { $0.id == value }) {
                                     DetailLiveView(live: live)
+                                        .environmentObject(rootEnvironment)
                                 }
                             } label: {
                                 Text("")

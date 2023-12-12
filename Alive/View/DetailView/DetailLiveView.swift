@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DetailLiveView: View {
     
@@ -17,6 +18,9 @@ struct DetailLiveView: View {
     private let userDefaultsRepository = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     @ObservedObject private var interstitial = AdmobInterstitialView()
+    
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     
     init(live: Live) {
         self.live = live
@@ -32,6 +36,8 @@ struct DetailLiveView: View {
     @State private var isDeleteTimeTableDialog = false
     @State private var isModal = false
     @State private var deleteTimeTable: TimeTable? = nil
+    
+    @State private var cancellables:Set<AnyCancellable> = Set()
     
     @Environment(\.dismiss) var dismiss
     
@@ -194,11 +200,30 @@ struct DetailLiveView: View {
             .background(.foundation)
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: live)
+                    .environmentObject(rootEnvironment)
             })
             .alert(L10n.deleteLiveAlertTitle, isPresented: $isDeleteDialog) {
                 Button(role: .destructive) {
-                    repository.deleteLive(id: live.id)
-                    dismiss()
+                    if !live.imagePath.isEmpty {
+                        imageFileManager.deleteImage(name: live.imagePath).sink { result in
+                            switch result {
+                            case .finished:
+                                
+                                repository.deleteLive(id: live.id)
+                                dismiss()
+                                
+                                break
+                            case .failure(let error):
+                                dismiss()
+                                rootEnvironment.presentErrorView(title: ImageError.title, messege: error.message)
+                                return
+                            }
+                        } receiveValue: { _ in
+                            
+                        }.store(in: &cancellables)
+                    }
+                    
+                    
                 } label: {
                     Text(L10n.deleteButtonTitle)
                 }

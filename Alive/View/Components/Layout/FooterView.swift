@@ -13,6 +13,9 @@ struct FooterView: View {
     private let userDefaults = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     // MARK: - Binding
     @Binding var selectedTab: Int
     
@@ -82,6 +85,7 @@ struct FooterView: View {
             .offset(y: DeviceSizeManager.deviceHeight / 2.3)
             .sheet(isPresented: $isShowInput, content: {
                 InputLiveView(live: nil)
+                    .environmentObject(rootEnvironment)
             }).padding(5)
             .alert(Text(L10n.adsLimitAlertTitle),
                    isPresented: $isShowCapacityAlert,

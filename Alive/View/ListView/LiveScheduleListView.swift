@@ -12,6 +12,9 @@ struct LiveScheduleListView: View {
     // MARK: - Utility
     private let dateFormatManager = DateFormatManager()
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     // MARK: - Receive
     public let lives: [Live]
     
@@ -21,6 +24,7 @@ struct LiveScheduleListView: View {
                 ForEach(lives) { live in
                     NavigationLink {
                         DetailLiveView(live: live)
+                            .environmentObject(rootEnvironment)
                     } label: {
                         HStack {
                             

@@ -21,17 +21,23 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct AliveApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    // MARK: - Environment
+    @ObservedObject private var rootEnvironment = RootEnvironment()
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 if UserDefaultsRepositoryViewModel.sheard.isInitialBoot {
                     /// 一度でもアプリを起動していれば
                     RootView()
+                        .environmentObject(rootEnvironment)
                 } else {
                     /// アプリ初回起動時
                     SplashView()
+                        .environmentObject(rootEnvironment)
                 }
-            }
+            }.dialog(isPresented: $rootEnvironment.isPresentError, title: rootEnvironment.errorTitle, message: rootEnvironment.errorMessage)
         }
     }
 }

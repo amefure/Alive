@@ -10,13 +10,13 @@ import UIKit
 // Watch ↔︎ iOS 間データ送受信エラークラス
 enum SessionError: Error {
     
-    /// E001：JSON変換エラー
+    /// ES001：JSON変換エラー
     case jsonConversionFailure
     
-    /// E002：辞書Keyが存在しない
+    /// ES002：辞書Keyが存在しない
     case notExistHeader
     
-    /// E003：不明
+    /// ES003：不明
     case unidentified
     
 }

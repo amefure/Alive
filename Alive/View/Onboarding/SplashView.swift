@@ -11,6 +11,9 @@ struct SplashView: View {
     
     @State private var isPresented: Bool = false
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     var body: some View {
         VStack(spacing: 0) {
             
@@ -31,6 +34,7 @@ struct SplashView: View {
             
         }.navigationDestination(isPresented: $isPresented) {
             Onboarding1View()
+                .environmentObject(rootEnvironment)
         }.onAppear {
             DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 2) {
                 isPresented = true

@@ -19,6 +19,9 @@ struct InputLiveView: View {
     private let userDefaultsRepository = UserDefaultsRepositoryViewModel.sheard
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     @State private var cancellables:Set<AnyCancellable> = Set()
     
     // Updateデータ受け取り用
@@ -76,6 +79,24 @@ struct InputLiveView: View {
         }
     }
     
+    // 保存/更新対象のLiveオブジェクトを生成する
+    private func getNewLive(imgName: String) -> Live {
+        let newLive = Live()
+        newLive.artist = artist
+        newLive.name = name
+        newLive.date = date
+        newLive.openingTime = openingTime
+        newLive.performanceTime = performanceTime
+        newLive.closingTime = closingTime
+        newLive.venue = venue
+        newLive.price = price.toNum()
+        newLive.type = liveType
+        newLive.url = url
+        newLive.memo = memo
+        newLive.imagePath = imgName
+        return newLive
+    }
+    
     
     var body: some View {
         VStack {
@@ -113,34 +134,34 @@ struct InputLiveView: View {
                         imageFileManager.saveImage(name: imgName, image: image).sink { result in
                             switch result {
                             case .finished:
-                                print("Image：保存成功")
+                                
+                                let newLive = getNewLive(imgName: imgName)
+                                newLive.setList = live.setList
+                                /// 更新処理
+                                repository.updateLive(id: live.id, newLive: newLive)
+                                
+                                successAlert = true
                                 break
                             case .failure(let error):
-                                print("Image：\(error.message)")
-                                break
+                                dismiss()
+                                rootEnvironment.presentErrorView(title: ImageError.title, messege: error.message)
+                                return
                             }
                         } receiveValue: { _ in
                             
                         }.store(in: &cancellables)
 
+                    } else {
+                        // 画像保存処理がない場合
+                        
+                        let newLive = getNewLive(imgName: imgName)
+                        newLive.setList = live.setList
+                        /// 更新処理
+                        repository.updateLive(id: live.id, newLive: newLive)
+                        
+                        successAlert = true
                     }
-                    
-                    let newLive = Live()
-                    newLive.artist = artist
-                    newLive.name = name
-                    newLive.date = date
-                    newLive.openingTime = openingTime
-                    newLive.performanceTime = performanceTime
-                    newLive.closingTime = closingTime
-                    newLive.venue = venue
-                    newLive.price = price.toNum()
-                    newLive.type = liveType
-                    newLive.url = url
-                    newLive.memo = memo
-                    newLive.imagePath = imgName
-                    newLive.setList = live.setList
-                    /// 更新処理
-                    repository.updateLive(id: live.id, newLive: newLive)
+
                     
                 } else {
                     /// 新規登録
@@ -152,37 +173,33 @@ struct InputLiveView: View {
                         imageFileManager.saveImage(name: imgName, image: image).sink { result in
                             switch result {
                             case .finished:
-                                print("Image：保存成功")
+                                
+                                let newLive = getNewLive(imgName: imgName)
+                                
+                                /// 新規登録
+                                repository.createLive(newLive: newLive)
+                                
+                                successAlert = true
+                                
                                 break
                             case .failure(let error):
-                                print("Image：\(error.message)")
-                                break
+                                dismiss()
+                                rootEnvironment.presentErrorView(title: ImageError.title, messege: error.message)
+                                return
                             }
                         } receiveValue: { _ in
                             
                         }.store(in: &cancellables)
+                    } else {
+                        // 画像保存処理がない場合
+                        let newLive = getNewLive(imgName: imgName)
+                        
+                        /// 新規登録
+                        repository.createLive(newLive: newLive)
+                        
+                        successAlert = true
                     }
-                    
-                    let newLive = Live()
-                    newLive.artist = artist
-                    newLive.name = name
-                    newLive.date = date
-                    newLive.openingTime = openingTime
-                    newLive.performanceTime = performanceTime
-                    newLive.closingTime = closingTime
-                    newLive.venue = venue
-                    newLive.price = price.toNum()
-                    newLive.type = liveType
-                    newLive.url = url
-                    newLive.memo = memo
-                    newLive.imagePath = imgName
-                    /// 新規登録
-                    repository.createLive(newLive: newLive)
-                    
                 }
-                
-                successAlert = true
-                
             }, isShowLogo: false)
             .padding(.top, 30)
             .tint(.themaYellow)

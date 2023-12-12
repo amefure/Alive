@@ -13,6 +13,9 @@ struct RootView: View {
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     private let sessionManager = SessionManager()
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     // MARK: - View
     @State private var selectedTab = 1
     @State private var isShowSetting = false
@@ -24,7 +27,6 @@ struct RootView: View {
             VStack {
                 HeaderView(leadingIcon: "square.and.arrow.up", trailingIcon: "gearshape", leadingAction: {
                     isShowShare = true
-                    
                 }, trailingAction: {
                     isShowSetting = true
                 }).tint(.themaYellow)
@@ -32,6 +34,7 @@ struct RootView: View {
                 TabView(selection: $selectedTab ) {
                     
                     MainView(selectedTab: $selectedTab)
+                        .environmentObject(rootEnvironment)
                         .tag(1)
                     
                     
@@ -41,12 +44,14 @@ struct RootView: View {
                     // フッターには表示されていないタブ(リストAllボタンで表示)
                     // タブにしないと詳細画面へ遷移できない
                     AllLiveListView()
+                        .environmentObject(rootEnvironment)
                         .tag(3)
                     
                 }
             }
             
             FooterView(selectedTab: $selectedTab)
+                .environmentObject(rootEnvironment)
             
         }.background(.foundation)
             .navigationDestination(isPresented: $isShowSetting) {

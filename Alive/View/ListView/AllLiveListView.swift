@@ -12,6 +12,9 @@ struct AllLiveListView: View {
     // MARK: - ViewModel
     @ObservedObject private var repository = RealmRepositoryViewModel.shared
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     // MARK: - View
     @State private var search: String = ""
     
@@ -29,6 +32,7 @@ struct AllLiveListView: View {
                 }
             
             LiveScheduleListView(lives: repository.lives)
+                .environmentObject(rootEnvironment)
             
             AdMobBannerView()
                 .frame(height: 60)

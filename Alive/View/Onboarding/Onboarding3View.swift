@@ -9,6 +9,9 @@ import SwiftUI
 
 struct Onboarding3View: View {
     
+    // MARK: - Environment
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     var body: some View {
         VStack {
             
@@ -39,6 +42,7 @@ struct Onboarding3View: View {
             VStack {
                 NavigationLink {
                     RootView()
+                        .environmentObject(rootEnvironment)
                 } label: {
                     Text(L10n.onboardingStart)
                         .padding()

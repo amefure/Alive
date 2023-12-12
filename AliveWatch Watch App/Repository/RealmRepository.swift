@@ -11,8 +11,8 @@ import RealmSwift
 class RealmRepository {
     
     init() {
-//        let config = Realm.Configuration(schemaVersion: 1)
-//        Realm.Configuration.defaultConfiguration = config
+        let config = Realm.Configuration(schemaVersion: RealmConfig.MIGRATION_VERSION)
+        Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
     }
 
@@ -33,6 +33,7 @@ class RealmRepository {
             live.venue = newLive.venue
             live.price = newLive.price
             live.type = newLive.type
+            live.url = newLive.url
             live.memo = newLive.memo
             live.imagePath = newLive.imagePath
             realm.add(live)

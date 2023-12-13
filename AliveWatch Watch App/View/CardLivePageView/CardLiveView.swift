@@ -84,7 +84,7 @@ struct CardLiveView: View {
             
             
         }.background(live.type.color)
-            .frame(width: DeviceSizeManager.deviceWidth - 5)
+            .frame(width: DeviceSizeManager.deviceWidth - 15)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .fontWeight(.bold)
             .padding(6)
